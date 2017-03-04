@@ -528,24 +528,536 @@
     <!a-plane src="images/MdCVQqA.png" height="1" width="4.8" rotation="0 -360 0" radius="2" side="double"
              position="-6.3 7.4 -13.5" transparent="true">
     </a-plane>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>The Hang Out</title>
+    <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js"></script>
+    <script src="https://sdk.altvr.com/libs/altspace.js/0.28.1/altspace.min.js"></script>
+</head>
+
+<body>
+<a-scene altspace=fullspace:true  sync-system="author: tr4sh_p4nda; app: theHangOut">
+    <a-assets></a-assets>
+
+    <!--sky-->
+    <a-sky radius="150" src="images/skyline.jpeg" segments-width="30" rotation="0 -90 0" position="0 -10 35" segments-height="30"></a-sky>
+
+    <!--Main banner-->
+    <!a-plane src="images/Broken Love.jpg" height="5.2" width="11.5" rotation="0 180 0" radius="2" side="double"
+             position="1.89 7.3 31.6" transparent="true">
+    </a-plane>
+     
+        <!--the fonz-->
+    <!a-plane src="images/rosefonz.jpg" height="2" width="1.2" rotation="0 -90 0" radius="2" side="double"
+             position="12.6 5 28.30">
+    </a-plane>
+    
+            <!--rose in vase-->
+    <!a-plane src="images/rose.png" height=".8" width=".38" rotation="0 10 0" radius="2" side="double"
+             position="10.33 1.96 31.30" transparent="true">
+    </a-plane>
+    
+            <!--portal cover-->
+    <a-plane src="images/Portal Cover.jpg" height="3.5" width="15" rotation="0 180 0" radius="2" side="double"
+             position="1.7 2 32.3">
+    </a-plane>
+    
+    <!--portal cover dots-->
+    <a-entity position="1.7 2 32.2" altspace-cursor-collider="enabled: false">
+        <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" rotation="0 180 0" height="3.5"
+                 width="15" position="0 0 0" opacity='0.1'>
+            <!a-animation attribute="rotation" from='0 180 0' to='0 180 360' dur='5000' easing="linear"
+                         repeat='indefinite'><!/a-animation>
+            <a-animation attribute="opacity" from='0.0' to='0.9' direction="alternate" dur='100'
+                         repeat='indefinite'></a-animation>
+        </a-plane>
+        <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" rotation="0 180 0" height="3.5"
+                 width="15" position="1 0 0" opacity='0.1'>
+            <!a-animation attribute="rotation" from='0 180 0' to='0 180 360' dur='4000' easing="linear"
+                         repeat='indefinite'><!/a-animation>
+            <a-animation attribute="opacity" from='0.0' to='0.9' direction="alternate" dur='200'
+                         repeat='indefinite'></a-animation>
+        </a-plane>
+        <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" rotation="0 180 0" height="3.5"
+                 width="15" position="1 1 0" opacity='0.1'>
+            <!a-animation attribute="rotation" from='0 180 0' to='0 180 360' dur='4000' easing="linear"
+                         repeat='indefinite'><!/a-animation>
+            <a-animation attribute="opacity" from='0.0' to='0.9' direction="alternate" dur='200'
+                         repeat='indefinite'></a-animation>
+        </a-plane>
+        <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" rotation="0 180 0" height="3.5"
+                 width="15" position="0 1 0" opacity='0.1'>
+            <!a-animation attribute="rotation" from='0 180 0' to='0 180 360' dur='4000' easing="linear"
+                         repeat='indefinite'><!/a-animation>
+            <a-animation attribute="opacity" from='0.0' to='0.9' direction="alternate" dur='200'
+                         repeat='indefinite'></a-animation>
+        </a-plane>
+        <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" rotation="0 180 0" height="3.5"
+                 width="15" position="2 0 0" opacity='0.1'>
+            <!a-animation attribute="rotation" from='0 180 0' to='0 180 360' dur='4000' easing="linear"
+                         repeat='indefinite'><!/a-animation>
+            <a-animation attribute="opacity" from='0.0' to='0.9' direction="alternate" dur='200'
+                         repeat='indefinite'></a-animation>
+        </a-plane>
+        <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" rotation="0 180 0" height="3.5"
+                 width="15" position="2 1 0" opacity='0.1'>
+            <!a-animation attribute="rotation" from='0 180 0' to='0 180 360' dur='4000' easing="linear"
+                         repeat='indefinite'><!/a-animation>
+            <a-animation attribute="opacity" from='0.0' to='0.9' direction="alternate" dur='200'
+                         repeat='indefinite'></a-animation>
+        </a-plane>
+        <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" rotation="0 180 0" height="3.5"
+                 width="15" position="3 0 0" opacity='0.1'>
+            <!a-animation attribute="rotation" from='0 180 0' to='0 180 360' dur='4000' easing="linear"
+                         repeat='indefinite'><!/a-animation>
+            <a-animation attribute="opacity" from='0.0' to='0.9' direction="alternate" dur='200'
+                         repeat='indefinite'></a-animation>
+        </a-plane>
+        <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" rotation="0 180 0" height="3.5"
+                 width="15" position="3 1 0" opacity='0.1'>
+            <!a-animation attribute="rotation" from='0 180 0' to='0 180 360' dur='4000' easing="linear"
+                         repeat='indefinite'><!/a-animation>
+            <a-animation attribute="opacity" from='0.0' to='0.9' direction="alternate" dur='200'
+                         repeat='indefinite'></a-animation>
+        </a-plane>
+        
+    </a-entity>
+    
+            <!--Deadmau5-->
+    <!a-plane src="images/deadmau5.jpg" height="2.5" width="2.5" rotation="0 180 0" radius="2" side="double"
+             position="1.7 2 32.1">
+    </a-plane>
+
+             <!--Tiesto-->
+    <!a-plane src="images/Tiesto.jpg" height="1.5" width="2.5" rotation="0 180 0" radius="2" side="double"
+             position="6.5 2 32.1">
+    </a-plane>
+
+            <!--Skrillex-->
+    <!a-plane src="images/skrillex.jpg" height="2.5" width="1.75" rotation="0 180 0" radius="2" side="double"
+             position="-3.3. 2 32.1">
+    </a-plane>
+
+    <!--elvis poster-->
+    <a-plane src="images/ZuySW9S.jpg" height="4.8" width="2.4" rotation="0 295 0" radius="2" side="double"
+             position="11.02 7.6 11.31">
+    </a-plane>
+
+    <!--dark wall-->
+    <a-entity rotation="0 -65.84 0" position="7.97225 1 5.9">
+        <a-plane src="images/barfloor.jpg" height="6.25" width="20.275" radius="2" side="double">
+        </a-plane>
+    </a-entity>
+    
+    <!--TV floor-->
+    <!a-plane src="images/ceiling.jpg" width="7" height="7" radius="1" side="double" position="7.4 -.76 9.9"
+             altspace-cursor-collider="enabled: false" rotation="90 30 700" transparent="true">
+    </a-plane>
+    
+    <!--ceiling-->
+    <a-plane src="images/starsky.jpg" width="27.6" height="57" radius="1" side="double" position="-0.95 10.4 8.7"
+             altspace-cursor-collider="enabled: false" rotation="90 0 0">
+    </a-plane>
+    
+    
+      <!--Stage-->
+    <a-plane src="images/barfloor.jpg" width="15" height="15" radius="1" side="double" position="1.8 -.05 28.4"
+             altspace-cursor-collider="enabled: false" rotation="90 70 700" transparent="true">
+    </a-plane>
+    
+    
+          <!--Collision Test-->
+    <!a-plane src="images/floorhearts.png" width="7" height="7" radius="1" side="double" position="-3.1 2 19.6"
+             altspace-cursor-collider="enabled: true" rotation="90 140 0" transparent="true" opacity=".2">
+    </a-plane>
+
+
+    <!--musical note above monkees-->
+    <!a-plane src="images/lgnB5S2.png" height="3" width="2" rotation="0 -68 0" radius="2" side="double"
+             position="11.4 6.2 13.95" transparent="true">
+        <!a-animation attribute="position"
+                     direction='alternate'
+                     from='11.4 7 13.95' to='11.4 6.2 13.95'
+                     easing='ease-in-out'
+                     dur='4000'
+                     repeat='indefinite'></a-animation>
+    </a-plane>
+
+    <!--monkees-->
+    <!a-plane src="images/pvRxSHP.jpg" height="3" width="2" rotation="0 -68 0" radius="2" side="double"
+             position="11.4 2 13.75">
+    </a-plane>
+
+    <!--musical note above beatles-->
+    <!a-plane src="images/lgnB5S2.png" height="3" width="2" rotation="0 -68 0" radius="2" side="double"
+             position="7.2 6.2 4.5" transparent="true">
+        <!a-animation attribute="position"
+                     direction='alternate'
+                     from='7.2 6.2 4.5' to='7.2 7 4.5'
+                     easing='ease-in-out'
+                     dur='4000'
+                     repeat='indefinite'></a-animation>
+    </a-plane>
+
+    <!--moving record-->
+    <!a-plane src="images/lovesongs.png" height="5" width="5" rotation="0 0 0" radius="2" side="double"
+             position="6.2 7.2 10" transparent="true">
+        <!a-animation attribute="rotation" dur="11500" fill="backwards" to="0 360 0" repeat="indefinite"
+                     easing="linear"></a-animation>
+    </a-plane>
+
+    <!--teal musical note above jukebox-->
+    <!a-plane src="images/pinkheart.png" height="1.5" width="1" rotation="0 0 -20" radius="2" side="double"
+             position="11.2 5 20.5" transparent="true">
+        <!a-animation attribute="rotation" dur="11500" fill="backwards" to="0 360 -20" repeat="indefinite"
+                     easing="linear"></a-animation>
+    </a-plane>
+
+    <!--second teal musical note above jukebox-->
+    <!a-plane src="images/pinkheart.png" height="1.5" width="1" rotation="0 0 -20" radius="2" side="double"
+             position="11.2 5 24.5" transparent="true">
+        <!a-animation attribute="rotation" dur="11500" fill="backwards" to="0 360 -20" repeat="indefinite"
+                     easing="linear"></a-animation>
+    </a-plane>
+
+    <!--Amazing quote-->
+    <!a-plane src="images/valentineamazing.jpg" height="2" width="4" rotation="0 -90 0" radius="2" side="double"
+             position="12.5 8.97 22.30" transparent="true">
+    </a-plane>
+    
+    <!--Juke box-->
+    <!a-plane src="images/q8jyqKm.png" height="4" width="2.6" rotation="0 90 0" radius="2" side="double"
+             position="11.2 2.7 22.30" transparent="true">
+    </a-plane>
+
+    <!--Juke box side one-->
+    <!a-plane src="images/kW86Osj.png" height="3.8" width=".94" rotation="0 183 0" radius="2" side="double"
+             position="11.68 2.55 23.55" transparent="true">
+    </a-plane>
+
+    <!--Juke box side two-->
+    <!a-plane src="images/kW86Osj.png" height="3.8" width=".94" rotation="0 185 0" radius="2" side="double"
+             position="11.68 2.55 21.0a5" transparent="true">
+    </a-plane>
+
+    <!--Juke box back-->
+    <!a-plane src="images/q8jyqKm.png" height="4" width="2.6" rotation="0 90 0" radius="2" side="double"
+             position="12.2 2.7 22.30" transparent="true">
+    </a-plane>
+
+    <!--motorcycle-->
+    <!a-plane src="images/2g9XHE6.png" height="1.8" width="3" rotation="0 60 5" radius="2" side="double"
+             position="11 0.85 28.30" transparent="true">
+    </a-plane>
+
+    <!--queen-->
+    <!a-plane src="images/valplaylist.png" height="3" width="2" rotation="0 -68 0" radius="2" side="double"
+             position="5.2 2 0" transparent="true">
+    </a-plane>
+
+    <!--musical note above queen-->
+    <!a-plane src="images/lgnB5S2.png" height="3" width="2" rotation="0 -68 0" radius="2" side="double"
+             position="5.2 7.2 0" transparent="true">
+        <!a-animation attribute="position"
+                     direction='alternate'
+                     from='5.2 7.2 0' to='5.2 6 0'
+                     easing='ease-in-out'
+                     dur='4000'
+                     repeat='indefinite'></a-animation>
+    </a-plane>
+
+    <!--beach boys-->
+    <!a-plane src="images/H5ssNlN.jpg" height="3" width="2" rotation="0 90 0" radius="2" side="double"
+             position="-6.8 8.2 7.98">
+    </a-plane>
+
+    <!--heart-->
+    <!a-plane src="images/gCR3wvy.jpg" height="3" width="2" rotation="0 360 0" radius="2" side="double"
+             position="-8.2 8.2 9.3">
+    </a-plane>
+
+    <!--b52-->
+    <!a-plane src="images/Cjr2r75.jpg" height="3" width="2" rotation="0 180 0" radius="2" side="double"
+             position="-8.2 8.2 6.4">
+    </a-plane>
+
+    <!--woodstock-->
+    <!a-plane src="images/ATNtxsh.jpg" height="3" width="2" rotation="0 -90 0" radius="2" side="double"
+             position="-9.7 8.2 8">
+    </a-plane>
+
+    <!--dance floor-->
+    <a-entity id="box1" geometry="primitive: box;"
+              position='-7.3 2.46 8'
+              scale='5 .1 6' n-mesh-collider="type: environment"></a-entity>
+
+    <!--black box under dance floor-->
+    <!a-plane src="images/uTVu1p9.png" width="7" height="6.1" radius="2" side="double" position="-7.3 2.46 8"
+             altspace-cursor-collider="enabled: false" rotation="90 -90 0">
+    </a-plane>
+
+    <!--lyrics to walk on - dancing queen -->
+    <!a-plane src="images/1YYqiyo.png" width="2" height="3" radius="2" side="double" position="-9.9 2.92 .4"
+             altspace-cursor-collider="enabled: false" rotation="-72 0 0" altspace-cursor-collider="enabled: false"
+             transparent="true">
+    </a-plane>
+
+    <!--microphone-->
+    <!a-entity position="3.4 -0.8 9.9" rotation="0 -90 0">
+        /*this is the base*/
+        <!a-cylinder segments-height="1" segments-radial="8" color="#000000" height="0.05" radius="0.03" rotation="0 0 0" position="0 0 0">
+            <!a-cylinder segments-height="1" segments-radial="8" material="src: url(images/KBLapHM.png);" height="0.2" radius="0.01"
+                        rotation="45 0 0" position="0 -0.055 -0.075"></a-cylinder>
+            <!a-cylinder segments-height="1" segments-radial="8" material="src: url(images/KBLapHM.png);" height="0.2" radius="0.01"
+                        rotation="45 120 0" position="-0.08 -0.055 0.045"></a-cylinder>
+            <!a-cylinder segments-height="1" segments-radial="8" material="src: url(images/KBLapHM.png);" height="0.2" radius="0.01"
+                        rotation="45 240 0" position="0.08 -0.055 0.045"></a-cylinder>
+        </a-cylinder>
+
+        /*this is the shaft and mic*/
+        <!a-cylinder segments-height="1" segments-radial="8" material="src: url(images/KBLapHM.png);" height="1.3" radius="0.01" rotation="0 0 0"
+                    position="0 0.6 0"></a-cylinder>
+        <!a-cone segments-height="1" segments-radial="8" material="src: url(images/KBLapHM.png);" radius-bottom="0.01" radius-top="0.02" height="0.2"
+                position="0 1.29 0.03" rotation="45 0 0">
+            <!a-sphere material="src: url(images/S5WHXhg.jpg);" radius="0.03" position="0 0.1 0"
+                segments-height="8" segments-width="12"></a-sphere>
+        </a-cone>
+    </a-entity>
+
+    <!--microphone 2-->
+    <!a-entity position="4.8 -0.8 12.9" rotation="0 -45 0">
+        /*this is the base*/
+        <!a-cylinder segments-height="1" segments-radial="8" color="#000000" height="0.05" radius="0.03" rotation="0 0 0" position="0 0 0">
+            <!a-cylinder segments-height="1" segments-radial="8" material="src: url(images/KBLapHM.png);" height="0.2" radius="0.01"
+                        rotation="45 0 0" position="0 -0.055 -0.075"></a-cylinder>
+            <!a-cylinder segments-height="1" segments-radial="8" material="src: url(images/KBLapHM.png);" height="0.2" radius="0.01"
+                        rotation="45 120 0" position="-0.08 -0.055 0.045"></a-cylinder>
+            <!a-cylinder segments-height="1" segments-radial="8" material="src: url(images/KBLapHM.png);" height="0.2" radius="0.01"
+                        rotation="45 240 0" position="0.08 -0.055 0.045"></a-cylinder>
+        </a-cylinder>
+
+        /*this is the shaft and mic*/
+        <!a-cylinder segments-height="1" segments-radial="8" material="src: url(images/KBLapHM.png);" height="1.3" radius="0.01" rotation="0 0 0"
+                    position="0 0.6 0"></a-cylinder>
+        <!a-cone segments-height="1" segments-radial="8" material="src: url(images/KBLapHM.png);" radius-bottom="0.01" radius-top="0.02" height="0.2"
+                position="0 1.29 0.03" rotation="45 0 0">
+            <!a-sphere material="src: url(images/S5WHXhg.jpg);" radius="0.03" position="0 0.1 0"
+                segments-height="8" segments-width="12"></a-sphere>
+        </a-cone>
+    </a-entity>
+
+    <!--purple above disco ball-->
+    <!a-plane src="images/53PceVd.jpg" width="2.8" height="2.8" radius="1" side="double"
+             position="-8.25 6.35 7.9" altspace-cursor-collider="enabled: false" rotation="90 -90 0">
+    </a-plane>
+
+    <!--disco ball-->
+    <a-sphere segments-height="18" segments-width="18" src="images/discoball.jpg" width="1" height=".5" radius=".75" side="double"
+              position="-8.2 5.1 7.9" altspace-cursor-collider="enabled: false" rotation="0 0 0">
+        <a-animation attribute="rotation" dur="10000" fill="backwards" to="0 360 0" repeat="indefinite"
+                     easing="linear"></a-animation>
+    </a-sphere>
+
+    <!a-sphere segments-height="18" segments-width="18" src="images/z7L9gIu.jpg" width="1" height=".5" radius=".75" side="double"
+              position="-8.2 5.1 7.9" altspace-cursor-collider="enabled: false" rotation="0 0 0">
+        <!a-animation attribute="rotation" dur="8000" fill="frontwards" to="0 -360 0" repeat="indefinite"
+                     easing="linear"></a-animation>
+    </a-sphere>
+
+
+    <!--lights-->
+    <a-entity color="yellow" radius=".7" rotation="0 0 0" position="-8.2 5.1 7.9"
+              altspace-cursor-collider="enabled: false">
+        <a-entity color="#336699" radius="0.1" rotation="45 0 0" position="0.8 0 0">
+            <a-cylinder segments-height="1" segments-radial="8" color="#FFFFFF" height="4" radius="0.02" position="0 -2 0">
+                <a-animation attribute="opacity" from='0' to='0.002' direction="alternate" dur='100'
+                             repeat='indefinite'></a-animation>
+            </a-cylinder>
+            <a-animation attribute="rotation" from='45 0 0' to='45 360 0' dur='200' easing="linear"
+                         repeat='indefinite'></a-animation>
+        </a-entity>
+        <a-entity color="#336699" radius="0.1" rotation="45 0 0" position="-0.8 0 0">
+            <a-cylinder segments-height="1" segments-radial="8" color="#FFFFFF" height="4" radius="0.02" position="0 -2 0">
+                <a-animation attribute="opacity" from='0' to='0.002' direction="alternate" dur='110'
+                             repeat='indefinite'></a-animation>
+            </a-cylinder>
+            <a-animation attribute="rotation" from='45 360 0' to='45 0 0' dur='500' easing="linear"
+                         repeat='indefinite'></a-animation>
+        </a-entity>
+        <a-entity color="#336699" radius="0.1" rotation="45 0 0" position="0 0 0.8">
+            <a-cylinder segments-height="1" segments-radial="8" color="#FFFFFF" height="4" radius="0.02" position="0 -2 0">
+                <a-animation attribute="opacity" from='0' to='0.002' direction="alternate" dur='120'
+                             repeat='indefinite'></a-animation>
+            </a-cylinder>
+            <a-animation attribute="rotation" from='45 0 0' to='45 360 0' dur='200' easing="linear"
+                         repeat='indefinite'></a-animation>
+        </a-entity>
+        <a-entity color="#336699" radius="0.1" rotation="45 0 0" position="0 0 -0.8">
+            <a-cylinder segments-height="1" segments-radial="8" color="#FFFFFF" height="4" radius="0.02" position="0 -2 0">
+                <a-animation attribute="opacity" from='0' to='0.002' direction="alternate" dur='140'
+                             repeat='indefinite'></a-animation>
+            </a-cylinder>
+            <a-animation attribute="rotation" from='45 360 0' to='45 0 0' dur='500' easing="linear"
+                         repeat='indefinite'></a-animation>
+        </a-entity>
+        <a-animation attribute="rotation" from='0 0 0' to='0 360 0' dur='1500' easing="linear"
+                     repeat='indefinite'></a-animation>
+    </a-entity>
+
+    <!--dance floor dots-->
+    <a-entity position="-7.3 2.56 8" altspace-cursor-collider="enabled: false">
+        <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" rotation="-90 0 0" height="5"
+                 width="5" position="0 0 0" opacity='0.1'>
+            <a-animation attribute="rotation" from='-90 360 0' to='-90 0 0' dur='5000' easing="linear"
+                         repeat='indefinite'></a-animation>
+            <a-animation attribute="opacity" from='0.0' to='0.9' direction="alternate" dur='100'
+                         repeat='indefinite'></a-animation>
+        </a-plane>
+        <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" rotation="-90 0 0" height="4"
+                 width="4" position="0 0 0" opacity='0.1'>
+            <a-animation attribute="rotation" from='-90 360 0' to='-90 0 0' dur='4000' easing="linear"
+                         repeat='indefinite'></a-animation>
+            <a-animation attribute="opacity" from='0.0' to='0.9' direction="alternate" dur='200'
+                         repeat='indefinite'></a-animation>
+        </a-plane>
+    </a-entity>
+
+    <!--Sweet Caroline lyrics-->
+    <!a-plane src="images/HF4MsS5.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-14.9 5.81 20.668">
+    </a-plane>
+
+    <!--I will survive lyrics-->
+    <!a-plane src="images/yQDYUNM.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-14.9 5.81 18.668">
+    </a-plane>
+
+    <!--Take on me lyrics-->
+    <!a-plane src="images/glcOHOr.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-14.9 5.81 16.668">
+    </a-plane>
+
+    <!--Rock around the clock lyrics-->
+    <!a-plane src="images/nsDbmSY.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-14.9 5.81 14.668">
+    </a-plane>
+
+    <!--Image 1-->
+    <a-plane src="images/image1.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-14.9 5.91 4.228">
+    </a-plane>
+
+    <!--Love Shack lyrics-->
+    <!a-plane src="images/pTwVAR8.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-14.9 5.91 2.328">
+    </a-plane>
+
+    <!--Image 2-->
+    <a-plane src="images/image2.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-14.9 5.91 .528">
+    </a-plane>
+
+    <!--Last train to clarksville lyrics-->
+    <!a-plane src="images/QMkQdlz.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-14.9 5.91 -1.328">
+    </a-plane>
+
+    <!--Guilty pleasures-->
+    <!a-plane src="images/uDFMGGy.jpg" height=".35" width="1.8" rotation="0 -90 0" radius="2" side="double"
+             position="-8.3 7.20 -5.15">
+    </a-plane>
+
+    <!--SDK pic-->
+    <!a-plane src="images/VqvfaW8.jpg" height="1.4" width="2" rotation="0 -90 0" radius="2" side="double"
+             position="-8.3 5.91 -3">
+    </a-plane>
+
+    <!--Image 3-->
+    <a-plane src="images/image3.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-14.9 5.91 -3.198">
+    </a-plane>
+
+    <!--Wonderful world lyrics-->
+    <!a-plane src="images/jxoa5M8.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-14.9 5.91 -5.098">
+    </a-plane>
+
+    <!--Image 4-->
+    <a-plane src="images/image4.jpg" height=".95" width="1.65" rotation="0 360 0" radius="2" side="double"
+             position="-12.74 5.91 -6.297">
+    </a-plane>
+
+    <!--Image 5-->
+    <a-plane src="images/image5.jpg" height=".95" width="1.65" rotation="0 360 0" radius="2" side="double"
+             position="-10.34 5.91 -6.297">
+    </a-plane>
+
+    <!--Dance wording part 1-->
+    <!a-plane src="images/lkQ1mYh.png" height="1" width="5" rotation="0 -360 0" radius="2" side="double"
+             position="-11.2 7.4 -13.5" transparent="true">
+    </a-plane>
+
+    <!--sing wording part 2-->
+    <!a-plane src="images/MdCVQqA.png" height="1" width="4.8" rotation="0 -360 0" radius="2" side="double"
+             position="-6.3 7.4 -13.5" transparent="true">
+    </a-plane>
 
     <!--live wording part 3-->
     <!a-plane src="images/kzjxkv7.png" height="1" width="5" rotation="0 -90 0" radius="2" side="double"
              position="-3.9 7.4 -10.5" transparent="true">
     </a-plane>
 
-    
+    <!--Image 6-->
+    <a-plane src="images/image6.jpg" height="1.3" width=".95" rotation="0 180 0" radius="2" side="double"
+             position="-8.92 6.14 -6.8">
+    </a-plane>
+
+    <!--Image 7-->
+    <a-plane src="images/image7.jpg" height="1.3" width="1" rotation="0 180 0" radius="2" side="double"
+             position="-10 6.14 -6.8">
+    </a-plane>
+
+    <!--Image 8-->
+    <a-plane src="images/image8.jpg" height="1.3" width=".95" rotation="0 180 0" radius="2" side="double"
+             position="-11.07 6.14 -6.8">
+    </a-plane>
+
+    <!--Image 9-->
+    <a-plane src="images/image9.jpg" height="1.3" width=".94" rotation="0 180 0" radius="2" side="double"
+             position="-12.08 6.14 -6.8">
+    </a-plane>
+
+    <!--Image 10-->
+    <a-plane src="images/image10.jpg" height="1.3" width=".95" rotation="0 180 0" radius="2" side="double"
+             position="-13.1 6.14 -6.8">
+    </a-plane>
+
+    <!--Image 11-->
+    <a-plane src="images/image11.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-13.85 7.17 -8.9">
+    </a-plane>
+
+    <!--Image 12-->
+    <a-plane src="images/image12.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
+             position="-13.85 7.17 -11.056">
+    </a-plane>
+
     <!--mouse and foxy -->
     <!a-plane src="images/e1Shpyg.jpg" height=".5" width=".5" rotation="0 90 0" radius="2" side="double"
              position="-13.85 6.4 -11.056">
     </a-plane>
 
-    <!a-entity position="-12.85 5.4 -12.635">
-        <!a-entity id="pc-rick" n-sound="on: rick-roll; src: rick.ogg; rolloff: cosine; maxDistance: 6"
+    <a-entity position="-12.85 5.4 -12.635">
+        <a-entity id="pc-rick" n-sound="on: rick-roll; src: rick.ogg; rolloff: cosine; maxDistance: 6"
             sync="own-on: rick-roll" sync-n-sound></a-entity>
-        <!a-entity id="gear-rick" n-sound="on: rick-roll; src: rick.mp3; rolloff: cosine; maxDistance: 6"
+        <a-entity id="gear-rick" n-sound="on: rick-roll; src: rick.mp3; rolloff: cosine; maxDistance: 6"
             sync="own-on: rick-roll" sync-n-sound></a-entity>
-        <!a-box altspace-cursor-collider="enabled: true"
+        <a-box altspace-cursor-collider="enabled: true"
             scale="0.1 0.1 0.1" material="color: green; transparent: true; opacity: 0.2"
             wire="on: click; emit: rick-roll; targets: #pc-rick, #gear-rick;">
             <a-animation attribute="opacity" from="0.2" to="1.0" duration="200" begin="mouseenter"></a-animation>
@@ -563,7 +1075,12 @@
              position="-3.9 6.3 -5.098">
     </a-plane>
 
-    
+    <!--Image 13-->
+    <a-plane src="images/image13.jpg" height=".945" width="2.235" rotation="0 -180 0" radius="2"
+             side="double" position="-5.99 7.17 -3.65">
+    </a-plane>
+
+
 </a-scene>
 
 
@@ -575,11 +1092,9 @@
         };
         document.querySelector('#box1').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
     }
-
     setInterval(changeColorRandom, 900);
 </script>
 
 </body>
 </html>
-
 
