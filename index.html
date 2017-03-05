@@ -133,12 +133,14 @@
     </a-plane>
 
     <!--dark wall-->
-    <a-entity material="src:#imgGround; repeat: 20 20" rotation="0 -65.84 0" position="7.97225 1 5.9">
-    <!--/a-entity>
-    <a-entity--> 
-        <a-plane src="images/darkwalltile.jpg"> <!--height="6.25" width="20.275" radius="2" side="double"-->
-        </a-plane>
+    <a-entity geometry="primitive: plane; height: 6.25; width: 20.275; rotation: 0 -65.84 0; position: 7.97225 1 5.9"
+          material="src: images/darkwalltile.jpg; repeat: 100 20" >
     </a-entity>
+     
+        <!a-plane src="images/darkwalltile.jpg" height="6.25" width="20.275" radius="2" side="double" 
+                 rotation="0 -65.84 0" position="7.97225 1 5.9">
+        </a-plane>
+    
     
     <!--TV floor-->
     <!a-plane src="images/ceiling.jpg" width="7" height="7" radius="1" side="double" position="7.4 -.76 9.9"
