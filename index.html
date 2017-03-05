@@ -30,7 +30,17 @@
 
     <!--sky-->
     <a-sky radius="150" src="images/skyline.jpeg" segments-width="30" rotation="0 -90 0" position="0 -10 35" segments-height="30"></a-sky>
-
+    
+       <!--couches objects -->
+    <a-entity obj-model="obj: #couches-obj; mtl: #couches-mtl" rotation="0 90 0" altspace-cursor-collider="enabled: false" 
+    material="repeat: 3 3; transparent: true; opacity: 0.5">
+    </a-entity>
+    
+     <!--carpets objects -->
+    <a-entity obj-model="obj: #carpet-obj; mtl: #carpet-mtl" rotation="0 90 0" altspace-cursor-collider="enabled: false"
+    material="repeat: 3 3; transparent: true; opacity: 0.5">
+    </a-entity>
+    
     <!--Main banner-->
     <!a-plane src="images/Broken Love.jpg" height="5.2" width="11.5" rotation="0 180 0" radius="2" side="double"
              position="1.89 7.3 31.6" transparent="true">
