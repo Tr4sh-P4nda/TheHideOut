@@ -8,7 +8,7 @@
     <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js"></script>
     <script src="https://sdk.altvr.com/libs/altspace.js/0.28.1/altspace.min.js"></script>
-    <script>
+    <!--script>
     altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
           window.head = skeleton.getJoint('Head');
         });
@@ -21,7 +21,7 @@
             this.el.object3D.lookAt(window.head.position); 
           }
         })
-  </script>
+  </script-->
 </head>
 
 <body>
@@ -436,10 +436,12 @@
 
     <!--Image 1-->
     
-    <video id="my-video" src="images/Test.mp4" autoplay="true">
+    <video id="Test.mp4" src="images/Test.mp4" autoplay="true">
     
-    <a-entity geometry="primitive: box" material="src: #my-video" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
-             position="-14.9 5.91 4.228"></a-entity>
+    <a-entity geometry="primitive: box" material="src: images/Test.mp4" 
+        var videoEl = document.querySelector('Test.mp4');
+videoEl.currentTime = 122;  // Seek to 122 seconds.
+videoEl.pause();></a-entity>
 
     <!a-plane src="images/image1.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
              position="-14.9 5.91 4.228">
