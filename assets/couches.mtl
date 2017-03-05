@@ -1,0 +1,4 @@
+newmtl None
+Kd 1 1 1
+map_Kd pattern.png
+d 0.5
