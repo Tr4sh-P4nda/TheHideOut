@@ -139,7 +139,7 @@
         <a-plane src="images/djtop.jpg" position="1.64 1.106 28.73" rotation="-90 0 0" height="0.5" width="1">
         </a-plane>
     
-        <!a-box position="1.65 1.99 28.74" depth=".75" height="1" width="3.75" 
+        <a-box position="1.65 1.99 28.74" depth=".75" height="1" width="3.75" 
                geometry="primitive:plane;depth:.75;height:1;width:3.75" material="transparent: true; opacity: 0" rotation="-90 0 0" scale="3.47 2.96 0.57"></a-box>
     
     <!--Speakers-->
@@ -160,9 +160,9 @@
     
     
     <!--Dance Cage-->
-    <a-box color="#252525" position="11 .7 24.43" scale="1.5 0.05 1.5" altspace-cursor-collider="enabled:true" 
-           n-mesh-collider="type: environment; convex: true">
-    </a-box>
+    <a-entity id="box1" position="11 .7 24.43" scale="1.5 0.05 1.5" altspace-cursor-collider="enabled:true" 
+           n-mesh-collider="type: environment; convex: true" geometry="primitive: box;">
+    </a-entity>
 
 
     <!--disco ball-->
