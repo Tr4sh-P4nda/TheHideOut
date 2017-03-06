@@ -97,7 +97,8 @@
     <!--a-plane src="images/starskysmall.jpg" material="repeat: 5 5" width="27.6" height="57" radius="1" side="double" position="-0.95 10.4 8.7"
             altspace-cursor-collider="enabled: false" rotation="90 0 0">
     </a-plane-->
-    <a-plane src="images/starskytile.jpg" material="repeat: 5 5" width="27.6" height="57" radius="1" side="double" position="-0.95 10.4 8.7"
+    <a-plane src="images/starskytile.jpg" material="repeat: 5 5" width="27.6" height="57" radius="1" side="double" 
+             position="-0.95 10.4 8.7"
              altspace-cursor-collider="enabled: false" rotation="90 0 0">
     </a-plane>
     
@@ -124,7 +125,7 @@
            position="-3.1 2 19.6"></a-box>
 
        <!--Booth Top-->
-    <a-box src="assets/granite.jpg" altspace-cursor-collider="enabled:false"
+    <a-box src="assets/granite.jpg" altspace-cursor-collider="enabled:false" n-mesh-collider="type: environment; convex: false" 
            position="1.65 1.05 28.74" depth=".75" height=".01" width="4.01"n-mesh-collider="type: environment; convex: false" 
            position="-3.1 2 19.6"></a-box>
 
@@ -139,7 +140,8 @@
         <a-plane src="images/speaker.jpg" position="-0.8 0.95 28.42" rotation="0 -210.37 0" scale="1 1 1" visible="true" 
                   side="double" height="2" width="0.97"></a-plane>
     
-    <a-box color="black" position="4.38 0.46 28.86" rotation="0 30.36676314193363 0" scale="1 1 1" height="3" width="1"></a-box>
+    <a-box color="black" altspace-cursor-collider="enabled:false" n-mesh-collider="type: environment; convex: false" 
+           position="4.38 0.46 28.86" rotation="0 30.36676314193363 0" scale="1 1 1" height="3" width="1"></a-box>
         <a-plane src="images/speaker.jpg" position="4.12 0.95 28.43" rotation="0 210.37 0" scale="1 1 1" visible="true" 
                  side="double" height="2" width="0.97"></a-plane>
     
