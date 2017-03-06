@@ -136,7 +136,7 @@
            position="-3.1 2 19.6"></a-box>
 
     <!--Booth Top-->
-    <a-box id="boothtop" altspace-cursor-collider="enabled:true" n-mesh-collider="type: object; convex: true" 
+    <a-box id="boothtop2" altspace-cursor-collider="enabled:true" n-mesh-collider="type: object; convex: true" 
            position="1.65 1.05 28.74" depth=".8" height=".03" width="4.01"n-mesh-collider="type: environment; convex: true" 
            position="-3.1 2 19.6"></a-box>
     
@@ -656,7 +656,15 @@
     }
     setInterval(changeColorRandom, 469);
 </script>
-
+<script>
+    var changeColorRandom = function () {
+        var rand = function () {
+            return Math.floor(Math.random() * 255)
+        };
+        document.querySelector('#boothtop2').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
+    }
+    setInterval(changeColorRandom, 469);
+</script>
 </body>
 </html>
 
