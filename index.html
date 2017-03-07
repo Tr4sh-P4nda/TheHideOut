@@ -39,7 +39,7 @@
            position="0 -10 35" segments-height="30">
     </a-sky>
     
-    <!--lift-->
+    <!--lift>
     <a-entity class="tractorbeam" position="-10.86 0 -10.94" rotation="0 135 0">
       <a-cylinder position="0 19 0" material="color: #E2E8FD" side="double" opacity="0.15" rotation="0 45 0" radius="1.5" height="39" class="not-clickable" altspace-cursor-collider="enabled: false" geometry=""></a-cylinder>
       <a-box id="lift" material="visible: false" n-sound="res: ui/notify; volume: 1; oneshot: true; on: animationstart" depth="3" height=".1" width="3" position="0 -.1 0" n-mesh-collider="type: environment" geometry="">
@@ -50,10 +50,10 @@
         <a-animation begin="buttonchange" attribute="material.color" from="red" to="#1DD100" delay="20000" dur="200" fill="both" repeat="0" direction="backwards">
       </a-animation></a-entity>
       <a-entity n-billboard="" n-text="fontSize: 2; text: up" position="1 1.5 -1.5"></a-entity>
-    </a-entity>
+    </a-entity-->
     
-    <!--Old Lift>
-    <a-entity class='tractorbeam' position='0 0 13.3'>
+    <!--Old Lift-->
+    <a-entity class='tractorbeam' position='-10.86 0 -10.94' rotation='0 135 0'>
       <a-cylinder position='0 19 0' material='color: #E2E8FD' side="double" opacity="0.15" rotation='0 45 0' radius='1.5' height='39' 
                   class="not-clickable" altspace-cursor-collider="enabled: false"></a-cylinder>
       <a-box id="lift" material="visible: false" n-sound="res: ui/notify; volume: 1; oneshot: true; on: animationstart" depth="3" 
@@ -68,7 +68,7 @@
                      repeat='0' direction='backwards' />
       </a-entity>
       <a-entity n-billboard n-text="fontSize: 2; text: up" position="1 1.5 -1.5"></a-entity>
-    </a-entity-->
+    </a-entity>
 
 
 
