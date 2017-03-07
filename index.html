@@ -7,12 +7,7 @@
     <title>The Hang Out</title>
     <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js"></script>
-    <script src="https://sdk.altvr.com/libs/altspace.js/0.28.1/altspace.min.js"></script> 
-    <script src="https://unpkg.com/webrtc-adapter/out/adapter.js"></script> 
-    <script src="https://unpkg.com/aframe-video-billboard"></script>
-    <script>
-    registerAframeVideoBillboard(window.AFRAME);
-    </script>
+    <script src="https://sdk.altvr.com/libs/altspace.js/0.28.1/altspace.min.js"></script>
     <script>
         altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
           window.head = skeleton.getJoint('Head');
@@ -43,13 +38,6 @@
     <a-sky radius="150" src="images/skyline.jpeg" segments-width="30" rotation="0 -90 0" 
            position="0 -10 35" segments-height="30">
     </a-sky>
-    
-    <!--Billboard-->
-    
-    <a-video-billboard src="url(https://www.youtube.com/watch?v=t3nXV0YzTxI)" height="3.5" width="15" rotation="0 180 0" radius="2" side="double" position="1.7 6.34 30" 
-             material="src:url(https://www.youtube.com/watch?v=t3nXV0YzTxI);side:double" geometry="primitive:plane;height:3.5;width:15" scale="1 1 1" 
-             visible="true">
-    </a-video-billboard>
     
     <!--lift>
     <a-entity class="tractorbeam" position="-10.86 0 -10.94" rotation="0 135 0">
