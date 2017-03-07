@@ -238,7 +238,15 @@
 
     <a-plane src="images/speaker.jpg" position="4.12 0.95 28.43" rotation="0 210.37 0" scale="1 1 1" visible="true" 
            side="double" height="2" width="0.97"></a-plane>
-        
+    
+    <!--Laser Lights-->
+    <a-entity position="4.36 0.32 26.64">
+       <a-entity position="0 0 0" scale="1 0.39 1" geometry="primitive:cylinder;radius:0.15" material="color:#000000"></a-entity>
+    
+       <a-entity position="0 0 0" rotation="0 0 0" scale="1 0 1" visible="true" geometry="primitive:cylinder;radius:0.125" 
+              material="src:url(images/discoball.jpg);opacity:0.5"></a-entity>
+    </a-entity>
+    
     <!--Dance Cage 1-->
     <a-box id="cage1bottom" position="11.3 0.75 24.43" scale="1.5 0.05 1.5" altspace-cursor-collider="enabled:true" 
            n-mesh-collider="type:environment;convex:true">
