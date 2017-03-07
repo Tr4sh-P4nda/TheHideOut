@@ -39,6 +39,37 @@
            position="0 -10 35" segments-height="30">
     </a-sky>
     
+    <!--lift-->
+    <a-entity class='tractorbeam' position='0 0 13.3'>
+      <a-cylinder position='0 19 0' material='color: #E2E8FD' side="double" opacity="0.15" rotation='0 45 0' radius='1.5' height='39' 
+                  class="not-clickable" altspace-cursor-collider="enabled: false"></a-cylinder>
+      <a-box id="lift" material="visible: false" n-sound="res: ui/notify; volume: 1; oneshot: true; on: animationstart" depth="3" 
+             height=".1" width="3" position='0 -.1 0' n-mesh-collider="type: environment">
+        <a-animation begin='up' attribute="position" direction='normal' from='0 -.1 0' to='0 30 0' ease-out='linear' fill='both' 
+                     dur='20000' repeat='0' />
+      </a-box>
+
+      <a-entity id='upbutton' geometry="primitive: sphere; radius: .1" material='color: #1DD100' position="1 1 -1.5" 
+                sync-color wire="on: click; emit: up; targets: #lift" wire__0="on: click; emit: buttonchange; targets: #upbutton">
+        <a-animation begin='buttonchange' attribute="material.color" from='red' to='#1DD100' delay='20000' dur='200' fill='both' 
+                     repeat='0' direction='backwards' />
+      </a-entity>
+      <a-entity n-billboard n-text="fontSize: 2; text: up" position="1 1.5 -1.5"></a-entity>
+    </a-entity>
+
+
+
+
+    <a-octahedron position='0 40 13.3' src="https://rawgit.com/Lia021/theater-space/master/star.jpg" radius="2.5" geometry="segmentsWidth: 8; segmentsHeight: 8">
+      <a-animation to='0 360 0' easing='linear' dur='10500' repeat='indefinite' />
+    </a-octahedron>
+
+    <a-sphere position='0 40 13.5' color='#E2E8FD' radius="3" opacity="0.15"></a-sphere>
+
+    <a-cylinder position='0 38 13.3' src="https://rawgit.com/Lia021/theater-space/master/star.jpg" side="double" open-ended="true" radius='1.6' height='3'>
+      <a-animation to='0 360 0' easing='linear' dur='11000' repeat='indefinite' />
+    </a-cylinder>
+    
     <!--couches objects -->
     <a-entity obj-model="obj: #couches-obj; mtl: #couches-mtl" rotation="0 90 0" altspace-cursor-collider="enabled: false" 
     material="repeat: 3 3; transparent: false; opacity: 2">
