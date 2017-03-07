@@ -54,12 +54,7 @@
     
     <!--Old Lift-->
     <a-entity class='tractorbeam' position='-10 0 -10.94' rotation='0 135 0'>
-      
-        <!--a-cylinder position="0 2.22 0" material="color:#E2E8FD;side:double;opacity:0.25;fog:true" side="double" opacity="0.15" 
-                    rotation="0 45 0" radius="1.5" height="39" class="not-clickable" altspace-cursor-collider="enabled:false" 
-                    geometry="primitive:cylinder;radius:1.5;height:5" scale="1 0.87 1"></a-cylinder-->
-        
-        <a-cylinder position='0 2.22 0' material='color: #E2E8FD' side="double" opacity="0.15" rotation='0 45 0' radius='1.5' height='5' 
+      <a-cylinder position='0 2.22 0' material='color: #E2E8FD' side="double" opacity="0.15" rotation='0 45 0' radius='1.5' height='5' 
                   class="not-clickable" altspace-cursor-collider="enabled: false" scale="1 0.87 1"></a-cylinder>
       <a-box id="lift" material="visible: false" n-sound="res: ui/notify; volume: 1; oneshot: true; on: animationstart" depth="3" 
              height=".1" width="3" position='0 -.1 0' n-mesh-collider="type: environment">
@@ -67,9 +62,9 @@
                      dur='10000' repeat='0' />
       </a-box>
 
-      <a-entity id='upbutton' geometry="primitive: sphere; radius: .1" material='color: #1DD100' position="1 1 -1.5" 
+      <a-entity id='upbutton' geometry="primitive: sphere; radius: .1" material='color: brown' position="1 1 -1.5" 
                 sync-color wire="on: click; emit: up; targets: #lift" wire__0="on: click; emit: buttonchange; targets: #upbutton">
-        <a-animation begin='buttonchange' attribute="material.color" from='red' to='#1DD100' delay='20000' dur='200' fill='both' 
+        <a-animation begin='buttonchange' attribute="material.color" from='brown' to='brown' delay='10' dur='10' fill='both' 
                      repeat='0' direction='backwards' />
       </a-entity>
       <a-entity n-billboard n-text="fontSize: 2; text: up" position="1 1.5 -1.5"></a-entity>
