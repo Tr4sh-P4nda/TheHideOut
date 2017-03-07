@@ -35,17 +35,17 @@
     </a-assets>
 
     <!--sky-->
-    <!a-sky radius="150" src="images/skyline.jpeg" segments-width="30" rotation="0 -90 0" 
+    <a-sky radius="150" src="images/skyline.jpeg" segments-width="30" rotation="0 -90 0" 
            position="0 -10 35" segments-height="30">
     </a-sky>
     
     <!--couches objects -->
-    <!a-entity obj-model="obj: #couches-obj; mtl: #couches-mtl" rotation="0 90 0" altspace-cursor-collider="enabled: false" 
+    <a-entity obj-model="obj: #couches-obj; mtl: #couches-mtl" rotation="0 90 0" altspace-cursor-collider="enabled: false" 
     material="repeat: 3 3; transparent: false; opacity: 2">
     </a-entity>
     
     <!--carpets objects -->
-    <!a-entity obj-model="obj: #carpet-obj; mtl: #carpet-mtl" rotation="0 90 0" altspace-cursor-collider="enabled: false"
+    <a-entity obj-model="obj: #carpet-obj; mtl: #carpet-mtl" rotation="0 90 0" altspace-cursor-collider="enabled: false"
     material="repeat: 3 3; transparent: false; opacity: 2">
     </a-entity>
     
@@ -68,7 +68,7 @@
     <!--Box-->
     <a-entity position="-11.56 3.01 -15.14" rotation="90 0 0" scale="8 2.8 6.39" altspace-cursor-collider="enabled:false" 
               geometry="primitive:box" n-mesh-collider="type:environment;convex:false"
-              material="src:url(https://rawgit.com/Lia021/highrise/master/images/diamond.jpg);transparent:false;visible:true"></a-entity>
+              material="src:url(https://rawgit.com/Lia021/highrise/master/images/diamond.jpg);transparent:true;visible:false"></a-entity>
 
     <a-box src="https://rawgit.com/Lia021/highrise/master/images/diamond.jpg" altspace-cursor-collider="enabled:false" 
            position="-8.49 5.43 -3.98" n-mesh-collider="type:environment;convex:false" 
@@ -88,7 +88,7 @@
     </a-plane-->
     
     <!--portal cover-->
-    <!a-plane src="images/portalcover2.jpg" height="3.5" width="15" rotation="0 180 0" radius="2" side="double"
+    <a-plane src="images/portalcover2.jpg" height="3.5" width="15" rotation="0 180 0" radius="2" side="double"
              position="1.7 2 32.3">
     </a-plane>
         
@@ -113,12 +113,12 @@
     </a-plane-->
 
     <!--dark wall 1-->
-    <!a-plane src="images/darkwalltile.jpg" material="repeat: 25 10" height="6.25" width="20.275" radius="2" side="double" 
+    <a-plane src="images/darkwalltile.jpg" material="repeat: 25 10" height="6.25" width="20.275" radius="2" side="double" 
              rotation="0 -65.84 0" position="7.97225 1 5.9">
     </a-plane>
 
     <!--dark wall 2-->
-    <!a-plane src="images/darkwalltile.jpg" material="repeat: 25 10" height="6.25" width="21" radius="2" side="double" 
+    <a-plane src="images/darkwalltile.jpg" material="repeat: 25 10" height="6.25" width="21" radius="2" side="double" 
              rotation="0 -65.84 0" position="8.7 1 5.9">
     </a-plane>
     
@@ -127,13 +127,13 @@
     <!--a-plane src="images/starskysmall.jpg" material="repeat: 5 5" width="27.6" height="57" radius="1" side="double" position="-0.95 10.4 8.7"
             altspace-cursor-collider="enabled: false" rotation="90 0 0">
     </a-plane-->
-    <!a-plane src="images/starskytile.jpg" material="repeat: 5 5" width="27.6" height="57" radius="1" side="double" 
+    <a-plane src="images/starskytile.jpg" material="repeat: 5 5" width="27.6" height="57" radius="1" side="double" 
              position="-0.95 10.4 8.7"
              altspace-cursor-collider="enabled: false" rotation="90 0 0">
     </a-plane>
     
     <!--dance floor-->
-    <!a-entity id="box1" geometry="primitive: box;"
+    <a-entity id="box1" geometry="primitive: box;"
               position='-7.3 2.46 8'
               scale='5 .1 6' n-mesh-collider="type: environment">
     </a-entity>
@@ -146,52 +146,52 @@
     <!--DJ Booth-->
     
     <!--Area Block-->
-    <!a-box altspace-cursor-collider="enabled:true" position="1.65 4.33 31.1" depth=".75" height="1" 
+    <a-box altspace-cursor-collider="enabled:true" position="1.65 4.33 31.1" depth=".75" height="1" 
            width="3.75" n-mesh-collider="type:environment;convex:true" 
            material="src:url(images/djbooth.jpg);transparent:true;visible:false" 
            geometry="primitive:box;depth:.75;height:1;width:3.75" scale="1.85 12.91 11.05"></a-box>
     
     <!--Under Light--> <!--src="https://rawgit.com/Lia021/highrise/master/images/diamond.jpg"-->
-    <!a-box id="boothunderlight" altspace-cursor-collider="enabled:true"  
+    <a-box id="boothunderlight" altspace-cursor-collider="enabled:true"  
            position="1.65 0 28.74" depth=".6" height=".1" width="3.6"n-mesh-collider="type: environment; convex: false" 
            position="-3.1 2 19.6"></a-box>
 
     <!--Booth--> 
-    <!a-box src="images/djbooth.jpg" altspace-cursor-collider="enabled:true"
+    <a-box src="images/djbooth.jpg" altspace-cursor-collider="enabled:true"
            position="1.65 0.55 28.74" depth=".75" height="1" width="3.75"n-mesh-collider="type: environment; convex: true" 
            position="-3.1 2 19.6"></a-box>
 
     <!--Booth Top-->
-    <!a-box id="boothtop" altspace-cursor-collider="enabled:true" n-mesh-collider="type: object; convex: true" 
+    <a-box id="boothtop" altspace-cursor-collider="enabled:true" n-mesh-collider="type: object; convex: true" 
            position="1.65 1.05 28.74" depth=".8" height=".03" width="4.01"n-mesh-collider="type: environment; convex: true" 
            position="-3.1 2 19.6"></a-box>
     
-        <!a-box color="black" position="1.64 1.08 28.73" scale="1 1 1" depth="0.5" width="1" height="0.05">
+        <a-box color="black" position="1.64 1.08 28.73" scale="1 1 1" depth="0.5" width="1" height="0.05">
         </a-box>
     
-        <!a-plane src="images/djtop.jpg" position="1.64 1.106 28.73" rotation="-90 0 0" height="0.5" width="1">
+        <a-plane src="images/djtop.jpg" position="1.64 1.106 28.73" rotation="-90 0 0" height="0.5" width="1">
         </a-plane>
     
     <!--Teleport Stop-->
-    <!a-box position="1.65 1.99 30.1" depth=".75" height="1" width="3.75" 
+    <a-box position="1.65 1.99 30.1" depth=".75" height="1" width="3.75" 
            geometry="primitive:plane;depth:.75;height:1;width:3.75" material="transparent: true; opacity: 0" rotation="-90 0 0" 
            scale="3.47 6.58 0.57">
     </a-box>
     
     <!--Speakers-->
-    <!a-box color="black" altspace-cursor-collider="enabled:true" n-mesh-collider="type: environment; convex: true" 
+    <a-box color="black" altspace-cursor-collider="enabled:true" n-mesh-collider="type: environment; convex: true" 
            position="-1.06 0.46 28.86" rotation="0 -30.37 0" scale="1 1 1" height="3" width="1"></a-box>
 
-    <!a-plane src="images/speaker.jpg" position="-0.8 0.95 28.42" rotation="0 -210.37 0" scale="1 1 1" visible="true" 
+    <a-plane src="images/speaker.jpg" position="-0.8 0.95 28.42" rotation="0 -210.37 0" scale="1 1 1" visible="true" 
            side="double" height="2" width="0.97"></a-plane>
     
-    <!a-box color="black" altspace-cursor-collider="enabled:true" n-mesh-collider="type: environment; convex: true" 
+    <a-box color="black" altspace-cursor-collider="enabled:true" n-mesh-collider="type: environment; convex: true" 
            position="4.38 0.46 28.86" rotation="0 30.36676314193363 0" scale="1 1 1" height="3" width="1"></a-box>
 
-    <!a-plane src="images/speaker.jpg" position="4.12 0.95 28.43" rotation="0 210.37 0" scale="1 1 1" visible="true" 
+    <a-plane src="images/speaker.jpg" position="4.12 0.95 28.43" rotation="0 210.37 0" scale="1 1 1" visible="true" 
            side="double" height="2" width="0.97"></a-plane>
         
-    <!--Dance Cage 1>
+    <!--Dance Cage 1-->
     <a-box id="cage1bottom" position="11.3 0.75 24.43" scale="1.5 0.05 1.5" altspace-cursor-collider="enabled:true" 
            n-mesh-collider="type:environment;convex:true">
     </a-box>
@@ -294,9 +294,9 @@
     
     <a-cylinder src="images/djbooth.jpg" position="11.3 2.17 25.13" scale="1.5 2.87 1.5" altspace-cursor-collider="enabled:true" 
                 n-mesh-collider="type:environment;convex:true" radius="0.01">
-    </a-cylinder-->
+    </a-cylinder>
     
-    <!--Dance Cage 2>
+    <!--Dance Cage 2-->
     <a-box id="cage2bottom" position="11.3 0.75 19.9" scale="1.5 0.05 1.5" altspace-cursor-collider="enabled:true" 
            n-mesh-collider="type:environment;convex:true">
     </a-box>
@@ -399,22 +399,22 @@
     
     <a-cylinder src="images/djbooth.jpg" position="11.3 2.17 20.6" scale="1.5 2.87 1.5" altspace-cursor-collider="enabled:true" 
                 n-mesh-collider="type:environment;convex:true" radius="0.01">
-    </a-cylinder-->
+    </a-cylinder>
 
     <!--disco ball-->
-    <!a-sphere segments-height="18" segments-width="18" src="images/discoball.jpg" width="1" height=".5" radius=".75" side="double"
+    <a-sphere segments-height="18" segments-width="18" src="images/discoball.jpg" width="1" height=".5" radius=".75" side="double"
               position="-8.2 5.1 7.9" altspace-cursor-collider="enabled: false" rotation="0 0 0">
-        <!a-animation attribute="rotation" dur="10000" fill="backwards" to="0 360 0" repeat="indefinite"
+        <a-animation attribute="rotation" dur="10000" fill="backwards" to="0 360 0" repeat="indefinite"
                      easing="linear"></a-animation>
     </a-sphere>
 
-    <!a-sphere segments-height="18" segments-width="18" src="images/discoball.jpg" width="1" height=".5" radius=".75" side="double"
+    <a-sphere segments-height="18" segments-width="18" src="images/discoball.jpg" width="1" height=".5" radius=".75" side="double"
               position="-8.2 5.1 7.9" altspace-cursor-collider="enabled: false" rotation="0 0 0">
-        <!a-animation attribute="rotation" dur="10000" fill="backwards" to="0 -360 0" repeat="indefinite"
+        <a-animation attribute="rotation" dur="10000" fill="backwards" to="0 -360 0" repeat="indefinite"
                      easing="linear"></a-animation>
     </a-sphere>
 
-    <!--lights>
+    <!--lights-->
     <a-entity color="yellow" radius=".7" rotation="0 0 0" position="-8.2 5.1 7.9"
               altspace-cursor-collider="enabled: false">
         <a-entity color="#336699" radius="0.1" rotation="45 0 0" position="0.8 0 0">
@@ -451,9 +451,9 @@
         </a-entity>
         <a-animation attribute="rotation" from='0 0 0' to='0 360 0' dur='1500' easing="linear"
                      repeat='indefinite'></a-animation>
-    </a-entity-->
+    </a-entity>
 
-    <!--dance floor dots>
+    <!--dance floor dots-->
     <a-entity position="-7.3 2.56 8" altspace-cursor-collider="enabled: false">
         <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" rotation="-90 0 0" height="5"
                  width="5" position="0 0 0" opacity='0.1'>
@@ -469,7 +469,7 @@
             <a-animation attribute="opacity" from='0.0' to='0.9' direction="alternate" dur='200'
                          repeat='indefinite'></a-animation>
         </a-plane>
-    </a-entity-->
+    </a-entity>
     
     <!--Image 1-->
     <!a-plane src="images/image1.jpg" height=".95" width="1.65" rotation="0 90 0" radius="2" side="double"
