@@ -240,10 +240,18 @@
            side="double" height="2" width="0.97"></a-plane>
     
     <!--Laser Lights-->
-    <a-entity position="4.36 0.32 26.64">
+    <a-entity position="4.36 0.12 26.64">
        <a-cylinder position="0 0 0" scale="1 0.39 1" radius="0.15" material="color:#000000"></a-cylinder>
     
-       <a-cylinder position="0 0 0" scale="1 0 1" radius="0.125" material="src:url(images/discoball.jpg);opacity:0.5"></a-cylinder>
+       <a-cylinder position="0 0.2 0" scale="1 0 1" radius="0.125" material="src:url(images/discoball.jpg);opacity:0.5"></a-cylinder>
+          
+        <a-animation attribute="rotation" from='45 0 0' to='45 360 0' dur='200' easing="linear"
+                         repeat='indefinite'>
+            <a-cylinder id="laser1.1" position="0.62 2.7 0.41" scale="1 5.28 1" radius="0.15" transparent="true" opacity="0.25" 
+                        geometry="primitive:cylinder;radius:0.01" rotation="0 -30.36676314193363 -15.469860468532229" 
+                        visible="true"></a-cylinder>
+        </a-animation>
+        
     </a-entity>
     
     <!--Dance Cage 1-->
@@ -877,6 +885,15 @@
             return Math.floor(Math.random() * 255)
         };
         document.querySelector('#boothtop').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
+    }
+    setInterval(changeColorRandom, 469);
+</script>
+<script>
+    var changeColorRandom = function () {
+        var rand = function () {
+            return Math.floor(Math.random() * 255)
+        };
+        document.querySelector('#laser1.1').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
     }
     setInterval(changeColorRandom, 469);
 </script>
