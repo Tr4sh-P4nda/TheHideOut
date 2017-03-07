@@ -62,9 +62,11 @@
                      dur='2500' repeat='0' />
       </a-box>
         
+        <a-entity id="upbutton" geometry="primitive:sphere;radius:.1" material="color:null" position="2.8 3.6 -2.78" sync-color="" wire="on:click;emit:up;targets:#lift" wire__0="on:click;emit:buttonchange;targets:#upbutton" sync="">
+        <a-animation begin="buttonchange" attribute="material.color" from="#663300" to="#663300" delay="10" dur="10" fill="both" repeat="0" direction="backwards">
+      </a-animation></a-entity>
         
-        
-      <a-entity id='upbutton' geometry="primitive: sphere; radius: .1" material='color: #663300' position="3.09 3.6 -3.07" 
+      <a-entity id='upbutton' geometry="primitive: sphere; radius: .1" material='color: #663300' position="2.8 3.6 -2.78" 
                 sync-color wire="on: click; emit: up; targets: #lift" wire__0="on: click; emit: buttonchange; targets: #upbutton">
         <a-animation begin='buttonchange' attribute="material.color" from='#663300' to='#663300' delay='10' dur='10' fill='both' 
                      repeat='0' direction='backwards' />
