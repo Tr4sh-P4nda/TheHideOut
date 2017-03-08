@@ -52,7 +52,7 @@
     </a-assets>
     
     <!--sky-->
-    <a-sky radius="150" 
+    <!a-sky radius="150" 
            src="images/skyline.jpeg" 
            segments-width="30" 
            rotation="0 -90 0" 
@@ -60,7 +60,7 @@
            segments-height="30">
     </a-sky>
     
-    <!--Lift-->
+    <!--Lift>
     <a-entity class='tractorbeam' 
               position='-10.9 0 -10.94' 
               rotation='0 135 0'>
@@ -101,24 +101,22 @@
                      direction='backwards'>
             </a-animation>
       </a-entity>
-    </a-entity>
+    </a-entity-->
     
-    <!--couches objects -->
+    <!--Couch/Carpets Objects>
     <a-entity obj-model="obj: #couches-obj; mtl: #couches-mtl" 
               rotation="0 90 0" 
               altspace-cursor-collider="enabled: false" 
               material="repeat: 3 3; transparent: false; opacity: 2">
     </a-entity>
     
-    <!--carpets objects -->
     <a-entity obj-model="obj: #carpet-obj; mtl: #carpet-mtl" 
               rotation="0 90 0" 
               altspace-cursor-collider="enabled: false" 
               material="repeat: 3 3; transparent: false; opacity: 2">
-    </a-entity>
+    </a-entity-->
     
-    <!--Door Block-->
-    <!--Door-->
+    <!--Door Block>
     <a-box altspace-cursor-collider="enabled:false" 
            position="-8.17 5.64 -5.14"
            n-mesh-collider="type:environment;convex:false" 
@@ -127,7 +125,6 @@
            scale="0.02 27.89 3.68">
     </a-box>
     
-    <!--Floor-->
     <a-entity position="-8.51 4.4 -8.21" 
               rotation="90 0 0" 
               scale="14.94 16.76 1" 
@@ -143,7 +140,6 @@
               material="transparent:true;visible:false;side:double">
     </a-entity>
     
-    <!--Wall-->
     <a-entity position="-11.9 4.52 -15.19" 
               rotation="0 90 0" 
               scale="5.42 9.81 1" 
@@ -151,7 +147,6 @@
               material="transparent:true;visible:false">
     </a-entity>
     
-    <!--Box-->
     <a-entity position="-11.56 3.01 -15.14" 
               rotation="90 0 0" 
               scale="8 2.8 6.39" 
@@ -177,9 +172,9 @@
            scale="1.52 24.15 1.08" 
            rotation="0 0 0" 
            visible="true">
-    </a-box>
+    </a-box-->
     
-    <!--Roof Physics-->
+    <!--Roof Physics>
     <a-entity position="0 21.66 8.65">
         <a-box position="18.52 -11.02 12.96" 
                scale="11.47 0.32 23.93" 
@@ -225,7 +220,7 @@
                material="color:#595959;transparent:true;visible:false" 
                geometry="primitive:box">
         </a-box>
-    </a-entity>
+    </a-entity-->
     
     <!--Main banner>
     <a-plane src="images/Broken Love.jpg" 
@@ -238,7 +233,7 @@
              transparent="true">
     </a-plane-->
     
-    <!--portal cover-->
+    <!--portal cover>
     <a-plane src="images/portalcover2.jpg" 
              height="3.5" 
              width="15" 
@@ -246,7 +241,7 @@
              radius="2" 
              side="double"
              position="1.7 2 32.3">
-    </a-plane>
+    </a-plane-->
         
     <!--Deadmau5>
     <a-plane src="images/deadmau5.jpg" 
@@ -289,7 +284,7 @@
     </a-plane-->
 
     <!--dark wall 1-->
-    <a-plane src="images/darkwalltile.jpg" 
+    <!a-plane src="images/darkwalltile.jpg" 
              material="repeat: 25 10" 
              height="6.25" 
              width="20.275" 
@@ -300,7 +295,7 @@
     </a-plane>
 
     <!--dark wall 2-->
-    <a-plane src="images/darkwalltile.jpg" 
+    <!a-plane src="images/darkwalltile.jpg" 
              material="repeat: 25 10" 
              height="6.25" 
              width="21" 
@@ -311,7 +306,7 @@
     </a-plane>
     
     <!--ceiling-->
-    <a-plane src="images/starskytile.jpg" 
+    <!a-plane src="images/starskytile.jpg" 
              material="repeat: 5 5" 
              width="27.6" 
              height="57" 
@@ -323,16 +318,15 @@
     </a-plane>
     
     <!--dance floor-->
-    <a-entity id="box1" 
+    <!a-entity id="box1" 
               geometry="primitive: box;"
               position='-7.3 2.46 8'
               scale='5 .1 6' 
               n-mesh-collider="type: environment">
     </a-entity>
     
-    <!--DJ Booth-->
+    <!--DJ Booth>
     
-    <!--Area Block-->
     <a-box altspace-cursor-collider="enabled:true" 
            position="1.65 4.33 31.1" 
            depth=".75" 
@@ -344,7 +338,6 @@
            scale="1.85 12.91 11.05">
     </a-box>
     
-    <!--Under Light-->
     <a-box id="boothunderlight" 
            altspace-cursor-collider="enabled:true"  
            position="1.65 0 28.74" 
@@ -355,12 +348,10 @@
            position="-3.1 2 19.6">
     </a-box>
 
-    <!--Booth--> 
     <a-box src="images/djbooth.jpg" altspace-cursor-collider="enabled:true"
            position="1.65 0.55 28.74" depth=".75" height="1" width="3.75"n-mesh-collider="type: environment; convex: true" 
            position="-3.1 2 19.6"></a-box>
 
-    <!--Booth Top-->
     <a-box id="boothtop" altspace-cursor-collider="enabled:true" n-mesh-collider="type: object; convex: true" 
            position="1.65 1.05 28.74" depth=".8" height=".03" width="4.01"n-mesh-collider="type: environment; convex: true" 
            position="-3.1 2 19.6"></a-box>
@@ -371,7 +362,6 @@
         <a-plane src="images/djtop.jpg" position="1.64 1.106 28.73" rotation="-90 0 0" height="0.5" width="1">
         </a-plane>
     
-    <!--Teleport Stop-->
     <a-box position="1.65 1.99 30.1" depth=".75" height="1" width="3.75" 
            geometry="primitive:plane;depth:.75;height:1;width:3.75" material="transparent: true; opacity: 0" rotation="-90 0 0" 
            scale="3.47 6.58 0.57">
@@ -388,7 +378,6 @@
            visible="true">
     </a-box>
     
-    <!--Speakers-->
     <a-box color="black" 
            altspace-cursor-collider="enabled:true" 
            n-mesh-collider="type: environment; convex: true" 
@@ -427,9 +416,9 @@
              side="double" 
              height="2" 
              width="0.97">
-    </a-plane>
+    </a-plane-->
     
-    <!--Laser Lights-->
+    <!--Laser Lights>
     <a-entity position="6 -0.12 26.64">
        <a-cylinder position="0 0 0" 
                    scale="1 0.39 1" 
@@ -761,7 +750,7 @@
                      repeat='indefinite' 
                      easeInOut="sine">
         </a-animation>
-    </a-entity>
+    </a-entity-->
     
     <!--Dance Cage 1-->
     <a-entity id="Dance Cage 1"
@@ -1183,7 +1172,7 @@
         </a-cylinder>
     </a-entity>
 
-    <!--disco ball-->
+    <!--disco ball>
     <a-sphere segments-height="18" 
               segments-width="18" 
               src="images/discoball.jpg" 
@@ -1220,9 +1209,9 @@
                      repeat="indefinite"
                      easing="linear">
         </a-animation>
-    </a-sphere>
+    </a-sphere-->
 
-    <!--lights-->
+    <!--lights>
     <a-entity color="yellow" 
               radius=".7" 
               rotation="0 0 0" 
@@ -1339,9 +1328,9 @@
                      easing="linear"
                      repeat='indefinite'>
         </a-animation>
-    </a-entity>
+    </a-entity-->
 
-    <!--dance floor dots-->
+    <!--dance floor dots>
     <a-entity position="-7.3 2.56 8" 
               altspace-cursor-collider="enabled: false">
         <a-plane material="src: url(images/qGcQVO5.png); repeat:2 2;" 
@@ -1386,10 +1375,10 @@
                          repeat='indefinite'>
             </a-animation>
         </a-plane>
-    </a-entity>
+    </a-entity-->
     
     <!--Image 1-->
-    <a-plane src="images/image1.jpg" 
+    <!a-plane src="images/image1.jpg" 
              height=".95" 
              width="1.65" 
              rotation="0 90 0" 
@@ -1399,7 +1388,7 @@
     </a-plane>
 
     <!--Image 2-->
-    <a-plane src="images/image2.jpg" 
+    <!a-plane src="images/image2.jpg" 
              height=".95" 
              width="1.65" 
              rotation="0 90 0" 
@@ -1409,7 +1398,7 @@
     </a-plane>
 
     <!--Image 3-->
-    <a-plane src="images/image3.jpg" 
+    <!a-plane src="images/image3.jpg" 
              height=".95" 
              width="1.65" 
              rotation="0 90 0" 
@@ -1419,7 +1408,7 @@
     </a-plane>
     
     <!--Image 4-->
-    <a-plane src="images/image4.jpg" 
+    <!a-plane src="images/image4.jpg" 
              height=".95" 
              width="1.65" 
              rotation="0 360 0" 
@@ -1429,7 +1418,7 @@
     </a-plane>
 
     <!--Image 5-->
-    <a-plane src="images/image5.jpg" 
+    <!a-plane src="images/image5.jpg" 
              height=".95" 
              width="1.65" 
              rotation="0 360 0" 
@@ -1439,7 +1428,7 @@
     </a-plane>
 
     <!--Image 6-->
-    <a-plane src="images/image6.jpg" 
+    <!a-plane src="images/image6.jpg" 
              height="1.3" 
              width=".95" 
              rotation="0 180 0" 
@@ -1449,7 +1438,7 @@
     </a-plane>
 
     <!--Image 7-->
-    <a-plane src="images/image7.jpg" 
+    <!a-plane src="images/image7.jpg" 
              height="1.3" 
              width="1" 
              rotation="0 180 0" 
@@ -1459,7 +1448,7 @@
     </a-plane>
 
     <!--Image 8-->
-    <a-plane src="images/image8.jpg" 
+    <!a-plane src="images/image8.jpg" 
              height="1.3" 
              width=".95" 
              rotation="0 180 0" 
@@ -1469,7 +1458,7 @@
     </a-plane>
 
     <!--Image 9-->
-    <a-plane src="images/image9.jpg" 
+    <!a-plane src="images/image9.jpg" 
              height="1.3" 
              width=".94" 
              rotation="0 180 0" 
@@ -1479,7 +1468,7 @@
     </a-plane>
 
     <!--Image 10-->
-    <a-plane src="images/image10.jpg" 
+    <!a-plane src="images/image10.jpg" 
              height="1.3" 
              width=".95" 
              rotation="0 180 0" 
@@ -1489,7 +1478,7 @@
     </a-plane>
 
     <!--Image 11-->
-    <a-plane src="images/image11.jpg" 
+    <!a-plane src="images/image11.jpg" 
              height=".95" 
              width="1.65" 
              rotation="0 90 0" 
@@ -1499,7 +1488,7 @@
     </a-plane>
 
     <!--Image 12-->
-    <a-plane src="images/image12.jpg" 
+    <!a-plane src="images/image12.jpg" 
              height=".95" 
              width="1.65" 
              rotation="0 90 0" 
@@ -1509,7 +1498,7 @@
     </a-plane>
     
     <!--Image 13-->
-    <a-plane src="images/image13.jpg" 
+    <!a-plane src="images/image13.jpg" 
              height=".945" 
              width="2.235" 
              rotation="0 -180 0" 
