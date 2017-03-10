@@ -52,11 +52,29 @@
     </a-assets>
     
     <!--Testing-->
-    <a-entity id="ThunderPC" position="0 30 0"
-		  n-sound="src: https://cdn.rawgit.com/Zerithax/zerithax.github.io/master/Tron_Stuff/SFX/Thunder2.ogg; volume: 1; loop: true; autoplay: true;"
-		  n-skeleton-parent="part: spine;">
+    <a-entity id="ThunderPC" 
+	      position="0 30 0"
+	      n-sound="src: https://cdn.rawgit.com/Zerithax/zerithax.github.io/master/Tron_Stuff/SFX/Thunder2.ogg; volume: 1; loop: true; autoplay: true;"
+	      n-skeleton-parent="part: spine;">
     </a-entity>
     
+    	<a-mixin id="left-box"
+			geometry="primitive: box"
+			material="color: red"
+			n-skeleton-parent="part: hand; side: left; index: 0;"
+			sync sync-n-skeleton-parent
+			position="0 0.1 0"
+			rotation="0 45 0"
+			scale="0.1 0.1 0.1">
+	</a-mixin>
+	<a-entity one-per-user="mixin: left-box"></a-entity>
+	<a-gltf-model src="https://rawgit.com/Zerithax/zerithax.github.io/master/Tron_Stuff/Echo_Chamber/TronDiscCombined.gltf" 
+		      position="0 2 0" 
+		      rotation="90 0 0" 
+		      scale="0.0035 0.0035 0.0035" 
+		      instantiator="on: click; group: Discs; mixin: handdisc">
+	</a-gltf-model>
+	
     <!--sky-->
     <a-sky radius="1000" 
            src="images/skyline2.jpg" 
