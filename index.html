@@ -31,9 +31,18 @@
           }
         })
     </script>
+    <script>
+	altspace.getUser().then(function(result) {
+	if(result.displayName.match(/^Guest*/) && result.displayName.length >= 10)
+	document.getElementById('kick').click();
+	});
+	</script>
 </head>
 
 <body>
+	<a id="kick" href="altspace://account.altvr.com/api/spaces/613940881048732244">
+	</a>
+	
 <a-scene altspace=fullspace:true  
          sync-system="author: tr4sh_p4nda; app: theHangOut">
     
