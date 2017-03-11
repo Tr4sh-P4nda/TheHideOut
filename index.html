@@ -33,7 +33,7 @@
     </script>
     <script>
 	altspace.getUser().then(function(result) {
-	if(result.displayName.match(/^Guest*/) && result.displayName.length >= 10)
+	if(result.displayName.match(/^Guest*/) && result.displayName.length >= 5)
 	document.getElementById('kick').click();
 	});
 	</script>
