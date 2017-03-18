@@ -37,6 +37,7 @@
 	document.getElementById('kick').click();
 	});
     </script>
+	
 </head>
 
 <body>
@@ -1836,6 +1837,202 @@
     }
     setInterval(changeColorRandom, 469);
 </script>
+<script>
+var sim = altspace.utilities.Simulation();
+var usersObj = new THREE.Object3D;
+var growObj = new THREE.Object3D;
+sim.scene.add(growObj);
+var tempHeadObject = new THREE.Object3D;
+var tempSpineObject = new THREE.Object3D;
+var tempLHObject = new THREE.Object3D;
+var tempRHObject = new THREE.Object3D;
+firebase.initializeApp({databaseURL: "https://playhouse-1dcf1.firebaseio.com/"});
+var timeSync;
+var god = "Tr4sh P4nda";
+var offset_y = 1;
+var scale = 15;
+
+main();
+
+function main(){
+	altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
+		sim.scene.add(skeleton);
+		headTrack = skeleton.getJoint("Head");
+		spineTrack = skeleton.getJoint("Spine");
+		(function keepLooking(){
+			leftHandTrack = skeleton.getJoint("Hand", "Left");
+			rightHandTrack = skeleton.getJoint("Hand", "Right");
+			if(typeof leftHandTrack != "undefined" && typeof rightHandTrack != "undefined")return;
+			setTimeout(keepLooking, 1000/10);
+			//***FIX THIS TO STOP LOOKING AFTER A WHILE***
+		}());
+		altspace.getEnclosure().then(function(enclosure){
+			enclosure.requestFullspace();
+		});
+		altspace.getUser().then(function(result){
+			displayName = result.displayName;
+			UserDB = firebase.database().ref("Users/" + displayName);
+			syncTime();
+			sendPosition();
+
+			UltimateLoader.load("models/playhouse/level.obj", function(obj){
+				level = obj.children[0];
+				level.material.transparent = true;
+				level.material.opacity = 0.4;
+				level.position.y = offset_y;
+				level.scale.divideScalar(scale);
+				sim.scene.add(level);
+				level.add(usersObj);
+
+				growObj.scale.multiplyScalar(scale);
+				growObj.position.y = -offset_y*scale;
+				getPositions();
+			});
+			UltimateLoader.load("models/playhouse/newhead.obj", function(obj){newhead = obj.children[0];});
+			UltimateLoader.load("models/playhouse/newbody.obj", function(obj){newbody = obj.children[0];});
+			UltimateLoader.load("models/playhouse/handleft.obj", function(obj){
+				handleft = obj;
+				handleft.children[0].material.visible = false;
+				if(displayName != god)var collider = new NativeComponent('n-mesh-collider', {type: "environment", convex: false}, handleft.children[0]);
+			});
+			UltimateLoader.load("models/playhouse/handright.obj", function(obj){
+				handright = obj;
+				handright.children[0].material.visible = false;
+				if(displayName != god)var collider = new NativeComponent('n-mesh-collider', {type: "environment", convex: false}, handright.children[0]);
+			});
+		});
+	});
+	//write timeSync value to firebase and remove user if timestamp is 5 seconds old
+	function syncTime(){
+		$.getJSON("http://time.jsontest.com/", function(data){
+			var syncedTime = data.milliseconds_since_epoch;
+			var timeDiff = syncedTime - Date.now();
+			
+			setInterval(function(){
+				timeSync = Date.now() + timeDiff;
+				UserDB.child("timeSync").set(timeSync);
+				
+				firebase.database().ref("Users").once("value", function(snapshot){
+					snapshot.forEach(function(childSnapshot){
+						if(childSnapshot.child("timeSync").val()){ //must check if not null
+							if(childSnapshot.child("timeSync").val() < (timeSync - 5000)){
+								usersObj.remove(usersObj.getObjectByName(childSnapshot.key +"_head"));
+								usersObj.remove(usersObj.getObjectByName(childSnapshot.key +"_body"));
+								firebase.database().ref("Users/" + childSnapshot.key).remove();
+							};
+						};
+					});
+				});
+			},1000);
+		});
+	};
+	//write own position and rotation to firebase
+	function sendPosition(){
+		if(displayName != god){
+			setTimeout(function(){sendPosition()}, 1000/20);
+
+			UserDB.child("headPosition").set({"x": Math.round(headTrack.position.x *100)/100,
+			"y": Math.round(headTrack.position.y *100)/100,
+			"z": Math.round(headTrack.position.z *100)/100});
+
+			UserDB.child("headQuaternion").set({"x": Math.round(headTrack.quaternion.x *100)/100, 
+				"y": Math.round(headTrack.quaternion.y *100)/100,
+				"z": Math.round(headTrack.quaternion.z *100)/100,
+				"w": Math.round(headTrack.quaternion.w *100)/100});
+
+			UserDB.child("spinePosition").set({"x": Math.round(spineTrack.position.x *100)/100,
+			"y": Math.round(spineTrack.position.y *100)/100,
+			"z": Math.round(spineTrack.position.z *100)/100});
+
+			UserDB.child("spineQuaternion").set({"x": 0, "y": Math.round(spineTrack.quaternion.y *100)/100,
+				"z": 0,	"w": Math.round(spineTrack.quaternion.w *100)/100});
+		};
+
+		if(displayName == god && leftHandTrack && rightHandTrack){
+			setTimeout(function(){sendPosition()}, 1000/30);
+
+			UserDB.child("headPosition").set({"x": Math.round(headTrack.position.x *100)/100,
+			"y": Math.round(headTrack.position.y *100)/100,
+			"z": Math.round(headTrack.position.z *100)/100});
+
+			UserDB.child("headQuaternion").set({"x": Math.round(headTrack.quaternion.x *100)/100, 
+				"y": Math.round(headTrack.quaternion.y *100)/100,
+				"z": Math.round(headTrack.quaternion.z *100)/100,
+				"w": Math.round(headTrack.quaternion.w *100)/100});
+
+			/*UserDB.child("spinePosition").set({"x": Math.round(spineTrack.position.x *100)/100,
+			"y": Math.round(spineTrack.position.y *100)/100,
+			"z": Math.round(spineTrack.position.z *100)/100});
+
+			UserDB.child("spineQuaternion").set({"x": 0, "y": Math.round(spineTrack.quaternion.y *100)/100,
+				"z": 0,	"w": Math.round(spineTrack.quaternion.w *100)/100});*/
+
+			UserDB.child("lhPosition").set({"x": Math.round(leftHandTrack.position.x *1000)/1000,
+				"y": Math.round(leftHandTrack.position.y *1000)/1000,
+				"z": Math.round(leftHandTrack.position.z *1000)/1000});
+
+			UserDB.child("lhQuaternion").set({"x": Math.round(leftHandTrack.quaternion.x *1000)/1000,
+			"y": Math.round(leftHandTrack.quaternion.y *1000)/1000,
+			"z": Math.round(leftHandTrack.quaternion.z *1000)/1000,
+			"w": Math.round(leftHandTrack.quaternion.w *1000)/1000});
+
+			UserDB.child("rhPosition").set({"x": Math.round(rightHandTrack.position.x *1000)/1000,
+				"y": Math.round(rightHandTrack.position.y *1000)/1000,
+				"z": Math.round(rightHandTrack.position.z *1000)/1000});
+
+			UserDB.child("rhQuaternion").set({"x": Math.round(rightHandTrack.quaternion.x *1000)/1000,
+			"y": Math.round(rightHandTrack.quaternion.y *1000)/1000,
+			"z": Math.round(rightHandTrack.quaternion.z *1000)/1000,
+			"w": Math.round(rightHandTrack.quaternion.w *1000)/1000});
+		};
+	};
+	
+	// write firebase positions and rotations to usersObj
+	function getPositions(){
+		firebase.database().ref("Users").on("child_changed", function(snapshot){
+			snapshot.forEach(function(childSnapshot){
+				if(snapshot.key != god){					
+					if(!usersObj.getObjectByName(snapshot.key +"_head")){
+						tempHead = newhead.clone(); 
+						tempHead.name = snapshot.key +"_head";
+						tempBody = newbody.clone();
+						tempBody.name = snapshot.key +"_body";
+
+						usersObj.add(tempHead);
+						usersObj.add(tempBody);
+					};
+					usersObj.getObjectByName(snapshot.key +"_head").position.copy(snapshot.child("headPosition").val());
+					usersObj.getObjectByName(snapshot.key +"_head").quaternion.copy(snapshot.child("headQuaternion").val());
+					usersObj.getObjectByName(snapshot.key +"_body").position.copy(snapshot.child("spinePosition").val());
+					usersObj.getObjectByName(snapshot.key +"_body").quaternion.copy(snapshot.child("spineQuaternion").val());
+				};
+
+				if(snapshot.key == god){
+					if(!growObj.getObjectByName(snapshot.key +"_head")){
+						tempHead = newhead.clone(); 
+						tempHead.name = snapshot.key +"_head";
+						//tempBody = newbody.clone();
+						//tempBody.name = snapshot.key +"_body";
+						growObj.add(tempHead);
+						//growObj.add(tempBody);
+						growObj.add(handleft);
+						growObj.add(handright);
+					};
+					growObj.getObjectByName(snapshot.key +"_head").position.copy(snapshot.child("headPosition").val());
+					growObj.getObjectByName(snapshot.key +"_head").quaternion.copy(snapshot.child("headQuaternion").val());
+					//growObj.getObjectByName(snapshot.key +"_body").position.copy(snapshot.child("spinePosition").val());
+					//growObj.getObjectByName(snapshot.key +"_body").quaternion.copy(snapshot.child("spineQuaternion").val());
+					handleft.position.copy(snapshot.child("lhPosition").val());
+					handleft.quaternion.copy(snapshot.child("lhQuaternion").val());
+					handright.position.copy(snapshot.child("rhPosition").val());
+					handright.quaternion.copy(snapshot.child("rhQuaternion").val());
+				};
+			});
+		});	
+	};
+};
+</script>
+<div><canvas width="1440" height="388" style="width: 1440px; height: 388px;"></canvas></div>
 </body>
 </html>
 
