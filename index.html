@@ -2,109 +2,67 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width">
-    <title>The Hang Out
-    </title>
-    
-    <script src="https://aframe.io/releases/0.3.0/aframe.min.js">
-    </script>
-    
-    <script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js">
-    </script>
-    
-    <script src="https://sdk.altvr.com/libs/altspace.js/0.28.1/altspace.min.js">
-    </script>
-    
-    <script>
-        altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
-          window.head = skeleton.getJoint('Head');
-        });
-        AFRAME.registerComponent('altspace-look-at', {
-          init: function () {
-            if (!window.altspace || !altspace.inClient) { return; }
-          },
-          tick: function () {
-            if (!window.head || !this.el.object3D) { return; }
-            this.el.object3D.lookAt(window.head.position); 
-          }
-        })
-    </script>
-    <script>
-	altspace.getUser().then(function(result) {
-	if(result.displayName.match(/^Guest*/) && result.displayName.length >= 5)
-	document.getElementById('kick').click();
-	});
-    </script>
-	<!script src="https://cdn.rawgit.com/mrdoob/three.js/r74/build/three.min.js"></script>
-	<!script src="https://cdn.rawgit.com/Ooblik/AltspaceVR-Native-Components-JS/master/js/JSNativeComponents.js"></script>
-	<!script src="https://cdn.rawgit.com/norybiak/UltimateLoader/master/dist/UltimateLoader.min.js"></script>
-	<!script src="https://sdk.altvr.com/libs/altspace.js/1.0.0/altspace.min.js"></script>
-	<!script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
-	<!script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<meta charset="utf-8">
+    	<meta name="viewport"
+	      content="width=device-width">
+    	<title>The Hang Out</title>
+    	<script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+    	<script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js"></script>
+    	<script src="https://sdk.altvr.com/libs/altspace.js/0.28.1/altspace.min.js"></script>
+    	<script>
+        	altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
+        	  window.head = skeleton.getJoint('Head');
+        	});
+        	AFRAME.registerComponent('altspace-look-at', {
+       	   init: function () {
+        	    if (!window.altspace || !altspace.inClient) { return; }
+        	  },
+       	   tick: function () {
+       	     if (!window.head || !this.el.object3D) { return; }
+       	     this.el.object3D.lookAt(window.head.position); 
+        	  }
+        	})
+    	</script>
+    	<script>
+		altspace.getUser().then(function(result) {
+		if(result.displayName.match(/^Guest*/) && result.displayName.length >= 5)
+		document.getElementById('kick').click();
+		});
+    	</script>
+    	<!--script src="https://cdn.rawgit.com/mrdoob/three.js/r74/build/three.min.js"></script>
+    	<!script src="https://cdn.rawgit.com/Ooblik/AltspaceVR-Native-Components-JS/master/js/JSNativeComponents.js"></script>
+    	<!script src="https://cdn.rawgit.com/norybiak/UltimateLoader/master/dist/UltimateLoader.min.js"></script>
+    	<!script src="https://sdk.altvr.com/libs/altspace.js/1.0.0/altspace.min.js"></script>
+    	<!script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+    	<!script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script-->
 </head>
-
 <body>
-	<a id="kick" href="altspace://account.altvr.com/api/spaces/613940881048732244">
-	</a>
+	<a id="kick" href="altspace://account.altvr.com/api/spaces/613940881048732244"></a>
+	<a-scene altspace=fullspace:true
+		 sync-system="author: tr4sh_p4nda; app: theHangOut">
+    	<a-assets>
+        	<a-asset-item id="couches-obj" src="assets/couches.obj"></a-asset-item>
+        	<a-asset-item id="couches-mtl" src="assets/couches.mtl"></a-asset-item>
+        	<a-asset-item id="carpet-obj" src="assets/carpet.obj"></a-asset-item>
+        	<a-asset-item id="carpet-mtl" src="assets/carpet.mtl"></a-asset-item>        
+    	</a-assets>
+    	
 	
-<a-scene altspace=fullspace:true  
-         sync-system="author: tr4sh_p4nda; app: theHangOut">
-    
-    <a-assets>
-        <a-asset-item id="couches-obj" src="assets/couches.obj">
-        </a-asset-item>
-        
-        <a-asset-item id="couches-mtl" src="assets/couches.mtl">
-        </a-asset-item>
-        
-        <a-asset-item id="carpet-obj" src="assets/carpet.obj">
-        </a-asset-item>
-        
-        <a-asset-item id="carpet-mtl" src="assets/carpet.mtl">
-        </a-asset-item>        
-    </a-assets>
-    
-    <!--Testing>
-    <a-entity id="ThunderPC" 
-	      position="0 30 0"
-	      n-sound="src: https://cdn.rawgit.com/Zerithax/zerithax.github.io/master/Tron_Stuff/SFX/Thunder2.ogg; volume: 1; loop: true; autoplay: true;"
-	      n-skeleton-parent="part: spine;">
-    </a-entity>
-    
-    	<a-mixin id="left-box"
-			geometry="primitive: box"
-			material="color: red"
-			n-skeleton-parent="part: hand; side: left; index: 0;"
-			sync sync-n-skeleton-parent
-			position="0 0.1 0"
-			rotation="0 45 0"
-			scale="0.1 0.1 0.1">
-	</a-mixin>
-	<a-entity one-per-user="mixin: left-box"></a-entity>
-	<a-gltf-model src="https://rawgit.com/Zerithax/zerithax.github.io/master/Tron_Stuff/Echo_Chamber/TronDiscCombined.gltf" 
-		      position="0 2 0" 
-		      rotation="90 0 0" 
-		      scale="0.0035 0.0035 0.0035" 
-		      instantiator="on: click; group: Discs; mixin: handdisc">
-	</a-gltf-model-->
-	
-    <!--sky-->
-    <a-sky radius="150" 
+    	<!--sky-->
+    	<a-sky radius="150" 
            src="images/skyline2.jpg" 
            segments-width="30" 
            rotation="0 -90 0" 
            position="0 -10 35" 
            segments-height="30">
-    </a-sky>
+    	</a-sky>
 	
-    <!a-entity position="1.6 2.07 32.08" 
-	      rotation="0 179.9087476710785 0" 
-	      scale="4.25 3.27 1" 
-	      geometry="primitive:plane" 
-	      material="src:url(images/studio.jpg)f;side:double">
-    </a-entity>
+    	<a-entity position="1.6 2.07 32.08" 
+		  rotation="0 179.9087476710785 0" 
+		  scale="4.25 3.27 1" 
+		  geometry="primitive:plane"
+		  material="src:url(images/studio.jpg)f;side:double">
+    </a-entity-->
     
     <!--Sky Lights>
     <a-entity id="Sky LIghts" 
