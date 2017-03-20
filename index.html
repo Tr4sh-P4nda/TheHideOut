@@ -2318,14 +2318,14 @@
 						//scene.add(sky);
 					//});
 					var geometry = new THREE.PlaneGeometry(0.98, 0.98);
-					var material = new THREE.MeshBasicMaterial({opacity: 1, transparent: false});
+					var material = new THREE.MeshBasicMaterial({color: "#ffffff", opacity: 1, transparent: false});
 					var plane = new THREE.Mesh(geometry, material);
 					plane.position.set(0, 4, 0);
 					plane.rotation.x = THREE.Math.degToRad(90);
 					plane.addEventListener('cursorup', function (){
 						document.getElementById('linkToRoom').click();
 					});
-					scene.add(plane);
+//					scene.add(plane);
 					
 					//jpeg filename	wd.	ht.	mov x   mov y	mov z	deg (scene pos)
 					
@@ -2393,8 +2393,8 @@
 				};
 			};
 			</script>
-			<a id="linkToRoom" href="https://account.altvr.com/events/638507976642002967"></a>
-			<!--a id="linkToRoom" href="altspace://account.altvr.com/api/spaces/lost-in-time"></a-->
+			<!--a id="linkToRoom" href="https://account.altvr.com/events/638507976642002967"></a-->
+			<a id="linkToRoom" href="altspace://account.altvr.com/api/spaces/lost-in-time"></a>
 	</body>
 </html>
 
