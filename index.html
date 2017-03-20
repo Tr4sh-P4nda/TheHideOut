@@ -2318,9 +2318,9 @@
 						//scene.add(sky);
 					//});
 					var geometry = new THREE.PlaneGeometry(0.98, 0.98);
-					var material = new THREE.MeshBasicMaterial({opacity: 0, transparent: true});
+					var material = new THREE.MeshBasicMaterial({opacity: 1, transparent: false});
 					var plane = new THREE.Mesh(geometry, material);
-					plane.position.set(0, 6, 0);
+					plane.position.set(0, 4, 0);
 					plane.rotation.x = THREE.Math.degToRad(90);
 					plane.addEventListener('cursorup', function (){
 						document.getElementById('linkToRoom').click();
