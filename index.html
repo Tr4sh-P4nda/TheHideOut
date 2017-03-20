@@ -2180,8 +2180,8 @@
 					//});
 				//})();
 //	
-			function main(){
-				UltimateLoader.multiload(models, function(obj){
+//			function main(){
+//				UltimateLoader.multiload(models, function(obj){
  					//scene.add(swordinstone = obj[0]);
 					//swordinstone.scale.multiplyScalar(0.015);
 					//swordinstone.position.set(2.4071, 1.646, -6.22);
@@ -2317,15 +2317,15 @@
 						//sky = new THREE.Mesh(geometry, material);
 						//scene.add(sky);
 					//});
-					var geometry = new THREE.PlaneGeometry(0.98, 0.98);
-					var material = new THREE.MeshBasicMaterial({color: "#ffffff", opacity: 1, transparent: false});
-					var plane = new THREE.Mesh(geometry, material);
-					plane.position.set(0, 2, 0);
-					plane.rotation.x = THREE.Math.degToRad(90);
+//					var geometry = new THREE.PlaneGeometry(0.98, 0.98);
+//					var material = new THREE.MeshBasicMaterial({color: "#ffffff", opacity: 1, transparent: false});
+//					var plane = new THREE.Mesh(geometry, material);
+//					plane.position.set(0, 2, 0);
+//					plane.rotation.x = THREE.Math.degToRad(90);
 					plane.addEventListener('cursorup', function (){
 						document.getElementById('linkToRoom').click();
 					});
-//					scene.add(plane);
+					scene.add(plane);
 					
 					//jpeg filename	wd.	ht.	mov x   mov y	mov z	deg (scene pos)
 					
