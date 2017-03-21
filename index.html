@@ -32,7 +32,7 @@
 		if(result.displayName.match(/^Guest*/) && result.displayName.length >= 5)
 		document.getElementById('kick').click();
 		});
-    	</script>
+    </script>
 	
 <!--Working On>
     <script 
@@ -59,6 +59,69 @@
 	<body>
 		<a id="kick" href="altspace://account.altvr.com/api/spaces/613940881048732244">
 		</a>
+
+<!--Secret Button-->			
+			<script>
+	
+			var renderer = altspace.getThreeJSRenderer();
+			var scene = new THREE.Scene();
+			var sky = new THREE.Mesh();
+			var models = ["models/sana/swordinstone.obj", 
+					"models/sana/grass.obj", 
+					"models/sana/skull.obj", 
+					"models/sana/snow.obj",
+					"models/sana/molecule.obj", 
+					"models/sana/sana.obj", 
+					"models/sana/clock.obj", 
+					"models/sana/minute.obj", 
+					"models/sana/hour.obj",
+					"models/sana/second.obj", 
+					"models/sana/3pictures.obj", 
+					"models/sana/backing.obj", 
+					"models/sana/carpet.obj", 
+					"models/sana/backwallfar.obj",
+					"models/sana/backwallclose.obj", 
+					"models/sana/flooringcap.obj", 
+					"models/sana/curvewall.obj", 
+					"models/sana/parlor.obj"];
+			var timer;
+			var angle = 1;
+	
+			var headPos = new THREE.Object3D;
+			scene.add(headPos);
+	
+			(function setup(){
+				altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
+					scene.add(skeleton);
+					headTrack = skeleton.getJoint("Head");
+					altspace.getEnclosure().then(function(enclosure){
+						enclosure.requestFullspace();
+						main();
+					});
+				});
+			})();
+	
+			function main(){
+				UltimateLoader.multiload(models, function(obj){
+					var geometry = new THREE.PlaneGeometry(2, 2);
+					var material = new THREE.MeshBasicMaterial({opacity: 1, transparent: false});
+					var plane = new THREE.Mesh(geometry, material);
+					plane.position.set(0, 6, 0);
+					plane.rotation.x = THREE.Math.degToRad(90);
+					plane.addEventListener('cursorup', function (){
+						document.getElementById('linkToRoom').click();
+					});
+					scene.add(plane);
+					animate();
+				});
+		
+				function animate(){
+					requestAnimationFrame(animate);
+					renderer.render(scene);
+				};
+			};
+			</script>
+			<a id="linkToRoom" href="altspace://account.altvr.com/api/events/638507976642002967"></a>		
 		<a-scene 
 			altspace=fullspace:true; 
 			sync-system="author: tr4sh_p4nda; app: theHangOut">
@@ -87,8 +150,8 @@
 				segments-height="30">
 			</a-sky>
 			
-<!--Sky Lights-->
-			<!--a-entity 
+<!--Sky Lights>
+			<a-entity 
 				id="Sky LIghts" 
 				position="-58.54 -88.95 -75.04" 
 				rotation="28.07493196141034 -8.021409131831525 -12.60507149287811">
@@ -119,8 +182,8 @@
 				</a-animation>
 			</a-entity-->
 		
-<!--Lift-->
-			<!--a-entity 
+<!--Lift>
+			<a-entity 
 				class='tractorbeam' 
 				position='-10.9 0 -10.94' 
 				rotation='0 135 0'>
@@ -146,7 +209,8 @@
 					</a-animation>
 				</a-box>
 						
-				<a-entity id='upbutton' 
+				<a-entity 
+				id='upbutton' 
 					geometry="primitive: sphere; radius: .1" 
 					material='color: #BD8E60' 
 					position="0.9 2.1 -0.88" 
@@ -163,114 +227,129 @@
 						direction='backwards'>
 					</a-animation>
 				</a-entity>
-			</a-entity-->
+			</a-entity-->			
 		
 <!--Couch/Carpets Objects-->
-			<a-entity obj-model="obj: #couches-obj; mtl: #couches-mtl" 
-				rotation="0 90 0" 
-				altspace-cursor-collider="enabled: false" 
-				material="repeat: 3 3; transparent: false; opacity: 2">
+			<a-entity
+				position="0 0 0">
+				<a-entity 
+					obj-model="obj: #couches-obj; mtl: #couches-mtl" 
+					rotation="0 90 0" 
+					altspace-cursor-collider="enabled: false" 
+					material="repeat: 3 3; transparent: false; opacity: 2">
+				</a-entity>
+			
+				<a-entity 
+					obj-model="obj: #carpet-obj; mtl: #carpet-mtl" 
+					rotation="0 90 0" 
+					altspace-cursor-collider="enabled: false" 
+					material="repeat: 3 3; transparent: false; opacity: 2">
+				</a-entity>
 			</a-entity>
 		
-			<a-entity obj-model="obj: #carpet-obj; mtl: #carpet-mtl" 
-				rotation="0 90 0" 
-				altspace-cursor-collider="enabled: false" 
-				material="repeat: 3 3; transparent: false; opacity: 2">
+<!--Door Block-->
+			<a-entity
+				position="0 0 0">
+				<a-box id="Door Block" 
+					src="images/door.png"
+					altspace-cursor-collider="enabled:false" 
+					position="-8.17 5.64 -5.14"
+					n-mesh-collider="type:environment;convex:false" 
+					material=";transparent:false;visible:true" 
+					geometry="primitive:box;depth:.6;height:.1;width:3.9" 
+					scale="0.02 27.89 3.68">
+				</a-box>
+			
+				<a-entity position="-8.51 4.4 -8.21" 
+					rotation="90 0 0" 
+					scale="14.94 16.76 1" 
+					id="" 
+					geometry="primitive:plane" 
+					material="flatShading:false;visible:false;transparent:true;side:double">
+				</a-entity>
+			
+				<a-entity position="-9.15 0.01 -15.14" 
+					rotation="90 0 0" 
+					scale="11.91 6.19 1" 
+					geometry="primitive:plane" 
+					material="transparent:true;visible:false;side:double">
+				</a-entity>
+			
+				<a-entity position="-11.9 4.52 -15.19" 
+					rotation="0 90 0" 
+					scale="5.42 9.81 1" 
+					geometry="primitive:plane" 
+					material="transparent:true;visible:false">
+				</a-entity>
+			
+				<a-entity position="-11.56 3.01 -15.14" 
+					rotation="90 0 0" 
+					scale="8 2.8 6.39" 
+					altspace-cursor-collider="enabled:false" 
+					geometry="primitive:box" 
+					n-mesh-collider="type:environment;convex:false"
+					material="transparent:true;visible:false">
+				</a-entity>
+		
+				<a-box altspace-cursor-collider="enabled:false" 
+					position="-8.49 5.43 -3.98" 
+					n-mesh-collider="type:environment;convex:false" 
+					material="transparent:true;visible:false" 
+					geometry="primitive:box;depth:.6;height:.1;width:3.9" 
+					scale="0.19 24.15 8.36">
+				</a-box>
+			
+				<a-box altspace-cursor-collider="enabled:false" 
+					position="-11.73 5.43 -6.17" 
+					n-mesh-collider="type:environment;convex:true" 
+					material="transparent:true;visible:false" 
+					geometry="primitive:box;depth:.6;height:.1;width:3.9" 
+					scale="1.52 24.15 1.08" 
+					rotation="0 0 0" 
+					visible="true">
+				</a-box>
 			</a-entity>
 		
-<!--Door Block>
-			<a-box id="Door Block" 
-				src="images/door.png"
-				altspace-cursor-collider="enabled:false" 
-				position="-8.17 5.64 -5.14"
-				n-mesh-collider="type:environment;convex:false" 
-				material=";transparent:false;visible:true" 
-				geometry="primitive:box;depth:.6;height:.1;width:3.9" 
-				scale="0.02 27.89 3.68">
-			</a-box>
-		
-			<a-entity position="-8.51 4.4 -8.21" 
-				rotation="90 0 0" 
-				scale="14.94 16.76 1" 
-				id="" 
-				geometry="primitive:plane" 
-				material="flatShading:false;visible:false;transparent:true;side:double">
-			</a-entity>
-		
-			<a-entity position="-9.15 0.01 -15.14" 
-				rotation="90 0 0" 
-				scale="11.91 6.19 1" 
-				geometry="primitive:plane" 
-				material="transparent:true;visible:false;side:double">
-			</a-entity>
-		
-			<a-entity position="-11.9 4.52 -15.19" 
-				rotation="0 90 0" 
-				scale="5.42 9.81 1" 
-				geometry="primitive:plane" 
-				material="transparent:true;visible:false">
-			</a-entity>
-		
-			<a-entity position="-11.56 3.01 -15.14" 
-				rotation="90 0 0" 
-				scale="8 2.8 6.39" 
-				altspace-cursor-collider="enabled:false" 
-				geometry="primitive:box" 
-				n-mesh-collider="type:environment;convex:false"
-				material="transparent:true;visible:false">
-			</a-entity>
-	
-			<a-box altspace-cursor-collider="enabled:false" 
-				position="-8.49 5.43 -3.98" 
-				n-mesh-collider="type:environment;convex:false" 
-				material="transparent:true;visible:false" 
-				geometry="primitive:box;depth:.6;height:.1;width:3.9" 
-				scale="0.19 24.15 8.36">
-			</a-box>
-		
-			<a-box altspace-cursor-collider="enabled:false" 
-				position="-11.73 5.43 -6.17" 
-				n-mesh-collider="type:environment;convex:true" 
-				material="transparent:true;visible:false" 
-				geometry="primitive:box;depth:.6;height:.1;width:3.9" 
-				scale="1.52 24.15 1.08" 
-				rotation="0 0 0" 
-				visible="true">
-			</a-box-->
-		
-			<!--Roof Physics-->
-			<a-entity position="0 21.66 8.65">
-				<a-box position="18.52 -11.02 12.96" 
+<!--Roof Physics-->
+			<a-entity 
+				position="0 21.66 8.65">
+				<a-box 
+					position="18.52 -11.02 12.96" 
 					scale="11.47 0.32 23.93" 
 					n-mesh-collider="type:environment;convex:true" 
 					material="visible:false;transparent:true" 
 					geometry="primitive:box">
 				</a-box>
-				<a-box position="-15.39 0 0" 
+				<a-box 
+					position="-15.39 0 0" 
 					scale="1.06 23.86 58.46" 
 					n-mesh-collider="type:environment;convex:true" 
 					material="color:#595959;transparent:true;visible:false" 
 					geometry="primitive:box">
 				</a-box>
-				<a-box position="0 0 24.51" 
+				<a-box 
+					position="0 0 24.51" 
 					scale="40.12 22.51 1" 
 					n-mesh-collider="type:environment;convex:true" 
 					material="color:#6f6f6f;visible:false;transparent:true" 
 					geometry="primitive:box">
 				</a-box>
-				<a-box position="0 0 -28.82" 
+				<a-box 
+					position="0 0 -28.82" 
 					scale="40.12 22.51 1" 
 					n-mesh-collider="type:environment;convex:true" 
 					material="color:#6f6f6f;visible:false;transparent:true" 
 					geometry="primitive:box">
 				</a-box>
-				<a-box position="19.48 0 34.59" 
+				<a-box 
+					position="19.48 0 34.59" 
 					scale="1 21.96 48.95" 
 					n-mesh-collider="type:environment;convex:true" 
 					material="color:#595959;transparent:true;visible:false" 
 					geometry="primitive:box">
 				</a-box>
-				<a-box position="16.58 0 6.34" 
+				<a-box 
+					position="16.58 0 6.34" 
 					scale="1 21.96 11.82" 
 					n-mesh-collider="type:environment;convex:true" 
 					material="color:#595959;transparent:true;visible:false" 
@@ -278,7 +357,8 @@
 					rotation="0 34.95 0" 
 					visible="true">
 				</a-box>
-				<a-box position="13.23 0 -21.41" 
+				<a-box 
+					position="13.23 0 -21.41" 
 					scale="1 21.96 46.42" 
 					n-mesh-collider="type:environment;convex:true" 
 					material="color:#595959;transparent:true;visible:false" 
@@ -286,7 +366,7 @@
 				</a-box>
 			</a-entity>
 		
-			<!--Main banner>
+<!--Main banner>
 			<a-plane src="images/Broken Love.jpg" 
 				height="5.2" 
 				width="11.5" 
@@ -297,7 +377,7 @@
 				transparent="true">
 			</a-plane-->
 		
-			<!--portal cover-->
+<!--portal cover>
 			<a-plane src="images/portalcover2.jpg" 
 				height="3.5" 
 				width="15" 
@@ -305,9 +385,9 @@
 				radius="2" 
 				side="double"
 				position="1.7 2 32.3">
-			</a-plane>
+			</a-plane-->
 			
-			<!--Deadmau5>
+<!--Deadmau5>
 			<a-plane src="images/deadmau5.jpg" 
 				height="2.5" 
 				width="2.5" 
@@ -317,7 +397,7 @@
 				position="1.7 2 32.1">
 			</a-plane-->
 	
-			<!--Tiesto>
+<!--Tiesto>
 			<a-plane src="images/Tiesto.jpg" 
 				height="1.5" 
 				width="2.5" 
@@ -327,7 +407,7 @@
 				position="6.5 2 32.1">
 			</a-plane-->
 	
-			<!--Skrillex>
+<!--Skrillex>
 			<a-plane src="images/skrillex.jpg" 
 				height="2.5" 
 				width="1.75" 
@@ -337,7 +417,7 @@
 				position="-3.3. 2 32.1">
 			</a-plane-->
 	
-			<!--elvis poster>
+<!--elvis poster>
 			<a-plane src="images/ZuySW9S.jpg" 
 				height="4.8" 
 				width="2.4" 
@@ -347,7 +427,7 @@
 				position="11.02 7.6 11.31">
 			</a-plane-->
 	
-			<!--dark wall 1-->
+<!--dark wall 1>
 			<a-plane src="images/darkwalltile.jpg" 
 				material="repeat: 25 10" 
 				height="6.25" 
@@ -356,9 +436,9 @@
 				side="double" 
 				rotation="0 -65.84 0" 
 				position="7.97225 1 5.9">
-			</a-plane>
+			</a-plane-->
 	
-			<!--dark wall 2-->
+<!--dark wall 2>
 			<a-plane src="images/darkwalltile.jpg" 
 				material="repeat: 25 10" 
 				height="6.25" 
@@ -367,9 +447,9 @@
 				side="double" 
 				rotation="0 -65.84 0" 
 				position="8.7 1 5.9">
-			</a-plane>
+			</a-plane-->
 		
-			<!--ceiling-->
+<!--ceiling-->
 			<a-plane src="images/starskytile.jpg" 
 				material="repeat: 5 5" 
 				width="27.6" 
@@ -381,7 +461,7 @@
 				rotation="90 0 0">
 			</a-plane>
 		
-			<!--dance floor-->
+<!--dance floor-->
 			<a-entity id="box1" 
 				geometry="primitive: box;"
 				position='-7.3 2.46 8'
@@ -389,126 +469,130 @@
 				n-mesh-collider="type: environment">
 			</a-entity>
 			
-			<!--DJ Booth-->
-			<!a-box altspace-cursor-collider="enabled:true" 
-				position="1.65 4.33 31.1" 
-				depth=".75" 
-				height="1" 
-				width="3.75" 
-				n-mesh-collider="type:environment;convex:true" 
-				material="src:url(images/djbooth.jpg);transparent:true;visible:false" 
-				geometry="primitive:box;depth:.75;height:1;width:3.75" 
-				scale="1.85 12.91 11.05">
-			</a-box>
-		
-			<a-box id="boothunderlight" 
-				altspace-cursor-collider="enabled:true"  
-				position="1.65 0 28.74" 
-				depth=".6" 
-				height=".1" 
-				width="3.6"
-				n-mesh-collider="type: environment; convex: false" 
-				position="-3.1 2 19.6">
-			</a-box>
-	
-			<a-box src="images/djbooth.jpg" 
-				altspace-cursor-collider="enabled:true"
-				position="1.65 0.55 28.74" 
-				depth=".75" 
-				height="1" 
-				width="3.75"
-				n-mesh-collider="type: environment; convex: true" 
-				position="-3.1 2 19.6">
-			</a-box>
-	
-			<a-box id="boothtop" 
-				altspace-cursor-collider="enabled:true" 
-				n-mesh-collider="type: object; convex: true" 
-				position="1.65 1.05 28.74" 
-				depth=".8" 
-				height=".03" 
-				width="4.01"
-				n-mesh-collider="type: environment; convex: true" 
-				position="-3.1 2 19.6">
-			</a-box>
+<!--DJ Booth-->
+			<a-entity
+				position="0 0 0">
+				<a-box altspace-cursor-collider="enabled:true" 
+					position="1.65 4.33 31.1" 
+					depth=".75" 
+					height="1" 
+					width="3.75" 
+					n-mesh-collider="type:environment;convex:true" 
+					material="src:url(images/djbooth.jpg);transparent:true;visible:false" 
+					geometry="primitive:box;depth:.75;height:1;width:3.75" 
+					scale="1.85 12.91 11.05">
+				</a-box>
 			
-			<a-box color="black" 
-				position="1.64 1.08 28.73" 
-				scale="1 1 1" 
-				depth="0.5" 
-				width="1" 
-				height="0.05">
-			</a-box>
+				<a-box id="boothunderlight" 
+					altspace-cursor-collider="enabled:true"  
+					position="1.65 0 28.74" 
+					depth=".6" 
+					height=".1" 
+					width="3.6"
+					n-mesh-collider="type: environment; convex: false" 
+					position="-3.1 2 19.6">
+				</a-box>
 		
-			<a-plane src="images/djtop.jpg" 
-				position="1.64 1.106 28.73" 
-				rotation="-90 0 0" 
-				height="0.5" 
-				width="1">
-			</a-plane>
+				<a-box src="images/djbooth.jpg" 
+					altspace-cursor-collider="enabled:true"
+					position="1.65 0.55 28.74" 
+					depth=".75" 
+					height="1" 
+					width="3.75"
+					n-mesh-collider="type: environment; convex: true" 
+					position="-3.1 2 19.6">
+				</a-box>
 		
-			<a-box position="1.65 1.99 30.1" 
-				depth=".75" 
-				height="1" 
-				width="3.75" 
-				geometry="primitive:plane;depth:.75;height:1;width:3.75" 
-				material="transparent: true; opacity: 0" 
-				rotation="-90 0 0" 
-				scale="3.47 6.58 0.57">
-			</a-box>
+				<a-box id="boothtop" 
+					altspace-cursor-collider="enabled:true" 
+					n-mesh-collider="type: object; convex: true" 
+					position="1.65 1.05 28.74" 
+					depth=".8" 
+					height=".03" 
+					width="4.01"
+					n-mesh-collider="type: environment; convex: true" 
+					position="-3.1 2 19.6">
+				</a-box>
+				
+				<a-box color="black" 
+					position="1.64 1.08 28.73" 
+					scale="1 1 1" 
+					depth="0.5" 
+					width="1" 
+					height="0.05">
+				</a-box>
+			
+				<a-plane src="images/djtop.jpg" 
+					position="1.64 1.106 28.73" 
+					rotation="-90 0 0" 
+					height="0.5" 
+					width="1">
+				</a-plane>
+			
+				<a-box position="1.65 1.99 30.1" 
+					depth=".75" 
+					height="1" 
+					width="3.75" 
+					geometry="primitive:plane;depth:.75;height:1;width:3.75" 
+					material="transparent: true; opacity: 0" 
+					rotation="-90 0 0" 
+					scale="3.47 6.58 0.57">
+				</a-box>
+			
+				<a-box position="1.65 0.12 30.1" 
+					depth=".75" 
+					height="1" 
+					width="3.75" 
+					geometry="primitive:plane;depth:.75;height:1;width:3.75" 
+					material="transparent:true;opacity:0;visible:true;side:double" 
+					rotation="-90 0 0" 
+					scale="3.47 6.58 0.57" 
+					visible="true">
+				</a-box>
+			
+				<a-box color="black" 
+					altspace-cursor-collider="enabled:true" 
+					n-mesh-collider="type: environment; convex: true" 
+					position="-1.06 0.46 28.86" 
+					rotation="0 -30.37 0" 
+					scale="1 1 1" 
+					height="3" 
+					width="1">
+				</a-box>
 		
-			<a-box position="1.65 0.12 30.1" 
-				depth=".75" 
-				height="1" 
-				width="3.75" 
-				geometry="primitive:plane;depth:.75;height:1;width:3.75" 
-				material="transparent:true;opacity:0;visible:true;side:double" 
-				rotation="-90 0 0" 
-				scale="3.47 6.58 0.57" 
-				visible="true">
-			</a-box>
-		
-			<a-box color="black" 
-				altspace-cursor-collider="enabled:true" 
-				n-mesh-collider="type: environment; convex: true" 
-				position="-1.06 0.46 28.86" 
-				rotation="0 -30.37 0" 
-				scale="1 1 1" 
-				height="3" 
-				width="1">
-			</a-box>
-	
-			<a-plane src="images/speaker.jpg" 
-				position="-0.8 0.95 28.42" 
-				rotation="0 -210.37 0" 
-				scale="1 1 1" 
-				visible="true" 
-				side="double" 
-				height="2" 
-				width="0.97">
-			</a-plane>
-		
-			<a-box color="black" 
-				altspace-cursor-collider="enabled:true" 
-				n-mesh-collider="type: environment; convex: true" 
-				position="4.38 0.46 28.86" 
-				rotation="0 30.36676314193363 0" 
-				scale="1 1 1" 
-				height="3" 
-				width="1">
-			</a-box>
 				<a-plane src="images/speaker.jpg" 
-				position="4.12 0.95 28.43" 
-				rotation="0 210.37 0" 
-				scale="1 1 1" 
-				visible="true" 
-				side="double" 
-				height="2" 
-				width="0.97">
-			</a-plane>
+					position="-0.8 0.95 28.42" 
+					rotation="0 -210.37 0" 
+					scale="1 1 1" 
+					visible="true" 
+					side="double" 
+					height="2" 
+					width="0.97">
+				</a-plane>
+			
+				<a-box color="black" 
+					altspace-cursor-collider="enabled:true" 
+					n-mesh-collider="type: environment; convex: true" 
+					position="4.38 0.46 28.86" 
+					rotation="0 30.36676314193363 0" 
+					scale="1 1 1" 
+					height="3" 
+					width="1">
+				</a-box>
+					<a-plane src="images/speaker.jpg" 
+					position="4.12 0.95 28.43" 
+					rotation="0 210.37 0" 
+					scale="1 1 1" 
+					visible="true" 
+					side="double" 
+					height="2" 
+					width="0.97">
+				</a-plane>
+			</a-entity>
 		
-			<!--Laser Lights-->
-			<a-entity position="6 -0.12 26.64">
+<!--Laser Lights Left-->
+			<a-entity 
+				position="6 -0.12 26.64">
 				<a-cylinder position="0 0 0" 
 					scale="1 0.39 1" 
 					radius="0.15" 
@@ -682,8 +766,10 @@
 					easeInOut="sine">
 				</a-animation>
 			</a-entity>
-			
-			<a-entity position="-2.6 -0.12 26.64">
+
+<!--Laser Lights Right-->			
+			<a-entity 
+				position="-2.6 -0.12 26.64">
 				<a-cylinder position="0 0 0" 
 					scale="1 0.39 1" 
 					radius="0.15" 
@@ -855,7 +941,8 @@
 			</a-entity>
     
 <!--Dance Cage 1-->
-			<a-entity id="Dance Cage 1"
+			<a-entity 
+				id="Dance Cage 1"
 				position="-4 2.5 4.5">
 				<a-box 
 					id="cage1bottom" 
@@ -1090,7 +1177,7 @@
 				</a-cylinder>
 				</a-entity>
     
-			<!--Dance Cage 2-->
+<!--Dance Cage 2-->
 			<a-entity 
 				id="Dance Cage 2"
 				position="-15 2.5 9">
@@ -1328,47 +1415,50 @@
 			</a-entity>
 
 <!--disco ball-->
-			<a-sphere 
-				segments-height="18" 
-				segments-width="18" 
-				src="images/discoball.jpg" 
-				width="1" 
-				height=".5" 
-				radius=".75" 
-				side="double"
-				position="-8.2 5.1 7.9" 
-				altspace-cursor-collider="enabled: false" 
-				rotation="0 0 0">
-				<a-animation 
-					attribute="rotation" 
-					dur="10000" 
-					fill="backwards" 
-					to="0 360 0" 
-					repeat="indefinite"
-					easing="linear">
-				</a-animation>
-			</a-sphere>
-
-			<a-sphere 
-				segments-height="18" 
-				segments-width="18" 
-				src="images/discoball.jpg" 
-				width="1" 
-				height=".5" 
-				radius=".75" 
-				side="double"
-				position="-8.2 5.1 7.9" 
-				altspace-cursor-collider="enabled: false" 
-				rotation="0 0 0">
-				<a-animation 
-					attribute="rotation" 
-					dur="10000" 
-					fill="backwards" 
-					to="0 -360 0" 
-					repeat="indefinite"
-					easing="linear">
-				</a-animation>
-			</a-sphere>
+			<a-entity
+				position="0 0 0">
+				<a-sphere 
+					segments-height="18" 
+					segments-width="18" 
+					src="images/discoball.jpg" 
+					width="1" 
+					height=".5" 
+					radius=".75" 
+					side="double"
+					position="-8.2 5.1 7.9" 
+					altspace-cursor-collider="enabled: false" 
+					rotation="0 0 0">
+					<a-animation 
+						attribute="rotation" 
+						dur="10000" 
+						fill="backwards" 
+						to="0 360 0" 
+						repeat="indefinite"
+						easing="linear">
+					</a-animation>
+				</a-sphere>
+	
+				<a-sphere 
+					segments-height="18" 
+					segments-width="18" 
+					src="images/discoball.jpg" 
+					width="1" 
+					height=".5" 
+					radius=".75" 
+					side="double"
+					position="-8.2 5.1 7.9" 
+					altspace-cursor-collider="enabled: false" 
+					rotation="0 0 0">
+					<a-animation 
+						attribute="rotation" 
+						dur="10000" 
+						fill="backwards" 
+						to="0 -360 0" 
+						repeat="indefinite"
+						easing="linear">
+					</a-animation>
+				</a-sphere>
+			</a-entity>
 
 <!--lights-->
 			<a-entity 
@@ -1507,7 +1597,7 @@
 				</a-animation>
 			</a-entity>
 
-			<!--dance floor dots-->
+<!--dance floor dots-->
 			<a-entity 
 				position="-7.3 2.56 8" 
 				altspace-cursor-collider="enabled: false">
@@ -1560,9 +1650,10 @@
 					</a-animation>
 				</a-plane>
 			</a-entity>
-    
-<!--Image 1-->
-			<!a-plane 
+
+<!--Photos>			
+			<!a-plane
+				id="Photo 1"
 				src="images/image1.jpg" 
 				height=".95" 
 				width="1.65" 
@@ -1572,8 +1663,8 @@
 				position="-14.9 5.91 4.228">
 			</a-plane>
 
-<!--Image 2-->
 			<!a-plane 
+				id="Photo 2"
 				src="images/image2.jpg" 
 				height=".95" 
 				width="1.65" 
@@ -1583,8 +1674,8 @@
 				position="-14.9 5.91 .528">
 			</a-plane>
 
-<!--Image 3-->
 			<!a-plane 
+				id="Photo 3"
 				src="images/image3.jpg" 
 				height=".95" 
 				width="1.65" 
@@ -1594,8 +1685,8 @@
 				position="-14.9 5.91 -3.198">
 			</a-plane>
     
-<!--Image 4-->
 			<!a-plane 
+				id="Photo 4"
 				src="images/image4.jpg" 
 				height=".95" 
 				width="1.65" 
@@ -1605,8 +1696,8 @@
 				position="-12.74 5.91 -6.297">
 			</a-plane>
 	
-<!--Image 5-->
 			<!a-plane 
+				id="Photo 5"
 				src="images/image5.jpg" 
 				height=".95" 
 				width="1.65" 
@@ -1616,8 +1707,8 @@
 				position="-10.34 5.91 -6.297">
 			</a-plane>
 	
-<!--Image 6-->
 			<!a-plane 
+				id="Photo 6"
 				src="images/image6.jpg" 
 				height="1.3" 
 				width=".95" 
@@ -1627,8 +1718,8 @@
 				position="-8.92 6.14 -6.8">
 			</a-plane>
 	
-<!--Image 7-->
 			<!a-plane 
+				id="Photo 7"
 				src="images/image7.jpg" 
 				height="1.3" 
 				width="1" 
@@ -1638,8 +1729,8 @@
 				position="-10 6.14 -6.8">
 			</a-plane>
 	
-<!--Image 8-->
 			<!a-plane 
+				id="Photo 8"
 				src="images/image8.jpg" 
 				height="1.3" 
 				width=".95" 
@@ -1649,8 +1740,8 @@
 				position="-11.07 6.14 -6.8">
 			</a-plane>
 	
-<!--Image 9-->
 			<!a-plane 
+				id="Photo 9"
 				src="images/image9.jpg" 
 				height="1.3" 
 				width=".94" 
@@ -1660,8 +1751,8 @@
 				position="-12.08 6.14 -6.8">
 			</a-plane>
 	
-<!--Image 10-->
 			<!a-plane 
+				id="Photo 10"
 				src="images/image10.jpg" 
 				height="1.3" 
 				width=".95" 
@@ -1671,8 +1762,8 @@
 				position="-13.1 6.14 -6.8">
 			</a-plane>
 	
-<!--Image 11-->
 			<!a-plane 
+				id="Photo 11"
 				src="images/image11.jpg" 
 				height=".95" 
 				width="1.65" 
@@ -1682,8 +1773,8 @@
 				position="-13.85 7.17 -8.9">
 			</a-plane>
 	
-<!--Image 12-->
 			<!a-plane 
+				id="Photo 12"
 				src="images/image12.jpg" 
 				height=".95" 
 				width="1.65" 
@@ -1693,8 +1784,8 @@
 				position="-13.85 7.17 -11.056">
 			</a-plane>
 		
-<!--Image 13-->
 			<!a-plane 
+				id="Photo 13"
 				src="images/image13.jpg" 
 				height=".945" 
 				width="2.235" 
@@ -1703,7 +1794,7 @@
 				side="double" 
 				position="-5.99 7.17 -3.65">
 			</a-plane>
-	
+<End Photos-->	
 <!--microphone>
 			<a-entity position="3.4 -0.8 9.9" 
 				rotation="0 -90 0">
@@ -1860,71 +1951,13 @@
 					</a-animation>
 				</a-box>
 			</a-entity-->
-			<script>
+			
 
-		var renderer = altspace.getThreeJSRenderer();
-		var scene = new THREE.Scene();
-		var sky = new THREE.Mesh();
-		var models = ["models/sana/swordinstone.obj", 
-	      		"models/sana/grass.obj", 
-	      		"models/sana/skull.obj", 
-	      		"models/sana/snow.obj",
-	      		"models/sana/molecule.obj", 
-	      		"models/sana/sana.obj", 
-	      		"models/sana/clock.obj", 
-	      		"models/sana/minute.obj", 
-	      		"models/sana/hour.obj",
-	      		"models/sana/second.obj", 
-	      		"models/sana/3pictures.obj", 
-	      		"models/sana/backing.obj", 
-	      		"models/sana/carpet.obj", 
-	      		"models/sana/backwallfar.obj",
-	      		"models/sana/backwallclose.obj", 
-	      		"models/sana/flooringcap.obj", 
-	      		"models/sana/curvewall.obj", 
-	      		"models/sana/parlor.obj"];
-		var timer;
-		var angle = 1;
-
-		var headPos = new THREE.Object3D;
-		scene.add(headPos);
-
-		(function setup(){
-			altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
-				scene.add(skeleton);
-				headTrack = skeleton.getJoint("Head");
-				altspace.getEnclosure().then(function(enclosure){
-					enclosure.requestFullspace();
-					main();
-				});
-			});
-		})();
-
-		function main(){
-			UltimateLoader.multiload(models, function(obj){
-				var geometry = new THREE.PlaneGeometry(2, 2);
-				var material = new THREE.MeshBasicMaterial({opacity: 0, transparent: true});
-				var plane = new THREE.Mesh(geometry, material);
-				plane.position.set(14.4271, 6, -1.32);
-				plane.rotation.x = THREE.Math.degToRad(90);
-				plane.addEventListener('cursorup', function (){
-					document.getElementById('linkToRoom').click();
-				});
-				scene.add(plane);
-				animate();
-			});
-	
-			function animate(){
-				requestAnimationFrame(animate);
-				renderer.render(scene);
-			};
-		};
-		</script>
-		<a id="linkToRoom" href="altspace://account.altvr.com/api/events/638507976642002967"></a>
 		</a-scene>
 
 
 <!--script that is needed to run the dance floor -->
+	<a-entity>	
 		<script>
 			var changeColorRandom = function () {
 				var rand = function () {
@@ -1997,7 +2030,7 @@
 			}
 					setInterval(changeColorRandom, 469);
 		</script>
-		
+	</sa-entity>	
 <!--scipt for god room-->		
 		<!--script>
 		var sim = altspace.utilities.Simulation();
