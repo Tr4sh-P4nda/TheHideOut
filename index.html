@@ -8,6 +8,9 @@
     <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js"></script>
     <script src="https://sdk.altvr.com/libs/altspace.js/0.28.1/altspace.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/r74/build/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/norybiak/UltimateLoader/master/dist/UltimateLoader.min.js"></script>
+    <script src="https://cdn.rawgit.com/Ooblik/AltspaceVR-Native-Components-JS/master/js/JSNativeComponents.js"></script>
     <script>
        	altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
        	  window.head = skeleton.getJoint('Head');
@@ -29,7 +32,7 @@
 		if(result.displayName.match(/^Guest*/) && result.displayName.length >= 5)
 		document.getElementById('kick').click();
 		});
-    </script>
+    	</script>
 	
 <!--Working On>
     <script 
@@ -2133,268 +2136,66 @@
 		</script>
 		<div><canvas width="1440" height="388" style="width: 1440px; height: 388px;"></canvas></div-->
 		<script>
-//			var renderer = altspace.getThreeJSRenderer();
-//			var scene = new THREE.Scene();
-//			var sky = new THREE.Mesh();
-//			var models = [
-				//"models/sana/swordinstone.obj", 
-				//"models/sana/grass.obj", 
-				//"models/sana/skull.obj", 
-				//"models/sana/snow.obj",
-				//"models/sana/molecule.obj", 
-				//"models/sana/sana.obj", 
-				//"models/sana/clock.obj", 
-				//"models/sana/minute.obj", 
-				//"models/sana/hour.obj",
-				//"models/sana/second.obj", 
-				//"models/sana/3pictures.obj", 
-				//"models/sana/backing.obj", 
-				//"models/sana/carpet.obj", 
-				//"models/sana/backwallfar.obj",
-				//"models/sana/backwallclose.obj", 
-				//"models/sana/flooringcap.obj", 
-				//"models/sana/curvewall.obj", 
-				//"models/sana/parlor.obj"];
-			//var timer;
-			//var angle = 1;
-//	
-			//var headPos = new THREE.Object3D;
-//				scene.add(headPos);
-//	
-			//var soundPos = new THREE.Object3D;
-//				soundPos.position.z = 1;
-				//headPos.add(soundPos);
-//	
-			//var alarm = new NativeComponent('n-sound', 
-//				{src: "sounds/Alarm.ogg", volume: 1, loop: true}).addTo(soundPos);
-			//var alarmPlaying = true;
-//	
-				//(function setup(){
-//					altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
-						//scene.add(skeleton);
-						//headTrack = skeleton.getJoint("Head");
-						//altspace.getEnclosure().then(function(enclosure){
-//							enclosure.requestFullspace();
-							//main();
-						//});
-					//});
-				//})();
-//	
-//			function main(){
-//				UltimateLoader.multiload(models, function(obj){
- 					//scene.add(swordinstone = obj[0]);
-					//swordinstone.scale.multiplyScalar(0.015);
-					//swordinstone.position.set(2.4071, 1.646, -6.22);
-					//swordinstone.rotation.y = THREE.Math.degToRad(15);
-//					
-					//scene.add(grass = obj[1]);
-					//grass.scale.multiplyScalar(0.015);
-					//grass.position.set(2.4071, 1.646, -6.22);
-					//grass.rotation.y = THREE.Math.degToRad(15)
-//					
-					//scene.add(skull = obj[2]);
-					//skull.scale.set(0.5, 0.5, 0.5);
-					//skull.position.set(5.3071, -1000, -8.99);
-					//scream = new NativeComponent('n-sound', {src: "sounds/PsychoScream.ogg", volume: 1, minDistance: 3}).addTo(skull);
-//		
-					//scene.add(parlor = obj[17]);
-					//parlor.position.y = -1000;
-					//parlor.traverse(function(child){
-//						child.userData.altspace = {collider:{enabled: false}};
-					//});
-					//scene.add(snow = obj[3]);
-					//snow.position.set(-5.6849, 4.146, -1.318);
-					//snow.rotation.y = THREE.Math.degToRad(30);
-					//snow.traverse(function(child){
-//						child.userData.altspace = {collider:{enabled: false}};
-					//});
-//					
-					//scene.add(molecule = obj[4]);
-					//molecule.scale.multiplyScalar(2.35);
-					//molecule.position.set(-5.6829, 5.776, -1.32);
-					//molecule.traverse(function(child){
-//						child.userData.altspace = {collider:{enabled: false}};
-					//});
-					//scene.add(sana = obj[5]);
-					//sana.rotation.y = THREE.Math.degToRad(-90);
-					//sana.position.set(-5.4329, 5.776, -1.32);
-//					
-					//scene.add(clock = obj[6]);
-					//clock.position.set(-4.03079, 3.40802, -8.21589);
-					//scene.add(minute = obj[7]);
-					//minute.position.set(-4.03079, 3.40802, -8.21589);
-					//scene.add(hour = obj[8]);
-					//hour.position.set(-4.03079, 3.40802, -8.215899);
-					//scene.add(second = obj[9]);
-					//second.position.set(-4.03079, 3.40802, -8.21589);
-//				
-					//scene.add(threepictures = obj[10]);
-					//threepictures.position.set(-5.6829, 4.146, -1.32);
-					//scene.add(backing = obj[11]);
-					//backing.position.set(-5.6829, 4.146, -1.32);
-					//scene.add(carpet = obj[12]);
-					//carpet.position.set(-5.6829, 4.146, -1.32);
-					//scene.add(backwallfar = obj[13]);
-					//backwallfar.position.set(-5.6829, 4.146, -1.32);
-					//scene.add(backwallclose = obj[14]);
-					//backwallclose.position.set(-5.6829, 4.146, -1.32);
-					//scene.add(flooringcap = obj[15]);
-					//flooringcap.position.set(-5.6829, 4.146, -1.32);
-					//scene.add(curvewall = obj[16]);
-					//curvewall.position.set(-5.6829, 4.146, -1.32);
-					//curvewall.traverse(function(child){
-//						child.userData.altspace = {collider:{enabled: false}};
-					//});
-//					
-					//scene.traverse(function(child){ 
-					//fix for ultimateloader loading double sided textures by default
-						//if(child instanceof THREE.Mesh){
-//							child.material.side = 0;
-						//};
-					//});
-//			
-					//UltimateLoader.load("images/sana/swirl.png", function(texture){
-//						var geometry = new THREE.PlaneGeometry(0.2, 0.2);
-						//var material = new THREE.MeshBasicMaterial({map: texture, transparent: true, opacity: 0.1, side: THREE.DoubleSide});
-						//swirl = new THREE.Mesh(geometry, material);
-						//swirl.position.y = -1000;
-						//swirl.position.z = 0.5;
-						//swirl.scale.multiplyScalar(8);
-						//swirl.traverse(function(child){
-//							child.userData.altspace = {collider:{enabled: false}};
-						//});
-						//headTrack.add(swirl);
-					//});
-//					
-					//var geometry = new THREE.BoxGeometry(0.16, 0.16, 0.16);
-					//var material = new THREE.MeshBasicMaterial({transparent: true, opacity: 0});
-					//var cube = new THREE.Mesh(geometry, material);
-					//cube.rotation.y = THREE.Math.degToRad(40);
-					//cube.position.set(5.162, 2.61898, -9.12333);
-					//scene.add(cube);
-					//cube.addEventListener("cursorup", function(){showSkull()});
-//					
-					//var geometry = new THREE.BoxGeometry(0.14, 0.14, 0.14);
-					//var material = new THREE.MeshBasicMaterial({transparent: true, opacity: 0});
-					//var cube2 = new THREE.Mesh(geometry, material);
-					//cube2.rotation.y = THREE.Math.degToRad(37.5);
-					//cube2.position.set(2.8539, 2.72418, -3.1649);
-					//scene.add(cube2);
-					//cube2.addEventListener("cursorup", function(){craziness()});
-//					
-					//function craziness(){
-//						if(alarmPlaying){
-							//alarmPlaying = false;
-							//alarm.call("play");
-							//parlor.position.y = 0;
-							//swirl.position.y = 0;
-							//i=0;
-//					
-							//(function loop(){
-//								headPos.position.copy(headTrack.position);
-								//headPos.rotation.y += 0.05;
-								//swirl.rotation.z += 0.01;
-								//r = Math.sin(i += 0.0005) * 127 + 128;
-								//g = Math.sin(i + 2) * 127 + 128;
-								//b = Math.sin(i + 4) * 127 + 128;
-								//parlor.children[0].material.color.setRGB(r, g, b);
-								//if(alarmPlaying == false)requestAnimationFrame(loop);
-							//}());
-						//}else{
-//							alarmPlaying = true; 
-							//alarm.call("pause");
-							//alarm.call("seek", {time:0});
-							//parlor.position.y = -1000;
-							//swirl.position.y = -1000;
-							//return;
-						//};
-					//};
-				
-					//sky sphere
-					//UltimateLoader.load('images/sana/SanaBG.jpg', function(texture){
-//						var geometry = new THREE.SphereGeometry(735, 36, 36);
-						//var material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.BackSide});
-						//sky = new THREE.Mesh(geometry, material);
-						//scene.add(sky);
-					//});
-//					var geometry = new THREE.PlaneGeometry(0.98, 0.98);
-//					var material = new THREE.MeshBasicMaterial({color: "#ffffff", opacity: 1, transparent: false});
-//					var plane = new THREE.Mesh(geometry, material);
-//					plane.position.set(0, 2, 0);
-//					plane.rotation.x = THREE.Math.degToRad(90);
-					plane.addEventListener('cursorup', function (){
-						document.getElementById('linkToRoom').click();
-					});
-					scene.add(plane);
-					
-					//jpeg filename	wd.	ht.	mov x   mov y	mov z	deg (scene pos)
-					
-//					DrawPic("eyes", 2.27, 0.76, 1.5671, 4.706, 2.66 , -90);
-//					DrawPic("LunBobby", 4.27, 2.77, -5.9429 , 4.036 , -11.27, -90);
-//					DrawPic("Time", 2.576, 2.993, 6.3011 , 3.825 , -11.88, 90);
-//					DrawPic("TimeTravel", 5.71, 2.70, -3.4429 , 3.116 , 10.89 , 180);
-//					DrawPic("ChaosPlix", 1.396, 0.785, 5.1531 , 4.425 , -9.136, 41.033);
-//					DrawPic("sanaky20car", 1.396, 0.785, 5.1531 , 3.338 , -9.136, 41.033);
-//					DrawPic("wait", 1.921, 3.102, 10.2021 , 3.891 , -0.525, -90);
-//					DrawPic("DanLun", 1.99409, 3.07968, 12.68023 , 3.78508 , -7.615, 0);
-//					DrawPic("ooblik", 2.19796, 1.23636, 10.6571 , 3.68946 , -0.97662, 90);
-//					DrawPic("evildoer", 1.18912, 0.66888, -5.9299 , 2.14947 , -12.41998, -90);
-//					DrawPic("sanatree", 1.18912, 0.66888, -5.9299 , 2.14947 , -10.1595, -90);
-//					DrawPic("toolate", 2.26686, 0.75562, 2.51381 , 4.7013 , 2.66093, 90);
-//					DrawPic("night", 1.19, 0.67, 8.8971 , 2.966 , 5.13, -90);
-//					DrawPic("lostintime", 5.07, 3.11, 8.9071 , 3.872 , 6.723, -90);
-//					DrawPic("twins", 1.19, 0.67, 8.8971 , 2.966 , 8.27, -90);
-//					DrawPic("evilchest", 1.994, 3.08, 12.68013, 3.78407, 1.82568, 180);
-//					DrawPic("collage", 3.712, 2.969, 10.8665 , 3.82809 , -10.25244, -90);
-				
-//					animate();
-//				});
-				
-				//draw wall pictures
-//				function DrawPic(file, wd, ht, movX, movY, movZ, deg){
-//					UltimateLoader.load("images/sana/" + file + ".jpg", function(texture){
-//						var geometry = new THREE.PlaneGeometry(wd, ht);
-//						var material = new THREE.MeshBasicMaterial({ map: texture });
-//						var pic = new THREE.Mesh(geometry, material);
-//						pic.position.set(movX, movY, movZ);
-//						pic.rotation.y = THREE.Math.degToRad(deg);
-//						scene.add(pic);
-//					});
-//				};
-				
-//				function showSkull(){
-//					skull.position.set(5.3071, 2.6, -9);
-//					scream.call("play");
-//					timer = Date.now();
-//				};
-				
-//				function animate(){
-			
-//					skull.lookAt(headTrack.position);
-			
-//					var TimeZoneVal = new Date().toLocaleString('en-US', {
-//						timeZone: 'Asia/Kuwait'
-//					});
-					
-//					now = new Date(TimeZoneVal);
-//					second.rotation.z = 2* -Math.PI*now.getSeconds()/60;
-//					minute.rotation.z = 2* -Math.PI*(now.getMinutes()+now.getSeconds()/60)/60;
-//					hour.rotation.z = 2* -Math.PI*(now.getHours()*60+now.getMinutes())/720;
-//					molecule.rotation.x += 0.005;
-//					molecule.rotation.y += 0.005;
-//					molecule.rotation.z += 0.005;
-//					sana.position.y = 5.776+0.12*Math.cos(angle -= .02);
-//					sky.rotation.y += 0.0005;
-//					if(Date.now() > (timer + 4050)){
-//						skull.position.set(5.3071, -1000, -8.99);
-//					};
-//					requestAnimationFrame(animate);
-//					renderer.render(scene);
-				};
+
+		var renderer = altspace.getThreeJSRenderer();
+		var scene = new THREE.Scene();
+		var sky = new THREE.Mesh();
+		var models = ["models/sana/swordinstone.obj", 
+	      		"models/sana/grass.obj", 
+	      		"models/sana/skull.obj", 
+	      		"models/sana/snow.obj",
+	      		"models/sana/molecule.obj", 
+	      		"models/sana/sana.obj", 
+	      		"models/sana/clock.obj", 
+	      		"models/sana/minute.obj", 
+	      		"models/sana/hour.obj",
+	      		"models/sana/second.obj", 
+	      		"models/sana/3pictures.obj", 
+	      		"models/sana/backing.obj", 
+	      		"models/sana/carpet.obj", 
+	      		"models/sana/backwallfar.obj",
+	      		"models/sana/backwallclose.obj", 
+	      		"models/sana/flooringcap.obj", 
+	      		"models/sana/curvewall.obj", 
+	      		"models/sana/parlor.obj"];
+		var timer;
+		var angle = 1;
+
+		var headPos = new THREE.Object3D;
+		scene.add(headPos);
+
+		(function setup(){
+			altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
+				scene.add(skeleton);
+				headTrack = skeleton.getJoint("Head");
+				altspace.getEnclosure().then(function(enclosure){
+					enclosure.requestFullspace();
+					main();
+				});
+			});
+		})();
+
+		function main(){
+			UltimateLoader.multiload(models, function(obj){
+				var geometry = new THREE.PlaneGeometry(2, 2);
+				var material = new THREE.MeshBasicMaterial({opacity: 0, transparent: true});
+				var plane = new THREE.Mesh(geometry, material);
+				plane.position.set(14.4271, 6, -1.32);
+				plane.rotation.x = THREE.Math.degToRad(90);
+				plane.addEventListener('cursorup', function (){
+					document.getElementById('linkToRoom').click();
+				});
+				scene.add(plane);
+				animate();
+			});
+	
+			function animate(){
+				requestAnimationFrame(animate);
+				renderer.render(scene);
 			};
-			</script>
-			<!--a id="linkToRoom" href="https://account.altvr.com/events/638507976642002967"></a-->
-			<a id="linkToRoom" href="altspace://account.altvr.com/api/spaces/lost-in-time"></a>
+		};
+		</script>
+		<a id="linkToRoom" href="altspace://account.altvr.com/api/events/638507976642002967"></a>
 	</body>
 </html>
 
