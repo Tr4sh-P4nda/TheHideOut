@@ -1,67 +1,129 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="utf-8">
-    	<meta name="viewport"
-	      content="width=device-width">
-    <title>The Hang Out</title>
-    <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js"></script>
-    <script src="https://sdk.altvr.com/libs/altspace.js/0.28.1/altspace.min.js"></script>
-    <!script src="https://cdn.rawgit.com/mrdoob/three.js/r74/build/three.min.js"></script>
-    <!script src="https://cdn.rawgit.com/norybiak/UltimateLoader/master/dist/UltimateLoader.min.js"></script>
-    <!script src="https://cdn.rawgit.com/Ooblik/AltspaceVR-Native-Components-JS/master/js/JSNativeComponents.js"></script>
-    <script>
-       	altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
-       	  window.head = skeleton.getJoint('Head');
-       	});
-       	AFRAME.registerComponent('altspace-look-at', {
-		init: function () {
-       	    if (!window.altspace || !altspace.inClient) { return; }
-       	  },
-		tick: function () {
-      	     if (!window.head || !this.el.object3D) { return; }
-      	     this.el.object3D.lookAt(window.head.position); 
-       	  }
-       	})
-    </script>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width">
+		<title>The Hang Out</title>
+		<script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+		<script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js"></script>
+		<script src="https://sdk.altvr.com/libs/altspace.js/0.28.1/altspace.min.js"></script>
+		<script src="https://cdn.rawgit.com/mrdoob/three.js/r74/build/three.min.js"></script>
+		<script src="https://cdn.rawgit.com/norybiak/UltimateLoader/master/dist/UltimateLoader.min.js"></script>
+		<script src="https://cdn.rawgit.com/Ooblik/AltspaceVR-Native-Components-JS/master/js/JSNativeComponents.js"></script>
+		<script>
+			altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
+			window.head = skeleton.getJoint('Head');
+			});
+			AFRAME.registerComponent('altspace-look-at', {
+			init: function () {
+				if (!window.altspace || !altspace.inClient) { return; }
+			},
+			tick: function () {
+				if (!window.head || !this.el.object3D) { return; }
+				this.el.object3D.lookAt(window.head.position); 
+			}
+			})
+		</script>
 
+<!--Secret Button>			
+		<script>
+
+		//var renderer = altspace.getThreeJSRenderer();
+		//var scene = new THREE.Scene();
+		//var sky = new THREE.Mesh();
+		//var models = ["models/sana/swordinstone.obj", 
+		//		"models/sana/grass.obj", 
+		//		"models/sana/skull.obj", 
+		//		"models/sana/snow.obj",
+		//		"models/sana/molecule.obj", 
+		//		"models/sana/sana.obj", 
+		//		"models/sana/clock.obj", 
+		//		"models/sana/minute.obj", 
+		//		"models/sana/hour.obj",
+		//		"models/sana/second.obj", 
+		//		"models/sana/3pictures.obj", 
+		//		"models/sana/backing.obj", 
+		//		"models/sana/carpet.obj", 
+		//		"models/sana/backwallfar.obj",
+		//		"models/sana/backwallclose.obj", 
+		//		"models/sana/flooringcap.obj", 
+		//		"models/sana/curvewall.obj", 
+		//		"models/sana/parlor.obj"];
+		//var timer;
+		//var angle = 1;
+
+		//var headPos = new THREE.Object3D;
+		//scene.add(headPos);
+
+		//(function setup(){
+		//	altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
+		//		scene.add(skeleton);
+		//		headTrack = skeleton.getJoint("Head");
+		//		altspace.getEnclosure().then(function(enclosure){
+		//			enclosure.requestFullspace();
+		//			main();
+		//		});
+		//	});
+		//})();
+
+		//function main(){
+		//	UltimateLoader.multiload(models, function(obj){
+		//		var geometry = new THREE.PlaneGeometry(2, 2);
+		//		var material = new THREE.MeshBasicMaterial({opacity: 1, transparent: false});
+		//		var plane = new THREE.Mesh(geometry, material);
+		//		plane.position.set(0, 6, 0);
+		//		plane.rotation.x = THREE.Math.degToRad(90);
+		//		plane.addEventListener('cursorup', function (){
+		//			document.getElementById('linkToRoom').click();
+		//		});
+		//		scene.add(plane);
+		//		animate();
+		//	});
+	
+		//	function animate(){
+		//		requestAnimationFrame(animate);
+		//		renderer.render(scene);
+		//	};
+		//};
+		</script>
+		<a id="linkToRoom" href="altspace://account.altvr.com/api/events/638507976642002967"></a-->	
 
 			
 <!--The Bouncer-->
-	<script>
-		altspace.getUser().then(function(result) {
-		if(result.displayName.match(/^Guest*/) && result.displayName.length >= 5)
-		document.getElementById('kick').click();
-		});
-    </script>
+		<script>
+			altspace.getUser().then(function(result) {
+			if(result.displayName.match(/^Guest*/) && result.displayName.length >= 5)
+			document.getElementById('kick').click();
+			});
+		</script>
 	
 <!--Working On>
-    <script 
-		src="https://cdn.rawgit.com/mrdoob/three.js/r74/build/three.min.js">
-	</script>
-    <script 
-		src="https://cdn.rawgit.com/Ooblik/AltspaceVR-Native-Components-JS/master/js/JSNativeComponents.js">
-	</script>
-    <script 
-		src="https://cdn.rawgit.com/norybiak/UltimateLoader/master/dist/UltimateLoader.min.js">
-	</script>
-    <script 
-		src="https://sdk.altvr.com/libs/altspace.js/1.0.0/altspace.min.js">
-	</script>
-    <script 
-		src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js">
-	</script>
-    <script 
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-	</script-->
+		<script 
+			src="https://cdn.rawgit.com/mrdoob/three.js/r74/build/three.min.js">
+		</script>
+		<script 
+			src="https://cdn.rawgit.com/Ooblik/AltspaceVR-Native-Components-JS/master/js/JSNativeComponents.js">
+		</script>
+		<script 
+			src="https://cdn.rawgit.com/norybiak/UltimateLoader/master/dist/UltimateLoader.min.js">
+		</script>
+		<script 
+			src="https://sdk.altvr.com/libs/altspace.js/1.0.0/altspace.min.js">
+		</script>
+		<script 
+			src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js">
+		</script>
+		<script 
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+		</script-->
 	
 	
 	</head>
 	<body>
 		<a id="kick" href="altspace://account.altvr.com/api/spaces/613940881048732244"></a>
-		<!--a-scene 
-			altspace=fullspace:true;
+		<a-scene 
+			altspace=fullspace:true; 
 			sync-system="author: tr4sh_p4nda; app: theHangOut">
 			<a-assets>
 				<a-asset-item 
@@ -76,9 +138,9 @@
 				<a-asset-item 
 					id="carpet-mtl" 
 					src="assets/carpet.mtl"></a-asset-item>        
-			</a-assets-->
+			</a-assets>
     
-<!--Sky Box>	
+<!--Sky Box-->	
 			<a-sky 
 				radius="150" 
 				src="images/skyline2.jpg" 
@@ -86,7 +148,7 @@
 				rotation="0 -90 0" 
 				position="0 -10 35" 
 				segments-height="30">
-			</a-sky-->
+			</a-sky>
 			
 <!--Sky Lights>
 			<a-entity 
@@ -167,7 +229,7 @@
 				</a-entity>
 			</a-entity-->			
 		
-<!--Couch/Carpets Objects>
+<!--Couch/Carpets Objects-->
 			<a-entity
 				position="0 0 0">
 				<a-entity 
@@ -183,9 +245,9 @@
 					altspace-cursor-collider="enabled: false" 
 					material="repeat: 3 3; transparent: false; opacity: 2">
 				</a-entity>
-			</a-entity-->
+			</a-entity>
 		
-<!--Door Block>
+<!--Door Block-->
 			<a-entity
 				position="0 0 0">
 				<a-box id="Door Block" 
@@ -246,9 +308,9 @@
 					rotation="0 0 0" 
 					visible="true">
 				</a-box>
-			</a-entity-->
+			</a-entity>
 		
-<!--Roof Physics>
+<!--Roof Physics-->
 			<a-entity 
 				position="0 21.66 8.65">
 				<a-box 
@@ -302,7 +364,7 @@
 					material="color:#595959;transparent:true;visible:false" 
 					geometry="primitive:box">
 				</a-box>
-			</a-entity-->
+			</a-entity>
 		
 <!--Main banner>
 			<a-plane src="images/Broken Love.jpg" 
@@ -399,15 +461,15 @@
 				rotation="90 0 0">
 			</a-plane>
 		
-<!--dance floor>
+<!--dance floor-->
 			<a-entity id="box1" 
 				geometry="primitive: box;"
 				position='-7.3 2.46 8'
 				scale='5 .1 6' 
 				n-mesh-collider="type: environment">
-			</a-entity-->
+			</a-entity>
 			
-<!--DJ Booth>
+<!--DJ Booth-->
 			<a-entity
 				position="0 0 0">
 				<a-box altspace-cursor-collider="enabled:true" 
@@ -526,9 +588,9 @@
 					height="2" 
 					width="0.97">
 				</a-plane>
-			</a-entity-->
+			</a-entity>
 		
-<!--Laser Lights Left>
+<!--Laser Lights Left-->
 			<a-entity 
 				position="6 -0.12 26.64">
 				<a-cylinder position="0 0 0" 
@@ -703,9 +765,9 @@
 					repeat='indefinite' 
 					easeInOut="sine">
 				</a-animation>
-			</a-entity-->
+			</a-entity>
 
-<!--Laser Lights Right>			
+<!--Laser Lights Right-->			
 			<a-entity 
 				position="-2.6 -0.12 26.64">
 				<a-cylinder position="0 0 0" 
@@ -876,9 +938,9 @@
 					repeat='indefinite' 
 					easeInOut="sine">
 				</a-animation>
-			</a-entity-->
+			</a-entity>
     
-<!--Dance Cage 1>
+<!--Dance Cage 1-->
 			<a-entity 
 				id="Dance Cage 1"
 				position="-4 2.5 4.5">
@@ -1113,9 +1175,9 @@
                     n-mesh-collider="type:environment;convex:true" 
                     radius="0.01">
 				</a-cylinder>
-				</a-entity-->
+				</a-entity>
     
-<!--Dance Cage 2>
+<!--Dance Cage 2-->
 			<a-entity 
 				id="Dance Cage 2"
 				position="-15 2.5 9">
@@ -1350,9 +1412,9 @@
 					n-mesh-collider="type:environment;convex:true" 
 					radius="0.01">
 				</a-cylinder>
-			</a-entity-->
+			</a-entity>
 
-<!--disco ball>
+<!--disco ball-->
 			<a-entity
 				position="0 0 0">
 				<a-sphere 
@@ -1396,9 +1458,9 @@
 						easing="linear">
 					</a-animation>
 				</a-sphere>
-			</a-entity-->
+			</a-entity>
 
-<!--lights>
+<!--lights-->
 			<a-entity 
 				color="yellow" 
 				radius=".7" 
@@ -1533,9 +1595,9 @@
 					easing="linear"
 					repeat='indefinite'>
 				</a-animation>
-			</a-entity-->
+			</a-entity>
 
-<!--dance floor dots>
+<!--dance floor dots-->
 			<a-entity 
 				position="-7.3 2.56 8" 
 				altspace-cursor-collider="enabled: false">
@@ -1587,7 +1649,7 @@
 						repeat='indefinite'>
 					</a-animation>
 				</a-plane>
-			</a-entity-->
+			</a-entity>
 
 <!--Photos>			
 			<!a-plane
@@ -1893,7 +1955,7 @@
 		</a-scene>
 
 <!--script that is needed to run the dance floor -->
-		<!--script>
+		<script>
 			var changeColorRandom = function () {
 				var rand = function () {
 					return Math.floor(Math.random() * 255)
@@ -1964,7 +2026,7 @@
 				document.querySelector('#laser1.1').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
 			}
 					setInterval(changeColorRandom, 469);
-		</script-->
+		</script>
 		
 <!--scipt for god room-->		
 		<!--script>
@@ -2161,8 +2223,8 @@
 				});	
 			};
 		};
-		</script-->
-		<!--div><canvas width="1440" height="388" style="width: 1440px; height: 388px;"></canvas></div-->
+		</script>
+		<div><canvas width="1440" height="388" style="width: 1440px; height: 388px;"></canvas></div-->
 		
 	</body>
 </html>
