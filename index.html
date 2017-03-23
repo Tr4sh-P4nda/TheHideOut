@@ -8,16 +8,16 @@
 		
 		// an example custom componet, that wil change color when clicked
 		AFRAME.registerComponent('color-cycle', {
-			schema: {}
+			schema: {},
 			init: function(){
 				var self = this;
 				self.el.object3D.addEventListener('cursorup', function(){
-					car rgb = [
+					var rgb = [
 						Math.floor(Math.random()*256),
 						Math.floor(Math.random()*256),
 						Math.floor(Math.random()*256)
 					];
-					self.el.setAttribute('color', 'rgb('+rgb.join(',')+')+')';
+					self.el.setAttribute('color', 'rgb('+rgb.join(',')+')');
 				});
 			}
 		});
@@ -25,11 +25,10 @@
 		</script>
 	</head>
 	<body>
-	
+
 		<!-- set up the scene -->
 		<a-scene altspace='vertical-align: bottom;'>
 			<a-box position='0 1 0' color-cycle></a-box>
 		</a-scene>
 	</body>
 </html>
-		
