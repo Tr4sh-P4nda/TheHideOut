@@ -11,7 +11,7 @@
     <script src="https://cdn.rawgit.com/mrdoob/three.js/r74/build/three.min.js"></script>
     <script src="https://cdn.rawgit.com/norybiak/UltimateLoader/master/dist/UltimateLoader.min.js"></script>
     <script src="https://cdn.rawgit.com/Ooblik/AltspaceVR-Native-Components-JS/master/js/JSNativeComponents.js"></script>
-    <script>
+    <!--script>
        	altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
        	  window.head = skeleton.getJoint('Head');
        	});
@@ -24,7 +24,7 @@
       	     this.el.object3D.lookAt(window.head.position); 
        	  }
        	})
-    </script>
+    </script-->
 
 
 			
@@ -63,7 +63,7 @@
 		<a-scene 
 			altspace=fullspace:true; 
 			sync-system="author: tr4sh_p4nda; app: theHangOut">
-			<a-assets>
+			<!--a-assets>
 				<a-asset-item 
 					id="couches-obj" 
 					src="assets/couches.obj"></a-asset-item>
@@ -76,9 +76,9 @@
 				<a-asset-item 
 					id="carpet-mtl" 
 					src="assets/carpet.mtl"></a-asset-item>        
-			</a-assets>
+			</a-assets-->
     
-<!--Sky Box-->	
+<!--Sky Box>	
 			<a-sky 
 				radius="150" 
 				src="images/skyline2.jpg" 
@@ -86,7 +86,7 @@
 				rotation="0 -90 0" 
 				position="0 -10 35" 
 				segments-height="30">
-			</a-sky>
+			</a-sky-->
 			
 <!--Sky Lights>
 			<a-entity 
@@ -167,7 +167,7 @@
 				</a-entity>
 			</a-entity-->			
 		
-<!--Couch/Carpets Objects-->
+<!--Couch/Carpets Objects>
 			<a-entity
 				position="0 0 0">
 				<a-entity 
@@ -183,9 +183,9 @@
 					altspace-cursor-collider="enabled: false" 
 					material="repeat: 3 3; transparent: false; opacity: 2">
 				</a-entity>
-			</a-entity>
+			</a-entity-->
 		
-<!--Door Block-->
+<!--Door Block>
 			<a-entity
 				position="0 0 0">
 				<a-box id="Door Block" 
@@ -246,9 +246,9 @@
 					rotation="0 0 0" 
 					visible="true">
 				</a-box>
-			</a-entity>
+			</a-entity-->
 		
-<!--Roof Physics-->
+<!--Roof Physics>
 			<a-entity 
 				position="0 21.66 8.65">
 				<a-box 
@@ -302,7 +302,7 @@
 					material="color:#595959;transparent:true;visible:false" 
 					geometry="primitive:box">
 				</a-box>
-			</a-entity>
+			</a-entity-->
 		
 <!--Main banner>
 			<a-plane src="images/Broken Love.jpg" 
@@ -399,15 +399,15 @@
 				rotation="90 0 0">
 			</a-plane>
 		
-<!--dance floor-->
+<!--dance floor>
 			<a-entity id="box1" 
 				geometry="primitive: box;"
 				position='-7.3 2.46 8'
 				scale='5 .1 6' 
 				n-mesh-collider="type: environment">
-			</a-entity>
+			</a-entity-->
 			
-<!--DJ Booth-->
+<!--DJ Booth>
 			<a-entity
 				position="0 0 0">
 				<a-box altspace-cursor-collider="enabled:true" 
@@ -526,9 +526,9 @@
 					height="2" 
 					width="0.97">
 				</a-plane>
-			</a-entity>
+			</a-entity-->
 		
-<!--Laser Lights Left-->
+<!--Laser Lights Left>
 			<a-entity 
 				position="6 -0.12 26.64">
 				<a-cylinder position="0 0 0" 
@@ -703,9 +703,9 @@
 					repeat='indefinite' 
 					easeInOut="sine">
 				</a-animation>
-			</a-entity>
+			</a-entity-->
 
-<!--Laser Lights Right-->			
+<!--Laser Lights Right>			
 			<a-entity 
 				position="-2.6 -0.12 26.64">
 				<a-cylinder position="0 0 0" 
@@ -876,9 +876,9 @@
 					repeat='indefinite' 
 					easeInOut="sine">
 				</a-animation>
-			</a-entity>
+			</a-entity-->
     
-<!--Dance Cage 1-->
+<!--Dance Cage 1>
 			<a-entity 
 				id="Dance Cage 1"
 				position="-4 2.5 4.5">
@@ -1113,9 +1113,9 @@
                     n-mesh-collider="type:environment;convex:true" 
                     radius="0.01">
 				</a-cylinder>
-				</a-entity>
+				</a-entity-->
     
-<!--Dance Cage 2-->
+<!--Dance Cage 2>
 			<a-entity 
 				id="Dance Cage 2"
 				position="-15 2.5 9">
@@ -1350,9 +1350,9 @@
 					n-mesh-collider="type:environment;convex:true" 
 					radius="0.01">
 				</a-cylinder>
-			</a-entity>
+			</a-entity-->
 
-<!--disco ball-->
+<!--disco ball>
 			<a-entity
 				position="0 0 0">
 				<a-sphere 
@@ -1396,9 +1396,9 @@
 						easing="linear">
 					</a-animation>
 				</a-sphere>
-			</a-entity>
+			</a-entity-->
 
-<!--lights-->
+<!--lights>
 			<a-entity 
 				color="yellow" 
 				radius=".7" 
@@ -1533,9 +1533,9 @@
 					easing="linear"
 					repeat='indefinite'>
 				</a-animation>
-			</a-entity>
+			</a-entity-->
 
-<!--dance floor dots-->
+<!--dance floor dots>
 			<a-entity 
 				position="-7.3 2.56 8" 
 				altspace-cursor-collider="enabled: false">
@@ -1587,7 +1587,7 @@
 						repeat='indefinite'>
 					</a-animation>
 				</a-plane>
-			</a-entity>
+			</a-entity-->
 
 <!--Photos>			
 			<!a-plane
@@ -1893,7 +1893,7 @@
 		</a-scene>
 
 <!--script that is needed to run the dance floor -->
-		<script>
+		<!--script>
 			var changeColorRandom = function () {
 				var rand = function () {
 					return Math.floor(Math.random() * 255)
@@ -1964,7 +1964,7 @@
 				document.querySelector('#laser1.1').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
 			}
 					setInterval(changeColorRandom, 469);
-		</script>
+		</script-->
 		
 <!--scipt for god room-->		
 		<!--script>
