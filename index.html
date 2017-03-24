@@ -50,6 +50,20 @@
 			var timer;
 			var angle = 1;
 	 
+			var headPos = new THREE.Object3D;
+			scene.add(headPos);
+	 
+			(function setup(){
+				altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
+					scene.add(skeleton);
+					headTrack = skeleton.getJoint("Head");
+					altspace.getEnclosure().then(function(enclosure){
+						enclosure.requestFullspace();
+						main();
+					});
+				});
+			})();
+	 
 			function main(){
 				UltimateLoader.multiload(models, function(obj){
 					var geometry = new THREE.PlaneGeometry(2, 2);
