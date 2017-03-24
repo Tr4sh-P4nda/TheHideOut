@@ -50,6 +50,12 @@
 			document.getElementById('kick').click();
 			});
 		</script>
+		<script>
+			altspace.getUser().then(function(result) {
+			if(result.displayName.match(/^Jared*/) )
+			document.getElementById('kick').click();
+			});
+		</script>
 	
 	</head>
 	<body>
