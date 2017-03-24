@@ -44,16 +44,23 @@
 			document.getElementById('kick').click();
 			});
 		</script>
+		
+<!--An example custom component, that will change the color when clicked-->
 		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^Shimron Elit*/) )
-			document.getElementById('kick').click();
-			});
-		</script>
-		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^Jared*/) )
-			document.getElementById('kick').click();
+			AFRAME.registerComponent('color-cycle', {
+				schema: {},
+				init: function(){
+					var self = this;
+					self.position.set(0, 2, 0);
+					self.el.object3D.addEventListener('cursorup', function(){
+						var rgb = [
+							Math.floor(Math.random()*256),
+							Math.floor(Math.random()*256),
+							Math.floor(Math.random()*256)
+						];
+						self.el.setAttribute('color', 'rgb('+rgb.join(',')+')');
+					});
+				}
 			});
 		</script>
 	
