@@ -32,7 +32,6 @@
 				schema: {},
 				init: function(){
 					var self = this;
-					self.position.set(0, 2, 0);
 					self.el.object3D.addEventListener('cursorup', function(){
 						var rgb = [
 							Math.floor(Math.random()*256),
@@ -47,11 +46,6 @@
 	
 	</head>
 	<body>
-		
-<!--Bouncer Destination-->		
-		<a id="kick" href="altspace://account.altvr.com/api/spaces/613940881048732244"></a>
-		<a id="kick2" href="altspace://account.altvr.com/api/events/641428471909712300"></a>
-		
 		<a-scene 
 			altspace=fullspace:true;
 			sync-system="author: tr4sh_p4nda; app: theHangOut">
