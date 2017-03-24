@@ -26,61 +26,47 @@
 <!--Secret Button-->
 		
 		<script>
-  		var renderer = altspace.getThreeJSRenderer();
- 		var scene = new THREE.Scene();
- 		var sky = new THREE.Mesh();
- 		var models = ["models/sana/swordinstone.obj", 
- 	      		"models/sana/grass.obj", 
- 	      		"models/sana/skull.obj", 
- 	      		"models/sana/snow.obj",
- 	      		"models/sana/molecule.obj", 
- 	      		"models/sana/sana.obj", 
- 	      		"models/sana/clock.obj", 
- 	      		"models/sana/minute.obj", 
- 	      		"models/sana/hour.obj",
- 	      		"models/sana/second.obj", 
- 	      		"models/sana/3pictures.obj", 
- 	      		"models/sana/backing.obj", 
- 	      		"models/sana/carpet.obj", 
- 	      		"models/sana/backwallfar.obj",
- 	      		"models/sana/backwallclose.obj", 
- 	      		"models/sana/flooringcap.obj", 
- 	      		"models/sana/curvewall.obj", 
- 	      		"models/sana/parlor.obj"];
- 		var timer;
- 		var angle = 1;
- 
- 		var headPos = new THREE.Object3D;
- 		scene.add(headPos);
- 
- 		(function setup(){
- 			altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
- 				scene.add(skeleton);
- 				headTrack = skeleton.getJoint("Head");
- 				altspace.getEnclosure().then(function(enclosure){
- 					enclosure.requestFullspace();
- 					main();
- 				});
- 			});
- 		})();
- 
- 		function main(){
- 			UltimateLoader.multiload(models, function(obj){
- 				var geometry = new THREE.PlaneGeometry(2, 2);
-				var material = new THREE.MeshBasicMaterial({opacity: 0, transparent: true});
-				var plane = new THREE.Mesh(geometry, material);
-				plane.position.set(0, 1, 0);
-				plane.rotation.x = THREE.Math.degToRad(90);
-				plane.addEventListener('cursorup', function (){
-					document.getElementById('linkToRoom').click();
-				});
-				scene.add(plane);
-	 				animate();
-	 			});
-				
-				function animate(){
-					requestAnimationFrame(animate);
-					renderer.render(scene);
+			var renderer = altspace.getThreeJSRenderer();
+			var scene = new THREE.Scene();
+			var sky = new THREE.Mesh();
+			var models = ["models/sana/swordinstone.obj", 
+					"models/sana/grass.obj", 
+					"models/sana/skull.obj", 
+					"models/sana/snow.obj",
+					"models/sana/molecule.obj", 
+					"models/sana/sana.obj", 
+					"models/sana/clock.obj", 
+					"models/sana/minute.obj", 
+					"models/sana/hour.obj",
+					"models/sana/second.obj", 
+					"models/sana/3pictures.obj", 
+					"models/sana/backing.obj", 
+					"models/sana/carpet.obj", 
+					"models/sana/backwallfar.obj",
+					"models/sana/backwallclose.obj", 
+					"models/sana/flooringcap.obj", 
+					"models/sana/curvewall.obj", 
+					"models/sana/parlor.obj"];
+			var timer;
+			var angle = 1;
+	 
+			function main(){
+				UltimateLoader.multiload(models, function(obj){
+					var geometry = new THREE.PlaneGeometry(2, 2);
+					var material = new THREE.MeshBasicMaterial({opacity: 0, transparent: true});
+					var plane = new THREE.Mesh(geometry, material);
+					plane.position.set(0, 1, 0);
+					plane.rotation.x = THREE.Math.degToRad(90);
+					plane.addEventListener('cursorup', function (){
+						document.getElementById('linkToRoom').click();
+					});
+					scene.add(plane);
+						animate();
+					});
+					
+					function animate(){
+						requestAnimationFrame(animate);
+						renderer.render(scene);
 				};
 			};
 		</script>
