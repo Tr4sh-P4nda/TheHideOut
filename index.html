@@ -235,7 +235,7 @@
 				</a-box>
 			</a-entity>
 		
-<!--dark wall 1>
+<!--dark wall 1-->
 			<a-plane src="images/darkwalltile.jpg" 
 				material="repeat: 25 10" 
 				height="6.25" 
@@ -244,9 +244,9 @@
 				side="double" 
 				rotation="0 -65.84 0" 
 				position="7.97225 1 5.9">
-			</a-plane-->
+			</a-plane>
 	
-<!--dark wall 2>
+<!--dark wall 2-->
 			<a-plane src="images/darkwalltile.jpg" 
 				material="repeat: 25 10" 
 				height="6.25" 
@@ -255,7 +255,7 @@
 				side="double" 
 				rotation="0 -65.84 0" 
 				position="8.7 1 5.9">
-			</a-plane-->
+			</a-plane>
 		
 <!--ceiling-->
 			<a-plane src="images/starskytile.jpg" 
@@ -280,7 +280,7 @@
 <!--DJ Booth-->
 			<a-entity
 				position="0 0 0">
-				<a-box altspace-cursor-collider="enabled:true" 
+				<!--a-box altspace-cursor-collider="enabled:true" 
 					position="1.65 4.33 31.1" 
 					depth=".75" 
 					height="1" 
@@ -289,7 +289,7 @@
 					material="src:url(images/djbooth.jpg);transparent:true;visible:false" 
 					geometry="primitive:box;depth:.75;height:1;width:3.75" 
 					scale="1.85 12.91 11.05">
-				</a-box>
+				</a-box-->
 			
 				<a-box id="boothunderlight" 
 					altspace-cursor-collider="enabled:true"  
@@ -427,7 +427,7 @@
 						from='0 0 0' 
 						to='15 360 0' 
 						direction="alternate" 
-						dur='1000' 
+						dur='2000' 
 						easing="linear"
 						repeat='indefinite' 
 						easeInOut="sine">
@@ -437,7 +437,7 @@
 						from='0' 
 						to='0.1' 
 						direction="alternate" 
-						dur='100'
+						dur='200'
 						repeat='indefinite'>
 					</a-animation>
 				</a-cylinder>
@@ -452,20 +452,20 @@
 					rotation="0 72 -15" 
 					visible="true">
 					<a-animation rotation="0 72 0" 
-                        attribute="rotation" 
-                        from='0 72 0' 
-                        to='15 432 0' 
-                        direction="alternate" 
-                        dur='1000' easing="linear"
-                        repeat='indefinite' 
-                        easeInOut="sine">
+                        			attribute="rotation" 
+                        			from='0 72 0' 
+                        			to='15 432 0' 
+                        			direction="alternate" 
+                        			dur='2000' easing="linear"
+                        			repeat='indefinite' 
+                        			easeInOut="sine">
 					</a-animation>
 					<a-animation 
 						attribute="opacity" 
 						from='0' 
 						to='0.1' 
 						direction="alternate" 
-						dur='100'
+						dur='200'
 						repeat='indefinite'>
 					</a-animation>
 				</a-cylinder>
@@ -485,7 +485,7 @@
 						from='0 144 0' 
 						to='15 504 0' 
 						direction="alternate" 
-						dur='1000' 
+						dur='2000' 
 						easing="linear"
 						repeat='indefinite' 
 						easeInOut="sine">
@@ -495,7 +495,7 @@
 						from='0' 
 						to='0.1' 
 						direction="alternate" 
-						dur='100'
+						dur='200'
 						repeat='indefinite'>
 					</a-animation>
 				</a-cylinder>
@@ -515,7 +515,7 @@
 						from='0 216 0' 
 						to='15 576 0' 
 						direction="alternate" 
-						dur='1000' 
+						dur='2000' 
 						easing="linear"
 						repeat='indefinite' 
 						easeInOut="sine">
@@ -526,7 +526,7 @@
 						from='0' 
 						to='0.1' 
 						direction="alternate" 
-						dur='100'
+						dur='200'
 						repeat='indefinite'>
 					</a-animation>
 				</a-cylinder>
@@ -546,7 +546,7 @@
 						from='0 288 0' 
 						to='15 648 0' 
 						direction="alternate" 
-						dur='1000' 
+						dur='2000' 
 						easing="linear"
 						repeat='indefinite' 
 						easeInOut="sine">
@@ -557,7 +557,7 @@
 						from='0' 
 						to='0.1' 
 						direction="alternate" 
-						dur='100'
+						dur='200'
 						repeat='indefinite'>
 					</a-animation>
 				</a-cylinder>
@@ -568,7 +568,7 @@
 					from='0 0 -30' 
 					to='0 0 30' 
 					direction="alternate" 
-					dur='5000' 
+					dur='7500' 
 					easing="linear"
 					repeat='indefinite' 
 					easeInOut="sine">
@@ -604,47 +604,47 @@
 						from='0 0 0' 
 						to='15 360 0' 
 						direction="alternate" 
-						dur='1000' 
-                        easing="linear"
-                        repeat='indefinite' 
-                        easeInOut="sine">
+						dur='2000' 
+                        			easing="linear"
+                        			repeat='indefinite' 
+                        			easeInOut="sine">
 					</a-animation>
 					
 					<a-animation attribute="opacity" 
-                        from='0' 
-                        to='0.1' 
-                        direction="alternate" 
-                        dur='100'
-                        repeat='indefinite'>
+                        			from='0' 
+                        			to='0.1' 
+                        			direction="alternate" 
+                        			dur='200'
+                        			repeat='indefinite'>
 					</a-animation>
 				</a-cylinder>
 				
 				<a-cylinder id="laser1.1" 
 					position="0 -0.27 0" 
 					scale="1 20 1" 
-                    radius="0.01" 
-                    color="#00FF22" 
-                    transparent="true" 
-                    opacity="0.1"
-                    rotation="0 72 -15" 
-                    visible="true">
+                    			radius="0.01" 
+                    			color="#00FF22" 
+                    			transparent="true" 
+                    			opacity="0.1"
+                    			rotation="0 72 -15" 
+                    			visible="true">
 					<a-animation rotation="0 72 0" 
 						attribute="rotation" 
-                        from='0 72 0' 
-                        to='15 432 0' 
-                        direction="alternate" 
-                        dur='1000' 
-                        easing="linear"
-                        repeat='indefinite' 
-                        easeInOut="sine">
+                        			from='0 72 0' 
+                        			to='15 432 0' 
+                        			direction="alternate" 
+                        			dur='2000' 
+                        			easing="linear"
+                        			repeat='indefinite' 
+                        			easeInOut="sine">
 					</a-animation>
 					
 					<a-animation attribute="opacity" 
-                        from='0' 
-                        to='0.1' 
-                        direction="alternate" 
-                        dur='100'
-                        repeat='indefinite'>
+                        			from='0' 
+                        			to='0.1' 
+                        			direction="alternate" 
+                        			dur='200'
+                        			repeat='indefinite'>
 					</a-animation>
 				</a-cylinder>
 				
@@ -659,71 +659,71 @@
 					rotation="0 144 -15" 
 					visible="true">
 					<a-animation rotation="0 144 0"
-                        attribute="rotation" 
-                        from='0 144 0' 
-                        to='15 504 0' 
-                        direction="alternate" 
-                        dur='1000' 
-                        easing="linear"
-                        repeat='indefinite' 
-                        easeInOut="sine">
+                        			attribute="rotation" 
+                        			from='0 144 0' 
+                        			to='15 504 0' 
+                        			direction="alternate" 
+                        			dur='2000' 
+                        			easing="linear"
+                        			repeat='indefinite' 
+                        			easeInOut="sine">
 					</a-animation>
                 
 					<a-animation attribute="opacity" 
-                        from='0' 
-                        to='0.1' 
-                        direction="alternate" 
-                        dur='100'
-                        repeat='indefinite'>
+                        			from='0' 
+                        			to='0.1' 
+                        			direction="alternate" 
+                        			dur='200'
+                        			repeat='indefinite'>
 					</a-animation>
 				</a-cylinder>
             
 				<a-cylinder 
 					id="laser1.1" 
-                    position="0 -0.27 0" 
-                    scale="1 20 1" 
-                    radius="0.01" 
-                    color="#EFFF00" 
-                    transparent="true" 
-                    opacity="0.1"
-                    rotation="0 216 -15" 
-                    visible="true">
+                    			position="0 -0.27 0" 
+                    			scale="1 20 1" 
+                    			radius="0.01" 
+                    			color="#EFFF00" 
+                    			transparent="true" 
+                    			opacity="0.1"
+                    			rotation="0 216 -15" 
+                    			visible="true">
 					<a-animation rotation="0 216 0"
-                        attribute="rotation" 
-                        from='0 216 0' 
-                        to='15 576 0' 
-                        direction="alternate" 
-                        dur='1000' 
-                        easing="linear"
-                        repeat='indefinite' 
-                        easeInOut="sine">
+                        			attribute="rotation" 
+                        			from='0 216 0' 
+                        			to='15 576 0' 
+                        			direction="alternate" 
+                        			dur='2000' 
+                        			easing="linear"
+                        			repeat='indefinite' 
+                        			easeInOut="sine">
 					</a-animation>
                 
 					<a-animation 
 						attribute="opacity" 
-                        from='0' 
-                        to='0.1' 
-                        direction="alternate" 
-                        dur='100'
-                        repeat='indefinite'>
+                        			from='0' 
+                        			to='0.1' 
+                        			direction="alternate" 
+                        			dur='200'
+                        			repeat='indefinite'>
 					</a-animation>
 				</a-cylinder>
 				<a-cylinder 
 					id="laser1.1" 
-                    position="0 -0.27 0" 
-                    scale="1 20 1" 
-                    radius="0.01" 
-                    color="#FF00F7" 
-                    transparent="true" 
-                    opacity="0.1"
-                    rotation="0 288 -15" 
-                    visible="true">
+                    			position="0 -0.27 0" 
+                    			scale="1 20 1" 
+                    			radius="0.01" 
+                    			color="#FF00F7" 
+                    			transparent="true" 
+                    			opacity="0.1"
+                    			rotation="0 288 -15" 
+                    			visible="true">
 					<a-animation rotation="0 288 0"
 						attribute="rotation" 
 						from='0 288 0' 
 						to='15 648 0'
 						direction="alternate" 
-						dur='1000' 
+						dur='2000' 
 						easing="linear"
 						repeat='indefinite' 
 						easeInOut="sine">
@@ -732,7 +732,7 @@
 						from='0' 
 						to='0.1' 
 						direction="alternate" 
-						dur='100'
+						dur='200'
 						repeat='indefinite'>
 					</a-animation>
 				</a-cylinder>
@@ -741,7 +741,7 @@
 					from='0 0 30' 
 					to='0 0 -30' 
 					direction="alternate" 
-					dur='5000' 
+					dur='7500' 
 					easing="linear"
 					repeat='indefinite' 
 					easeInOut="sine">
@@ -891,7 +891,7 @@
 					scale="1.5 2.87 1.5" 
 					altspace-cursor-collider="enabled:true" 
 					n-mesh-collider="type:environment;convex:true" 
-                    radius="0.01">
+                    			radius="0.01">
 				</a-cylinder>
 		
 				<a-cylinder 
@@ -968,20 +968,20 @@
 		
 				<a-cylinder 
 					src="images/djbooth.jpg" 
-                    position="11.75 2.17 25.13" 
-                    scale="1.5 2.87 1.5" 
-                    altspace-cursor-collider="enabled:true" 
-                    n-mesh-collider="type:environment;convex:true" 
-                    radius="0.01">
+                    			position="11.75 2.17 25.13" 
+                    			scale="1.5 2.87 1.5" 
+                    			altspace-cursor-collider="enabled:true" 
+                    			n-mesh-collider="type:environment;convex:true" 
+                    			radius="0.01">
 				</a-cylinder>
     
 				<a-cylinder 
 					src="images/djbooth.jpg" 
-                    position="11.3 2.17 25.13" 
-                    scale="1.5 2.87 1.5" 
-                    altspace-cursor-collider="enabled:true" 
-                    n-mesh-collider="type:environment;convex:true" 
-                    radius="0.01">
+                    			position="11.3 2.17 25.13" 
+                    			scale="1.5 2.87 1.5" 
+                    			altspace-cursor-collider="enabled:true" 
+                    			n-mesh-collider="type:environment;convex:true" 
+                    			radius="0.01">
 				</a-cylinder>
 				</a-entity>
     
