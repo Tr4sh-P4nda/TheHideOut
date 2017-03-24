@@ -51,26 +51,6 @@
 			document.getElementById('kick2').click();
 			});
 		</script>
-								
-<!--An example custom component, that will change the color when clicked-->
-		<script>
-			AFRAME.registerComponent('color-cycle', {
-				schema: {},
-				init: function(){
-					var self = this;
-					self.position.set(0, 2, 0);
-					self.el.object3D.addEventListener('cursorup', function(){
-						var rgb = [
-							Math.floor(Math.random()*256),
-							Math.floor(Math.random()*256),
-							Math.floor(Math.random()*256)
-						];
-						self.el.setAttribute('color', 'rgb('+rgb.join(',')+')');
-					});
-				}
-			});
-		</script>
-	
 	</head>
 	<body>
 		
@@ -96,8 +76,6 @@
 					src="assets/carpet.mtl"></a-asset-item>        
 			</a-assets>
 			
-			<a-box position='0 1 0' color-cycle></a-box>
-    
 <!--Sky Box-->	
 			<a-sky 
 				radius="150" 
