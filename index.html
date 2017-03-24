@@ -53,7 +53,7 @@
 			function main(){
 				UltimateLoader.multiload(models, function(obj){
 					var geometry = new THREE.PlaneGeometry(2, 2);
-					var material = new THREE.MeshBasicMaterial({opacity: 0, transparent: true});
+					var material = new THREE.MeshBasicMaterial({opacity: 1, transparent: false});
 					var plane = new THREE.Mesh(geometry, material);
 					plane.position.set(0, 1, 0);
 					plane.rotation.x = THREE.Math.degToRad(90);
