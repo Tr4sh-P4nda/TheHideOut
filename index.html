@@ -221,10 +221,16 @@
 			</a-assets>
 			
 <!--Room Buttons-->
-			<a-box color="#FFFFFF" width=".05" height=".05" depth=".5" position="-5.1 5.6 -3.2" cursor-interact="uri: altspace://account.altvr.com/api/events/638507976642002967"></a-box>
-				
-			<a-box color="#0000FF" width="1" height="1" depth="1" position="1 1 0" cursor-interact="uri: altspace://account.altvr.com/api/events/642169190601457860"></a-box>
-				
+			<a-entity position="0 0 0">
+				<a-entity position="0 0 0">
+					<!a-entity n-billboard position="0 0 0" n-text="text:New User Info; fontSize:2"></a-entity>
+					<a-box color="#FFFFFF" width=".05" height=".05" depth=".5" position="-5.1 5.6 -3.2" cursor-interact="uri: altspace://account.altvr.com/api/events/638507976642002967"></a-box>
+				</a-entity>
+				<a-entity position="0 0 0">
+					<!a-entity n-billboard position="0 0 0" n-text="text:New User Info; fontSize:2"></a-entity>		
+					<a-box color="#0000FF" width="1" height="1" depth="1" position="1 1 0" cursor-interact="uri: altspace://account.altvr.com/api/events/642169190601457860"></a-box>
+				</a-entity>
+			</a-entity>
 <!--Sky Box-->	
 			<a-sky 
 				radius="150" 
