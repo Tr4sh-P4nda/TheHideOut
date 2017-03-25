@@ -10,7 +10,7 @@
 		<script src="https://cdn.rawgit.com/norybiak/UltimateLoader/v0.4.2/dist/UltimateLoader.min.js"></script>
 		<script src="https://cdn.rawgit.com/oOblik/AltspaceVR-Native-Components-JS/0.1.2/js/JSNativeComponents.js"></script>
 		<script src="https://cdn.rawgit.com/norybiak/UltimateLoader/master/dist/UltimateLoader.min.js"></script>
-		<script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v2.0.3/dist/aframe-altspace-component.min.js"></script>
+		<script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.2/dist/aframe-altspace-component.min.js"></script>
 		<script>
 			altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
 			window.head = skeleton.getJoint('Head');
@@ -24,6 +24,17 @@
 				this.el.object3D.lookAt(window.head.position); 
 			}
 			})
+		</script>
+		<script type="text/javascript">
+			AFRAME.registerComponent('cursor-interact', {
+				schema: {
+					uri: { type: 'string' }
+				},
+				init: function() {
+					var uri = this.el.appendChild(Object.assign(document.createElement('a'), { href: this.data.uri }));
+					this.el.addEventListener('click', function() { uri.click(); });
+				}
+			});
 		</script>
 
 <!--The Bouncer-->
@@ -57,6 +68,133 @@
 			document.getElementById('kick2').click();
 			});
 		</script>
+		
+<!--An example custom component, that will change the color when clicked>
+		<script>
+			AFRAME.registerComponent('color-cycle', {
+				schema: {},
+				init: function(){
+					var self = this;
+					self.position.set(0, 2, 0);
+					self.el.object3D.addEventListener('cursorup', function(){
+						var rgb = [
+							Math.floor(Math.random()*256),
+							Math.floor(Math.random()*256),
+							Math.floor(Math.random()*256)
+						];
+						self.el.setAttribute('color', 'rgb('+rgb.join(',')+')');
+					});
+				}
+			});
+		</script-->
+		<!--//Put this script before the end of the </head> tag after all your other remote scripts
+		<!--script type="text/javascript" src="https://rawgit.com/Enderthexen/AltVRModTools/master/mod.js">
+		<!--//Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between <script></script>, preferrably towards the top of your HTML file but after your remote scripts (like the one above).
+		
+		var username = "";
+		<!--Setup the library, get user's display name and save to global variable
+		function setup(){
+			return new Promise(function (resolve) {
+				altspace.getUser().then(function(userInfo) {
+					if(userInfo && userInfo.userId && userInfo.displayName){
+						username = userInfo.displayName;
+					}
+					resolve();
+				});
+			});
+		}
+
+		<!--Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
+		function blackList(names, url){
+			document.body.innerHTML += '<a id="blackList" href="'+url+'"></a>';
+			for(var i = 0; i < names.length; i++){
+				var name = names[i];
+				if(name == username){
+					document.getElementById('blackList').click();
+				}
+			}
+		}
+
+		<!--Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
+		function whiteList(names, url){
+			document.body.innerHTML += '<a id="whiteList" href="'+url+'"></a>';
+			var whiteListed = false;
+			for(var i = 0; i < names.length; i++){
+				var name = names[i];
+				if(name == username){
+					whiteListed = true;
+				}
+			}
+			if(!whiteListed)
+				document.getElementById('whiteList').click();
+		}
+
+		<!--Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+		function blackListTeleport(names, object, url){
+			document.body.innerHTML += '<a id="blackListTeleport" href="'+url+'"></a>';
+			var blackListed = false;
+			for(var i = 0; i < names.length; i++){
+				var name = names[i];
+				if(name == username){
+					blackListed = true;
+				}
+			}
+			if(!blackListed){
+				object.addEventListener("cursorup", function(e){
+					document.getElementById('blackListTeleport').click();
+				});
+			}
+		}
+
+		<!--Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+		function whiteListTeleport(names, object, url){
+			document.body.innerHTML += '<a id="whiteListTeleport" href="'+url+'"></a>';
+			for(var i = 0; i < names.length; i++){
+				var name = names[i];
+				if(name == username){
+					object.addEventListener("cursorup", function(e){
+						document.getElementById('whiteListTeleport').click();
+					});
+				}
+			}
+		}
+
+		<!--Auto guest kicker. Pass the URL they are to be redirected to along with the minimum length of their username (e.g. Kick anyone whose display name starts with "Guest" or kick anyone whose display name starts with "Guest" but has more than 9 characters in their username)
+		function guestKicker(url, minLength){
+			document.body.innerHTML += '<a id="guestKick" href="'+url+'"></a>';
+			if(username.match(/^Guest*/) && username.length >= minLength)
+				document.getElementById('guestKick').click();
+		}
+		<!--Example script for setting up all blacklist / whitelist / kicking functions
+		/*
+		<!--Put this script before the end of the </head> tag after all your other remote scripts
+		<script type="text/javascript" src="https://rawgit.com/Enderthexen/AltVRModTools/master/mod.js"></script>
+		
+		<!--Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between <script></script>, preferrably towards the top of your HTML file but after your remote scripts (like the one above).
+		setup().then(function() {
+			
+			<!--URL of where guests are to be redirected along with the minimum number of characters in the username.
+			guestKicker("altspace://account.altvr.com/api/spaces/613940881048732244", 10);
+			
+			<!--List of blacklisted users along with the URL that they are to be redirected to.
+			blackList(["Someasshole", "Anotherasshole"], "altspace://account.altvr.com/api/spaces/613940881048732244");
+			
+			<!--List of whitelisted users along with the URL that non-whitelisted users are to be redirected to.
+			whiteList(["Awesomeperson", "Notanasshole"], "altspace://account.altvr.com/api/spaces/613940881048732244");
+			
+			<!--If you're using a-frame for you buttons, you'll need this.
+			var object = document.querySelector('#id-of-button').object3D;
+			
+			<!--List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
+			blackListTeleport(["Someasshole", "Anotherasshole"], object, "altspace://account.altvr.com/api/spaces/613940881048732244");
+			var object2 = document.querySelector('#id-of-button2').object3D;
+			
+			<!--List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
+			whiteListTeleport(["Awesomeperson", "Notanasshole"], object2, "altspace://account.altvr.com/api/spaces/613940881048732244");
+		});
+		*/
+		<!--URL of where guests are to be redirected along with the minimum number of characters in the username.
+		</script-->
 	</head>
 	<body>
 		
@@ -82,6 +220,18 @@
 					src="assets/carpet.mtl"></a-asset-item>        
 			</a-assets>
 			
+<!--Testing-->
+			<a-entity position="0 0 0">
+				<a-entity position="-1 1 0">
+					<a-entity n-billboard position="0 1 0" n-text="text:New User Info; fontSize:2"></a-entity>
+					<a-box color="#FF0000" width="1" height="1" depth="1" position="0 0 0" cursor-interact="uri: altspace://account.altvr.com/api/spaces/new-user-info"></a-box>
+				</a-entity>
+				<a-entity position="1 1 0">
+					<a-entity n-billboard position="0 1 0" n-text="text:The Campfire; fontSize:2"></a-entity>
+					<a-box color="#0000FF" width="1" height="1" depth="1" position="0 0 0" cursor-interact="uri: altspace://account.altvr.com/api/spaces/campfire-lobby"></a-box>
+				</a-entity>
+			</a-entity>			
+    
 <!--Sky Box-->	
 			<a-sky 
 				radius="150" 
@@ -774,7 +924,7 @@
 				</a-animation>
 			</a-entity>
     
-<!--Dance Cage 1>
+<!--Dance Cage 1-->
 			<a-entity 
 				id="Dance Cage 1"
 				position="-4 2.5 4.5">
@@ -1009,9 +1159,9 @@
                     n-mesh-collider="type:environment;convex:true" 
                     radius="0.01">
 				</a-cylinder>
-				</a-entity-->
+				</a-entity>
     
-<!--Dance Cage 2>
+<!--Dance Cage 2-->
 			<a-entity 
 				id="Dance Cage 2"
 				position="-15 2.5 9">
@@ -1246,7 +1396,7 @@
 					n-mesh-collider="type:environment;convex:true" 
 					radius="0.01">
 				</a-cylinder>
-			</a-entity-->
+			</a-entity>
 
 <!--disco ball-->
 			<a-entity
