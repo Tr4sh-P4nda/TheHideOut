@@ -8,6 +8,12 @@
 		<script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
 		<script>
 			altspace.getUser().then(function(result) {
+			if(result.displayName.match(/^cattz*/) )
+			document.getElementById('kick2').click();
+			});
+		</script>
+		<script>
+			altspace.getUser().then(function(result) {
 			if(result.displayName.match(/^Shimron Elit*/) )
 			document.getElementById('kick2').click();
 			});
@@ -21,12 +27,6 @@
 		<script>
 			altspace.getUser().then(function(result) {
 			if(result.displayName.match(/^katherine*/) )
-			document.getElementById('kick2').click();
-			});
-		</script>
-		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^cattz*/) )
 			document.getElementById('kick2').click();
 			});
 		</script>
