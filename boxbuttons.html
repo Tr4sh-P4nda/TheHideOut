@@ -20,23 +20,13 @@
 	</head>
 	<body>
 		<a-scene altspace=fullspace:true>
-			<a-entity position="0 0 0">
-				<a-entity position="-1 0 0">
-					<a-entity n-billboard position="0 1 0" n-text="text:New User Info; fontSize:2"></a-entity>
-					<a-box color="#FF0000" width="1" height="1" depth="1" position="0 0 0" cursor-interact="uri: altspace://account.altvr.com/api/spaces/new-user-info"></a-box>
-				</a-entity>
-				<a-entity position="1 0 0">
-					<a-entity n-billboard position="0 1 0" n-text="text:The Campfire; fontSize:2"></a-entity>
-					<a-box color="#0000FF" width="1" height="1" depth="1" position="0 0 0" cursor-interact="uri: altspace://account.altvr.com/api/spaces/campfire-lobby"></a-box>
-				</a-entity>
-			</a-entity>
 			<a-plane src="images/grid.png" 
-				material="repeat:5 5" 
-				height="1" 
-				width="1" 
+				material="repeat:50 50" 
+				height="100" 
+				width="100" 
 				side="double" 
 				rotation="90 0 0" 
-				position="0 1 0">
+				position="0 0 0">
 			</a-plane>
 		</a-scene>
 	</body>
