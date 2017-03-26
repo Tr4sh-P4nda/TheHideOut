@@ -73,33 +73,6 @@
 				</a-entity>
 			</a-entity>
 		
-<!--Door Block>
-			<a-entity
-				position="0 0 0">
-				<a-box id="Door Block" 
-					src="images/door.png"
-					altspace-cursor-collider="enabled:false" 
-					position="-8.17 5.64 -5.14"
-					n-mesh-collider="type:environment;convex:false" 
-					material=";transparent:false;visible:true" 
-					geometry="primitive:box;depth:.6;height:.1;width:3.9" 
-					scale="0.02 27.89 3.68">
-				</a-box>
-			
-				<a-entity position="-8.51 4.4 -8.21" 
-					rotation="90 0 0" 
-					scale="14.94 16.76 1" 
-					id="" 
-					geometry="primitive:plane" 
-					material="flatShading:false;visible:false;transparent:true;side:double">
-				</a-entity>
-			
-				<a-entity position="-9.15 0.01 -15.14" 
-					rotation="90 0 0" 
-					scale="11.91 6.19 1" 
-					geometry="primitive:plane" 
-					material="transparent:true;visible:false;side:double">
-				</a-entity>
 <!--Roof Physics-->
 			<a-entity 
 				position="0 21.66 8.65">
@@ -201,17 +174,6 @@
 <!--DJ Booth-->
 			<a-entity
 				position="0 0 0">
-				<!--a-box altspace-cursor-collider="enabled:true" 
-					position="1.65 4.33 31.1" 
-					depth=".75" 
-					height="1" 
-					width="3.75" 
-					n-mesh-collider="type:environment;convex:true" 
-					material="src:url(images/djbooth.jpg);transparent:true;visible:false" 
-					geometry="primitive:box;depth:.75;height:1;width:3.75" 
-					scale="1.85 12.91 11.05">
-				</a-box-->
-			
 				<a-box id="boothunderlight" 
 					altspace-cursor-collider="enabled:true"  
 					position="1.65 0 28.74" 
@@ -526,17 +488,18 @@
 						to='15 360 0' 
 						direction="alternate" 
 						dur='1000' 
-                        easing="linear"
-                        repeat='indefinite' 
-                        easeInOut="sine">
+                        			easing="linear"
+                       				repeat='indefinite' 
+                       				easeInOut="sine">
 					</a-animation>
 					
-					<a-animation attribute="opacity" 
-                        from='0' 
-                        to='0.1' 
-                        direction="alternate" 
-                        dur='100'
-                        repeat='indefinite'>
+					<a-animation 
+						attribute="opacity" 
+                        			from='0' 
+                        			to='0.1' 
+                       		 		direction="alternate" 
+                        			dur='100'
+                        			repeat='indefinite'>
 					</a-animation>
 				</a-cylinder>
 				
@@ -905,151 +868,6 @@
 					</a-animation>
 				</a-plane>
 			</a-entity>
-
-<!--Photos>			
-			<!a-plane
-				id="Photo 1"
-				src="images/image1.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 90 0" 
-				radius="2" 
-				side="double"
-				position="-14.9 5.91 4.228">
-			</a-plane>
-
-			<!a-plane 
-				id="Photo 2"
-				src="images/image2.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 90 0" 
-				radius="2" 
-				side="double"
-				position="-14.9 5.91 .528">
-			</a-plane>
-
-			<!a-plane 
-				id="Photo 3"
-				src="images/image3.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 90 0" 
-				radius="2" 
-				side="double"
-				position="-14.9 5.91 -3.198">
-			</a-plane>
-    
-			<!a-plane 
-				id="Photo 4"
-				src="images/image4.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 360 0" 
-				radius="2" 
-				side="double"
-				position="-12.74 5.91 -6.297">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 5"
-				src="images/image5.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 360 0" 
-				radius="2" 
-				side="double"
-				position="-10.34 5.91 -6.297">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 6"
-				src="images/image6.jpg" 
-				height="1.3" 
-				width=".95" 
-				rotation="0 180 0" 
-				radius="2" 
-				side="double"
-				position="-8.92 6.14 -6.8">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 7"
-				src="images/image7.jpg" 
-				height="1.3" 
-				width="1" 
-				rotation="0 180 0" 
-				radius="2" 
-				side="double"
-				position="-10 6.14 -6.8">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 8"
-				src="images/image8.jpg" 
-				height="1.3" 
-				width=".95" 
-				rotation="0 180 0" 
-				radius="2" 
-				side="double"
-				position="-11.07 6.14 -6.8">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 9"
-				src="images/image9.jpg" 
-				height="1.3" 
-				width=".94" 
-				rotation="0 180 0" 
-				radius="2" 
-				side="double"
-				position="-12.08 6.14 -6.8">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 10"
-				src="images/image10.jpg" 
-				height="1.3" 
-				width=".95" 
-				rotation="0 180 0" 
-				radius="2" 
-				side="double"
-				position="-13.1 6.14 -6.8">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 11"
-				src="images/image11.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 90 0" 
-				radius="2" 
-				side="double"
-				position="-13.85 7.17 -8.9">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 12"
-				src="images/image12.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 90 0" 
-				radius="2" 
-				side="double"
-				position="-13.85 7.17 -11.056">
-			</a-plane>
-		
-			<!a-plane 
-				id="Photo 13"
-				src="images/image13.jpg" 
-				height=".945" 
-				width="2.235" 
-				rotation="0 -180 0" 
-				radius="2"
-				side="double" 
-				position="-5.99 7.17 -3.65">
-			</a-plane>
-<End Photos-->	
 		</a-scene>
 
 <!--script that is needed to run the dance floor -->
