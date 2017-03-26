@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>Privacy Room</title>
+		<script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
+		<script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.0.3/dist/altspace.min.js"></script>
+		<script type="text/javascript">
+			AFRAME.registerComponent('cursor-interact', {
+				schema: {
+					uri: { type: 'string' }
+				},
+				init: function() {
+					var uri = this.el.appendChild(Object.assign(document.createElement('a'), { href: this.data.uri }));
+					this.el.addEventListener('click', function() { uri.click(); });
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<a-scene altspace=fullspace:true>
+			
+<!--Room Buttons-->			
+			<a-entity position="0 1 0">
+				<a-entity position="-1 1 0">
+					<a-entity 
+						  position="-4.45 0.75 -1.905"
+						  rotation="0 90 0"
+						  n-text="text:The Hide Out; fontSize:2"></a-entity>
+					<a-box 
+					       color="red" 
+					       width="0.1" 
+					       height="0.35" 
+					       depth="0.01" 
+					       position="-4.45 0 -1.9"
+					       rotation="0 90 0"
+					       cursor-interact="uri: altspace://account.altvr.com/api/events/625684565574287708"></a-box>
+				</a-entity>
+				<!--a-entity position="1 1 0">
+					<a-entity 
+						  n-billboard position="0 1 0" 
+						  n-text="text:The Campfire; fontSize:2"></a-entity>
+					<a-box 
+					       color="#0000FF" 
+					       width="1" 
+					       height="1" 
+					       depth="1" 
+					       position="0 0 0" 
+					       cursor-interact="uri: altspace://account.altvr.com/api/spaces/campfire-lobby"></a-box>
+				</a-entity-->
+			</a-entity>
+			<!--a-plane src="images/grid.png" 
+				material="repeat:100 100" 
+				height="100" 
+				width="100" 
+				side="double" 
+				rotation="90 0 0" 
+				position="0 1 0">
+			</a-plane-->
+		</a-scene>
+	</body>
+</html>
