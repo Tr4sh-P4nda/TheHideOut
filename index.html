@@ -6,6 +6,36 @@
 			content="width=device-width">
 		<title>The Hang Out</title>
 		<script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+		<script>
+			altspace.getUser().then(function(result) {
+			if(result.displayName.match(/^Shimron Elit*/) )
+			document.getElementById('kick2').click();
+			});
+		</script>
+		<script>
+			altspace.getUser().then(function(result) {
+			if(result.displayName.match(/^Jared*/) )
+			document.getElementById('kick2').click();
+			});
+		</script>
+		<script>
+			altspace.getUser().then(function(result) {
+			if(result.displayName.match(/^katherine*/) )
+			document.getElementById('kick2').click();
+			});
+		</script>
+		<script>
+			altspace.getUser().then(function(result) {
+			if(result.displayName.match(/^cattz*/) )
+			document.getElementById('kick2').click();
+			});
+		</script>
+		<script>
+			altspace.getUser().then(function(result) {
+			if(result.displayName.match(/^biogod*/) )
+			document.getElementById('kick2').click();
+			});
+		</script>
 		<script src="https://sdk.altvr.com/libs/altspace.js/2.0.3/altspace.min.js"></script>
 		<script src="https://cdn.rawgit.com/norybiak/UltimateLoader/v0.4.2/dist/UltimateLoader.min.js"></script>
 		<script src="https://cdn.rawgit.com/oOblik/AltspaceVR-Native-Components-JS/0.1.2/js/JSNativeComponents.js"></script>
@@ -44,30 +74,7 @@
 			document.getElementById('kick').click();
 			});
 		</script>
-		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^Shimron Elit*/) )
-			document.getElementById('kick2').click();
-			});
-		</script>
-		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^Jared*/) )
-			document.getElementById('kick2').click();
-			});
-		</script>
-		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^katherine*/) )
-			document.getElementById('kick2').click();
-			});
-		</script>
-		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^cattz*/) )
-			document.getElementById('kick2').click();
-			});
-		</script>
+
 		
 <!--An example custom component, that will change the color when clicked>
 		<script>
