@@ -9,7 +9,7 @@
 <!-- set up the scene -->
 <a-scene altspace=fullspace:true>
 <!-- add the moon to the scene -->
-    <a-sphere position='500 500 100' 
+    <a-sphere position='0 -25 0' 
               radius="50" 
               src="images/moon.jpg"
               altspace-cursor-collider="enabled:true" 
@@ -17,7 +17,7 @@
         <!-- add an animation to make it rotate -->
         <a-animation to='0 360 0' easing='linear' dur='90000' repeat='indefinite'/>
     </a-sphere>
-    <a-entity position="0 1 0"
+    <a-entity position="0 0.5 0"
 	      rotation="0 0 0">
 	    <a-entity
 		      n-billboard position="0 1 0"
