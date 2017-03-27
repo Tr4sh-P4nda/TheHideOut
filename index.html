@@ -174,7 +174,7 @@
 		
 		//Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between <1script></1script>, preferrably towards the top of your HTML file but after your remote scripts (like the one above).
 		<script>
-		function setup().then(function() {
+		setup().then(function() {
 			
 			//URL of where guests are to be redirected along with the minimum number of characters in the username.
 			guestKicker("altspace://account.altvr.com/api/spaces/613940881048732244", 10);
@@ -189,11 +189,11 @@
 			var object = document.querySelector('#SSR').object3D;
 			
 			//List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
-			blackListTeleport(["Someasshole", "Anotherasshole"], object2, "altspace://account.altvr.com/api/spaces/613940881048732244");
+			blackListTeleport(["Someasshole", "Anotherasshole"], object, "altspace://account.altvr.com/api/spaces/613940881048732244");
 			var object2 = document.querySelector('#id-of-button2').object3D;
 			
 			//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
-			whiteListTeleport(["Tr4sh_P4nda", "Tr4sh P4nda", "Succubus"], object, "altspace://account.altvr.com/api/events/643019776603455984");
+			whiteListTeleport(["Tr4sh_P4nda", "Tr4sh P4nda", "Succubus"], object2, "altspace://account.altvr.com/api/events/643019776603455984");
 		});
 		
 		</script>
