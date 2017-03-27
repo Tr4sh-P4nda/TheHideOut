@@ -13,10 +13,27 @@
               radius="300" 
               src="images/moon.jpg"
               altspace-cursor-collider="enabled:true" 
-              n-mesh-collider="type:environment;convex:true">
+              n-mesh-collider="type:environment;convex:false">
         <!-- add an animation to make it rotate -->
         <a-animation to='0 360 0' easing='linear' dur='200000' repeat='indefinite'/>
     </a-sphere>
+    <a-entity position="0 0 0"
+					  rotation="0 0 0">
+					<a-entity 
+						  n-billboard position="0 1 0"
+						  rotation="0 0 0"
+						  n-text="text:The Hide Out; fontSize:2">
+					</a-entity>
+					<a-box 
+						src="images/p4nda.JPG" 
+					       	width="0.75"
+					       	height="0.75" 
+					       	depth="0.75" 
+					       	position="0 0 0"
+					       	rotation="0 0 0"
+					       	cursor-interact="uri: altspace://account.altvr.com/api/events/625684565574287708">
+					</a-box>
+	</a-entity>
     <a-sky src="images/stars35.jpg" radius="2500"></a-sky>
 </a-scene>
  
