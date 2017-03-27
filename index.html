@@ -88,12 +88,12 @@
 				}
 			});
 		</script-->
-		<!--//Put this script before the end of the </head> tag after all your other remote scripts
-		<!--script type="text/javascript" src="https://rawgit.com/Enderthexen/AltVRModTools/master/mod.js">
-		<!--//Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between <script></script>, preferrably towards the top of your HTML file but after your remote scripts (like the one above).
+		<!--Put this script before the end of the </head> tag after all your other remote scripts-->
+		<script type="text/javascript" src="https://rawgit.com/Enderthexen/AltVRModTools/master/mod.js">
+		//Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between <script></1script>, preferrably towards the top of your HTML file but after your remote scripts (like the one above).
 		
 		var username = "";
-		<!--Setup the library, get user's display name and save to global variable
+		//Setup the library, get user's display name and save to global variable
 		function setup(){
 			return new Promise(function (resolve) {
 				altspace.getUser().then(function(userInfo) {
@@ -105,7 +105,7 @@
 			});
 		}
 
-		<!--Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
+		//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
 		function blackList(names, url){
 			document.body.innerHTML += '<a id="blackList" href="'+url+'"></a>';
 			for(var i = 0; i < names.length; i++){
@@ -116,7 +116,7 @@
 			}
 		}
 
-		<!--Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
+		//Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
 		function whiteList(names, url){
 			document.body.innerHTML += '<a id="whiteList" href="'+url+'"></a>';
 			var whiteListed = false;
@@ -130,7 +130,7 @@
 				document.getElementById('whiteList').click();
 		}
 
-		<!--Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+		//Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
 		function blackListTeleport(names, object, url){
 			document.body.innerHTML += '<a id="blackListTeleport" href="'+url+'"></a>';
 			var blackListed = false;
@@ -147,7 +147,7 @@
 			}
 		}
 
-		<!--Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+		//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
 		function whiteListTeleport(names, object, url){
 			document.body.innerHTML += '<a id="whiteListTeleport" href="'+url+'"></a>';
 			for(var i = 0; i < names.length; i++){
@@ -160,42 +160,43 @@
 			}
 		}
 
-		<!--Auto guest kicker. Pass the URL they are to be redirected to along with the minimum length of their username (e.g. Kick anyone whose display name starts with "Guest" or kick anyone whose display name starts with "Guest" but has more than 9 characters in their username)
+		//Auto guest kicker. Pass the URL they are to be redirected to along with the minimum length of their username (e.g. Kick anyone whose display name starts with "Guest" or kick anyone whose display name starts with "Guest" but has more than 9 characters in their username)
 		function guestKicker(url, minLength){
 			document.body.innerHTML += '<a id="guestKick" href="'+url+'"></a>';
 			if(username.match(/^Guest*/) && username.length >= minLength)
 				document.getElementById('guestKick').click();
 		}
+		</script>
 		<!--Example script for setting up all blacklist / whitelist / kicking functions
-		/*
-		<!--Put this script before the end of the </head> tag after all your other remote scripts
+		
+		Put this script before the end of the </head> tag after all your other remote scripts-->
 		<script type="text/javascript" src="https://rawgit.com/Enderthexen/AltVRModTools/master/mod.js"></script>
 		
-		<!--Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between <script></script>, preferrably towards the top of your HTML file but after your remote scripts (like the one above).
-		setup().then(function() {
+		//Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between <1script></1script>, preferrably towards the top of your HTML file but after your remote scripts (like the one above).
+		<script>
+		function setup().then(function() {
 			
-			<!--URL of where guests are to be redirected along with the minimum number of characters in the username.
+			//URL of where guests are to be redirected along with the minimum number of characters in the username.
 			guestKicker("altspace://account.altvr.com/api/spaces/613940881048732244", 10);
 			
-			<!--List of blacklisted users along with the URL that they are to be redirected to.
+			//List of blacklisted users along with the URL that they are to be redirected to.
 			blackList(["Someasshole", "Anotherasshole"], "altspace://account.altvr.com/api/spaces/613940881048732244");
 			
-			<!--List of whitelisted users along with the URL that non-whitelisted users are to be redirected to.
-			whiteList(["Awesomeperson", "Notanasshole"], "altspace://account.altvr.com/api/spaces/613940881048732244");
+			//List of whitelisted users along with the URL that non-whitelisted users are to be redirected to.
+			whiteList(["Tr4sh_P4nda", "Succubus"], "altspace://account.altvr.com/api/events/643019776603455984");
 			
-			<!--If you're using a-frame for you buttons, you'll need this.
-			var object = document.querySelector('#id-of-button').object3D;
+			//If you're using a-frame for you buttons, you'll need this.
+			var object = document.querySelector('#SSR').object3D;
 			
-			<!--List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
+			//List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
 			blackListTeleport(["Someasshole", "Anotherasshole"], object, "altspace://account.altvr.com/api/spaces/613940881048732244");
 			var object2 = document.querySelector('#id-of-button2').object3D;
 			
-			<!--List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
+			//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
 			whiteListTeleport(["Awesomeperson", "Notanasshole"], object2, "altspace://account.altvr.com/api/spaces/613940881048732244");
 		});
-		*/
-		<!--URL of where guests are to be redirected along with the minimum number of characters in the username.
-		</script-->
+		
+		</script>
 	</head>
 	<body>
 		<!--Bouncer Destination-->		
@@ -224,7 +225,8 @@
 			<a-entity position="0 0 0">
 				
 <!--To Privacy Room-->				
-				<a-entity position="-5.5 7.14 -3.7">
+				<a-entity id="Privacy"
+					position="-5.5 7.14 -3.7">
 					<!--a-entity n-billboard position="0 0 0" n-text="text:Privacy Room; fontSize:2"></a-entity-->
 					<a-box 
 					       material="color:#ffffff;transparent:true;visible:false" 
@@ -237,7 +239,8 @@
 				</a-entity>
 				
 <!--To Safe Room-->
-				<a-entity position="-5.7 1.325 31.6">
+				<a-entity id="Safety"
+					position="-5.7 1.325 31.6">
 					<!--a-entity n-billboard position="0 0 0" n-text="text:Safe Room; fontSize:2"></a-entity-->		
 					<a-box 
 					       material="color:#2FD6FF;transparent:true;visible:false"
@@ -250,8 +253,9 @@
 				</a-entity>
 				
 <!--To Super Secret Room-->				
-				<a-entity position="11 6.1 31.2">
-					<!--a-entity n-billboard position="0 0 0" n-text="text:Safe Room; fontSize:2"></a-entity-->		
+				<a-entity id="SSR"
+					position="11 6.1 31.2">
+					<!--a-entity n-billboard position="0 0 0" n-text="text:Super Safe Room; fontSize:2"></a-entity-->		
 					<a-box 
 					       material="color:#2FD6FF;transparent:true;visible:false"
 					       width=".75" 
