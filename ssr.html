@@ -7,26 +7,15 @@
 <body>
 <!-- set up the scene -->
 <a-scene altspace=fullspace:true>
- 
-    <!-- preload all our textures -->
-    <a-assets>
-        <img id='moon' src='images/moon.jpg'/>
-        <img id='stars' src='images/stars.png'/>
-    </a-assets>
- 
-    <!-- add the moon to the scene -->
+<!-- add the moon to the scene -->
     <a-sphere position='2000 2000 0' 
               radius="100" 
-              material='src: #moon;'
+              src="images/moon.jpg"
               altspace-cursor-collider="enabled:true" 
               n-mesh-collider="type:environment;convex:true">
         <!-- add an animation to make it rotate -->
         <a-animation to='0 360 0' easing='linear' dur='200000' repeat='indefinite'/>
     </a-sphere>
- 
-    <!-- add the backdrop of stars -->
-    <!--a-sky src='#stars' radius='2500'></a-sky-->
- 
 </a-scene>
  
 </body></html>
