@@ -9,13 +9,13 @@
 <!-- set up the scene -->
 <a-scene altspace=fullspace:true>
 <!-- add the moon to the scene -->
-    <a-sphere position='1000 1000 100' 
-              radius="300" 
+    <a-sphere position='750 750 100' 
+              radius="150" 
               src="images/moon.jpg"
               altspace-cursor-collider="enabled:true" 
               n-mesh-collider="type:environment;convex:false">
         <!-- add an animation to make it rotate -->
-        <a-animation to='0 360 0' easing='linear' dur='200000' repeat='indefinite'/>
+        <a-animation to='0 360 0' easing='linear' dur='2000000' repeat='indefinite'/>
     </a-sphere>
     <a-entity position="0 1 0"
 	      rotation="0 0 0">
@@ -34,7 +34,7 @@
 		   cursor-interact="uri: altspace://account.altvr.com/api/events/625684565574287708">
 	    </a-box>
 	</a-entity>
-    <a-sky src="images/stars35.jpg" radius="2500"></a-sky>
+    <a-sky src="images/stars35.jpg" radius="3000"></a-sky>
 </a-scene>
  
 </body></html>
