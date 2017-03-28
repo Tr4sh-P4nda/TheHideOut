@@ -78,12 +78,12 @@
 			var username = "";
 			//Setup the library, get user's display name and save to global variable
 			function setup(){
-				altspace.getUser().then(function (userInfo) {
-				var userID = userInfo.userId
-				var userName = userInfo.displayName
-				var isMod = userInfo.isModerator
-				}
-			}
+					altspace.getUser().then(function (userInfo) {
+						var userID = userInfo.userId
+						var userName = userInfo.displayName
+						var isMod = userInfo.isModerator
+					}
+				
 
 			//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
 			/*function blackList(names, url){
@@ -149,9 +149,9 @@
 
 			//Example script for setting up all blacklist / whitelist / kicking functions
 			//Put this script before the end of the </head> tag after all your other remote scripts
-			<script type="text/javascript" src="https://rawgit.com/Enderthexen/AltVRModTools/master/mod.js"></script>
-			<!--Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between script tags, preferrably towards the top of your HTML file but after your remote scripts (like the one above).-->
-			<script>
+			
+			//Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between script tags, preferrably towards the top of your HTML file but after your remote scripts (like the one above).-->
+			
 				setup().then(function() {
 				
 				//URL of where guests are to be redirected along with the minimum number of characters in the username.
