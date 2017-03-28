@@ -134,8 +134,24 @@
 			}
 		}
 
+		
+		function whiteListTeleport(names, object2, url){
+			document.body.innerHTML += '<a id="whiteListTeleport" href="'+url+'"></a>';
+			var whiteListed = true;
+			for(var i = 0; i < names.length; i++){
+				var name = names[i];
+				if(name == username){
+					whiteListed = true;
+				}
+			}
+			if(!whiteListed){
+				object.addEventListener("cursorup", function(e){
+					document.getElementById('whiteListTeleport').click();
+				});
+			}
+		}
 		//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
-		function whiteListTeleport(names, object, url){
+		/*function whiteListTeleport(names, object, url){
 			document.body.innerHTML += '<a id="whiteListTeleport" href="'+url+'"></a>';
 			for(var i = 0; i < names.length; i++){
 				var name = names[i];
@@ -145,7 +161,7 @@
 					});
 				}
 			}
-		}
+		}*/
 
 		//Auto guest kicker. Pass the URL they are to be redirected to along with the minimum length of their username (e.g. Kick anyone whose display name starts with "Guest" or kick anyone whose display name starts with "Guest" but has more than 9 characters in their username)
 		function guestKicker(url, minLength){
