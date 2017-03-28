@@ -75,21 +75,18 @@
 			});
 		</script>
 		<script>
-					var username = "";
+			var username = "";
 			//Setup the library, get user's display name and save to global variable
 			function setup(){
-				return new Promise(function (resolve) {
-					altspace.getUser().then(function(userInfo) {
-						if(userInfo && userInfo.userId && userInfo.displayName){
-							username = userInfo.displayName;
-						}
-						resolve();
-					});
-				});
+				altspace.getUser().then(function (userInfo) {
+				var userID = userInfo.userId
+				var userName = userInfo.displayName
+				var isMod = userInfo.isModerator
+				}
 			}
 
 			//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
-			function blackList(names, url){
+			/*function blackList(names, url){
 				document.body.innerHTML += '<a id="blackList" href="'+url+'"></a>';
 				for(var i = 0; i < names.length; i++){
 					var name = names[i];
@@ -97,10 +94,10 @@
 						document.getElementById('blackList').click();
 					}
 				}
-			}
+			}*/
 
 			//Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
-			function whiteList(names, url){
+			/*function whiteList(names, url){
 				document.body.innerHTML += '<a id="whiteList" href="'+url+'"></a>';
 				var whiteListed = false;
 				for(var i = 0; i < names.length; i++){
@@ -111,10 +108,10 @@
 				}
 				if(!whiteListed)
 					document.getElementById('whiteList').click();
-			}
+			}*/
 
 			//Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
-			function blackListTeleport(names, object, url){
+			/*function blackListTeleport(names, object, url){
 				document.body.innerHTML += '<a id="blackListTeleport" href="'+url+'"></a>';
 				var blackListed = false;
 				for(var i = 0; i < names.length; i++){
@@ -128,7 +125,7 @@
 						document.getElementById('blackListTeleport').click();
 					});
 				}
-			}
+			}*/
 
 			//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
 			function whiteListTeleport(names, object2, url){
@@ -144,18 +141,18 @@
 			}
 
 			//Auto guest kicker. Pass the URL they are to be redirected to along with the minimum length of their username (e.g. Kick anyone whose display name starts with "Guest" or kick anyone whose display name starts with "Guest" but has more than 9 characters in their username)
-			function guestKicker(url, minLength){
-				document.body.innerHTML += '<a id="guestKick" href="'+url+'"></a>';
-				if(username.match(/^Guest*/) && username.length >= minLength)
-					document.getElementById('guestKick').click();
-			}
+			//function guestKicker(url, minLength){
+			//	document.body.innerHTML += '<a id="guestKick" href="'+url+'"></a>';
+			//	if(username.match(/^Guest*/) && username.length >= minLength)
+			//		document.getElementById('guestKick').click();
+			//}
 
 			//Example script for setting up all blacklist / whitelist / kicking functions
 			//Put this script before the end of the </head> tag after all your other remote scripts
 			<script type="text/javascript" src="https://rawgit.com/Enderthexen/AltVRModTools/master/mod.js"></script>
 			<!--Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between script tags, preferrably towards the top of your HTML file but after your remote scripts (like the one above).-->
 			<script>
-			setup().then(function() {
+				setup().then(function() {
 				
 				//URL of where guests are to be redirected along with the minimum number of characters in the username.
 				guestKicker("altspace://account.altvr.com/api/spaces/613940881048732244", 10);
