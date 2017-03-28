@@ -76,7 +76,7 @@
 		
 		var username = "";
 		//Setup the library, get user's display name and save to global variable
-		function setup(){
+		/*function setup(){
 			return new Promise(function (resolve) {
 				altspace.getUser().then(function(userInfo) {
 					if(userInfo && userInfo.userId && userInfo.displayName){
@@ -85,8 +85,14 @@
 					resolve();
 				});
 			});
+		}*/
+		function setup(){
+			altspace.getUser().then(function (userInfo) {
+				var userID = userInfo.userId
+				var userName = userInfo.displayName
+				var isMod = userInfo.isModerator
+			}
 		}
-
 		//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
 		function blackList(names, url){
 			document.body.innerHTML += '<a id="blackList" href="'+url+'"></a>';
@@ -175,7 +181,7 @@
 			var object2 = document.querySelector('#SSR').object3D;
 			
 			//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
-			whiteListTeleport(["Tr4sh P4nda", "Tr4sh_P4nda", "Succubus", "VitaminC"], object, "altspace://account.altvr.com/api/events/643019776603455984");
+			whiteListTeleport(["Tr4sh P4nda"], object, "altspace://account.altvr.com/api/events/643019776603455984");
 			var object = document.querySelector('#SSR').object3D;
 		});
 		
