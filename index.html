@@ -39,145 +39,102 @@
 
 <!--The Bouncer-->
 		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^Guest*/) && result.displayName.length >= 5)
-			document.getElementById('kick').click();
-			});
-		</script>
-		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^cattz*/) )
-			document.getElementById('kick2').click();
-			});
-		</script>
-		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^Shimron Elit*/) )
-			document.getElementById('kick2').click();
-			});
-		</script>
-		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^jared*/) )
-			document.getElementById('kick2').click();
-			});
-		</script>
-		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^katherine*/) )
-			document.getElementById('kick2').click();
-			});
-		</script>
-		<script>
-			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^nocturne72*/) )
-			document.getElementById('kick2').click();
-			});
-		</script>
-		<script>
+			var userID = "";
 			var username = "";
-			//Setup the library, get user's display name and save to global variable
-			function setup(){
-					altspace.getUser().then(function (userInfo) {
-						var userID = userInfo.userId
-						var username = userInfo.displayName
-						var isMod = userInfo.isModerator
-					}
-			}
+			var isMod = "";
 
-			//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
-			/*function blackList(names, url){
-				document.body.innerHTML += '<a id="blackList" href="'+url+'"></a>';
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						document.getElementById('blackList').click();
-					}
+				//Setup the library, get user's display name and save to global variable
+				function setup(){
+					return new Promise(function (resolve) {
+						altspace.getUser().then(function(userInfo) {
+							if(userInfo && userInfo.userId && userInfo.displayName){
+								userID = userInfo.userId;
+								username = userInfo.displayName;
+								isMod = userInfo.isModerator;
+							}
+							resolve();
+						});
+					}).then(function() {
+						return true;
+					});;
 				}
-			}*/
 
-			//Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
-			/*function whiteList(names, url){
-				document.body.innerHTML += '<a id="whiteList" href="'+url+'"></a>';
-				var whiteListed = false;
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						whiteListed = true;
+				//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
+				function blackList(names, url){
+					for(var i = 0; i < names.length; i++){
+						var name = names[i];
+						if(name == username){
+							document.getElementById('blackList').click();
+						}
 					}
 				}
-				if(!whiteListed)
-					document.getElementById('whiteList').click();
-			}*/
 
-			//Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
-			/*function blackListTeleport(names, object, url){
-				document.body.innerHTML += '<a id="blackListTeleport" href="'+url+'"></a>';
-				var blackListed = false;
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						blackListed = true;
+				//Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
+				function whiteList(names, url){
+					var whiteListed = false;
+					for(var i = 0; i < names.length; i++){
+						var name = names[i];
+						if(name == username){
+							whiteListed = true;
+						}
 					}
+					if(!whiteListed)
+						document.getElementById('whiteList').click();
 				}
-				if(!blackListed){
-					object.addEventListener("cursorup", function(e){
-						document.getElementById('blackListTeleport').click();
-					});
-				}
-			}*/
 
-			//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
-			function whiteListTeleport(names, object2, url){
-				document.body.innerHTML += '<a id="whiteListTeleport" href="'+url+'"></a>';
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						object.addEventListener("cursorup", function(e){
-							document.getElementById('whiteListTeleport').click();
+				//Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+				function blackListTeleport(names, object, url){
+					var blackListed = false;
+					for(var i = 0; i < names.length; i++){
+						var name = names[i];
+						if(name == username){
+							blackListed = true;
+						}
+					}
+					if(!blackListed){
+						object.addEventListener("cursordown", function(e){
+							document.getElementById('blackListTeleport').click();
 						});
 					}
 				}
-			}
 
-			//Auto guest kicker. Pass the URL they are to be redirected to along with the minimum length of their username (e.g. Kick anyone whose display name starts with "Guest" or kick anyone whose display name starts with "Guest" but has more than 9 characters in their username)
-			//function guestKicker(url, minLength){
-			//	document.body.innerHTML += '<a id="guestKick" href="'+url+'"></a>';
-			//	if(username.match(/^Guest*/) && username.length >= minLength)
-			//		document.getElementById('guestKick').click();
-			//}
+				//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+				function whiteListTeleport(names, object, url){
+					for(var i = 0; i < names.length; i++){
+						var name = names[i];
+						if(name == username){
+							object.addEventListener("cursordown", function(e){
+								console.log("Clicked");
+								document.getElementById('whiteListTeleport').click();
+							});
+						}
+					}
+				}
 
-			//Example script for setting up all blacklist / whitelist / kicking functions
-			//Put this script before the end of the </head> tag after all your other remote scripts
-			
-			//Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between script tags, preferrably towards the top of your HTML file but after your remote scripts (like the one above).-->
-			
+				
 				setup().then(function() {
-				
-				//URL of where guests are to be redirected along with the minimum number of characters in the username.
-				guestKicker("altspace://account.altvr.com/api/spaces/613940881048732244", 10);
-				
-				//List of blacklisted users along with the URL that they are to be redirected to.
-				blackList(["Someasshole", "Anotherasshole"], "altspace://account.altvr.com/api/spaces/613940881048732244");
-				
-				//List of whitelisted users along with the URL that non-whitelisted users are to be redirected to.
-				whiteList(["Awesomeperson", "Notanasshole"], "altspace://account.altvr.com/api/spaces/613940881048732244");
-				
-				//If you're using a-frame for you buttons, you'll need this.
-				var object = document.querySelector('#id-of-button').object3D;
-				//List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
-				blackListTeleport(["Someasshole", "Anotherasshole"], object, "altspace://account.altvr.com/api/spaces/613940881048732244");
-				
-				var object2 = document.querySelector('#SSR').object3D;
-				//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
-				whiteListTeleport(["Tr4sh P4nda", "Tr4sh_P4nda", "Succubus", "VitaminC"], object2, "altspace://account.altvr.com/api/events/643019776603455984");
-			});
-			</script>
+					
+					//URL of where guests are to be redirected along with the minimum number of characters in the username.
+					guestKicker("altspace://account.altvr.com/api/spaces/new-user-info", 5);
+
+					//List of blacklisted users along with the URL that they are to be redirected to.
+					blackList(["nocturne72", "Shimron Elit", "jared", "katherine", "cattz"], "altspace://account.altvr.com/api/events/642685902782464591");
+					
+					//List of whitelisted users along with the URL that non-whitelisted users are to be redirected to.
+					//whiteList(["Jacob", "Tr4sh_P4nda"], "altspace://account.altvr.com/api/spaces/613940881048732244");
+					
+					//If you're using a-frame for you buttons, you'll need this.
+					//var object = document.querySelector('#id-of-button').object3D;
+					//List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
+					//blackListTeleport(["Person 1", "Person 2"], object, "altspace://account.altvr.com/api/spaces/613940881048732244");
+					
+					var object2 = document.querySelector('#SSR').object3D;
+					//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
+					whiteListTeleport(["Tr4shP4nda", "Succubus"], object2, "altspace://account.altvr.com/api/events/643019776603455984");
+				});
+		</script>
 	</head>
 	<body>
-		<!--Bouncer Destination-->		
-		<a id="kick" href="altspace://account.altvr.com/api/spaces/new-user-info"></a>
-		<a id="kick2" href="altspace://account.altvr.com/api/events/642685902782464591"></a>
 		
 		<a-scene 
 			altspace=fullspace:true;
