@@ -131,7 +131,7 @@
 			}
 
 			//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
-			function whiteListTeleport(names, object, url){
+			function whiteListTeleport(names, object2, url){
 				document.body.innerHTML += '<a id="whiteListTeleport" href="'+url+'"></a>';
 				for(var i = 0; i < names.length; i++){
 					var name = names[i];
