@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width">
+		<title>Safe Room Lists</title>
+		<script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+		<script src="https://sdk.altvr.com/libs/altspace.js/2.0.3/altspace.min.js"></script>
+		<script src="https://cdn.rawgit.com/norybiak/UltimateLoader/v0.4.2/dist/UltimateLoader.min.js"></script>
+		<script src="https://cdn.rawgit.com/oOblik/AltspaceVR-Native-Components-JS/0.1.2/js/JSNativeComponents.js"></script>
+		<script src="https://cdn.rawgit.com/norybiak/UltimateLoader/master/dist/UltimateLoader.min.js"></script>
+		<script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.2/dist/aframe-altspace-component.min.js"></script>
+		<script type="text/javascript">
+			AFRAME.registerComponent('cursor-interact', {
+				schema: {
+					uri: { type: 'string' }
+				},
+				init: function() {
+					var uri = this.el.appendChild(Object.assign(document.createElement('a'), { href: this.data.uri }));
+					this.el.addEventListener('click', function() { uri.click(); });
+				}
+			});
+		</script>
+
+<!--The Bouncer-->
+		<script>
+			var username = "";
+			//Setup the library, get user's display name and save to global variable
+			function setup(){
+					altspace.getUser().then(function (userInfo) {
+						var userID = userInfo.userId
+						var userName = userInfo.displayName
+						var isMod = userInfo.isModerator
+					}
+			}
+
+			//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
+			function blackList(names, url){
+				document.body.innerHTML += '<a id="blackList" href="'+url+'"></a>';
+				for(var i = 0; i < names.length; i++){
+					var name = names[i];
+					if(name == username){
+						document.getElementById('blackList').click();
+					}
+				}
+			}
+
+			//Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
+			function whiteList(names, url){
+				document.body.innerHTML += '<a id="whiteList" href="'+url+'"></a>';
+				var whiteListed = false;
+				for(var i = 0; i < names.length; i++){
+					var name = names[i];
+					if(name == username){
+						whiteListed = true;
+					}
+				}
+				if(!whiteListed)
+					document.getElementById('whiteList').click();
+			}
+
+			//Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+			function blackListTeleport(names, object, url){
+				document.body.innerHTML += '<a id="blackListTeleport" href="'+url+'"></a>';
+				var blackListed = false;
+				for(var i = 0; i < names.length; i++){
+					var name = names[i];
+					if(name == username){
+						blackListed = true;
+					}
+				}
+				if(!blackListed){
+					object.addEventListener("cursorup", function(e){
+						document.getElementById('blackListTeleport').click();
+					});
+				}
+			}
+
+			//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+			function whiteListTeleport(names, object2, url){
+				document.body.innerHTML += '<a id="whiteListTeleport" href="'+url+'"></a>';
+				for(var i = 0; i < names.length; i++){
+					var name = names[i];
+					if(name == username){
+						object.addEventListener("cursorup", function(e){
+							document.getElementById('whiteListTeleport').click();
+						});
+					}
+				}
+			}
+
+			
+				setup().then(function() {
+				
+				//List of blacklisted users along with the URL that they are to be redirected to.
+				blackList(["Person 1", "Person 2"], "altspace://account.altvr.com/api/spaces/613940881048732244");
+				
+				//List of whitelisted users along with the URL that non-whitelisted users are to be redirected to.
+				whiteList(["Awesomeperson 1", "Awesomeperson 2"], "altspace://account.altvr.com/api/spaces/613940881048732244");
+				
+				//If you're using a-frame for you buttons, you'll need this.
+				var object = document.querySelector('#id-of-button').object3D;
+				//List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
+				blackListTeleport(["Person 1", "Person 2"], object, "altspace://account.altvr.com/api/spaces/613940881048732244");
+				
+				var object2 = document.querySelector('#SR').object3D;
+				//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
+				whiteListTeleport(["Awesomeperson 1", "Awesomeperson 2"], object2, "altspace://account.altvr.com/api/spaces/613940881048732244");
+			});
+			</script>
+	</head>
+	<body>
+		<a-scene 
+			altspace=fullspace:true;
+			sync-system="author: Tr4sh P4nda; app: theHangOut">
+						
+<!--Room Buttons-->
+			<a-entity position="0 0 0">
+				
+<!--To Safe Room-->				
+				<a-entity id="SR"
+					position="11 6.1 31.2">
+					<!--a-entity n-billboard position="0 0 0" n-text="text:Safe Room; fontSize:2"></a-entity-->		
+					<a-box 
+					       material="color:#2FD6FF;transparent:true;visible:false"
+					       width=".75" 
+					       height=".75" 
+					       depth=".05" 
+					       position="0 0 0"
+					       rotation="0 30 0"
+					       opacity="0.01" 
+					       <!--cursor-interact="uri: altspace://account.altvr.com/api/spaces/613940881048732244"-->
+					</a-box>
+				</a-entity>
+			</a-entity>
+
+	</body>
+</html>
