@@ -93,7 +93,7 @@
 		}
 
 		//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
-		function blackList(names, url){
+		/*function blackList(names, url){
 			document.body.innerHTML += '<a id="blackList" href="'+url+'"></a>';
 			for(var i = 0; i < names.length; i++){
 				var name = names[i];
@@ -101,10 +101,10 @@
 					document.getElementById('blackList').click();
 				}
 			}
-		}
+		}*/
 
 		//Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
-		function whiteList(names, url){
+		/*function whiteList(names, url){
 			document.body.innerHTML += '<a id="whiteList" href="'+url+'"></a>';
 			var whiteListed = false;
 			for(var i = 0; i < names.length; i++){
@@ -115,10 +115,10 @@
 			}
 			if(!whiteListed)
 				document.getElementById('whiteList').click();
-		}
+		}*/
 
 		//Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
-		function blackListTeleport(names, object, url){
+		/*function blackListTeleport(names, object, url){
 			document.body.innerHTML += '<a id="blackListTeleport" href="'+url+'"></a>';
 			var blackListed = false;
 			for(var i = 0; i < names.length; i++){
@@ -132,7 +132,7 @@
 					document.getElementById('blackListTeleport').click();
 				});
 			}
-		}
+		}*/
 
 		
 		/*function whiteListTeleport(names, object2, url){
