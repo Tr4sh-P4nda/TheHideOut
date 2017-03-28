@@ -6,7 +6,7 @@
 			content="width=device-width">
 		<title>The Hang Out</title>
 		<script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
-		<script src="https://sdk.altvr.com/libs/altspace.js/2.0.2/altspace.min.js"></script>
+		<script src="https://sdk.altvr.com/libs/altspace.js/2.0.3/altspace.min.js"></script>
 		<script src="https://cdn.rawgit.com/norybiak/UltimateLoader/v0.4.2/dist/UltimateLoader.min.js"></script>
 		<script src="https://cdn.rawgit.com/oOblik/AltspaceVR-Native-Components-JS/0.1.2/js/JSNativeComponents.js"></script>
 		<script src="https://cdn.rawgit.com/norybiak/UltimateLoader/master/dist/UltimateLoader.min.js"></script>
@@ -58,7 +58,7 @@
 		</script>
 		<script>
 			altspace.getUser().then(function(result) {
-			if(result.displayName.match(/^Jared*/) )
+			if(result.displayName.match(/^jared*/) )
 			document.getElementById('kick2').click();
 			});
 		</script>
@@ -74,15 +74,14 @@
 			document.getElementById('kick2').click();
 			});
 		</script>
-		
-		
+
 		<!--Put this script before the end of the </head> tag after all your other remote scripts-->
 		<script type="text/javascript" src="https://rawgit.com/Enderthexen/AltVRModTools/master/mod.js">
 		//Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between <script></1script>, preferrably towards the top of your HTML file but after your remote scripts (like the one above).
 		
 		var username = "";
 		//Setup the library, get user's display name and save to global variable
-		/*function setup(){
+		function setup(){
 			return new Promise(function (resolve) {
 				altspace.getUser().then(function(userInfo) {
 					if(userInfo && userInfo.userId && userInfo.displayName){
@@ -91,14 +90,8 @@
 					resolve();
 				});
 			});
-		}*/
-		function setup(){
-			altspace.getUser().then(function (userInfo) {
-				var userID = userInfo.userId
-				var userName = userInfo.displayName
-				var isMod = userInfo.isModerator
-			}
 		}
+
 		//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
 		function blackList(names, url){
 			document.body.innerHTML += '<a id="blackList" href="'+url+'"></a>';
@@ -147,7 +140,7 @@
 			for(var i = 0; i < names.length; i++){
 				var name = names[i];
 				if(name == username){
-					object.addEventListener("cursorup", function(e){
+					object.addEventListener("cursordown", function(e){
 						document.getElementById('whiteListTeleport').click();
 					});
 				}
@@ -161,29 +154,30 @@
 				document.getElementById('guestKick').click();
 		}
 		</script>
+		<!--Example script for setting up all blacklist / whitelist / kicking functions
+		
+		Put this script before the end of the </head> tag after all your other remote scripts-->
+		<script type="text/javascript" src="https://rawgit.com/Enderthexen/AltVRModTools/master/mod.js"></script>
 		
 		<!--Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between <1script></1script>, preferrably towards the top of your HTML file but after your remote scripts (like the one above).-->
 		<script>
 		setup().then(function() {
 			
 			//URL of where guests are to be redirected along with the minimum number of characters in the username.
-			guestKicker("altspace://account.altvr.com/api/spaces/new-user-ingo", 10);
+			guestKicker("altspace://account.altvr.com/api/spaces/new-user-info", 5);
 			
 			//List of blacklisted users along with the URL that they are to be redirected to.
-			blackList(["Someasshole", "Anotherasshole"], "altspace://account.altvr.com/api/events/642685902782464591");
+			blackList(["Someasshole", "Anotherasshole"], "altspace://account.altvr.com/api/spaces/new-user-info");
 			
 			//List of whitelisted users along with the URL that non-whitelisted users are to be redirected to.
-			whiteList(["Tr4sh P4nda"], "altspace://account.altvr.com/api/spaces/new-user-info");
-			
-			//If you're using a-frame for you buttons, you'll need this.
-			
+			whiteList(["Tr4sh P4nda", "Tr4sh_P4nda", "Succubus", "VitaminC"], "altspace://account.altvr.com/api/spaces/new-user-info");
 			
 			//List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
-			blackListTeleport(["Someasshole", "Anotherasshole"], object2, "altspace://account.altvr.com/api/spaces/613940881048732244");
-			var object2 = document.querySelector('#SSR').object3D;
+			blackListTeleport(["Someasshole", "Anotherasshole"], object2, "altspace://account.altvr.com/api/spaces/new-user-info");
+			var object2 = document.querySelector('#id-of-button2').object3D;
 			
 			//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
-			whiteListTeleport(["Tr4sh P4nda"], object, "altspace://account.altvr.com/api/events/643019776603455984");
+			whiteListTeleport(["Tr4sh_P4nda", "Tr4sh P4nda", "Succubus"], object, "altspace://account.altvr.com/api/events/643019776603455984");
 			var object = document.querySelector('#SSR').object3D;
 		});
 		
@@ -196,7 +190,7 @@
 		
 		<a-scene 
 			altspace=fullspace:true;
-			sync-system="author: tr4sh_p4nda; app: theHangOut">
+			sync-system="author: Tr4sh P4nda; app: theHangOut">
 			<a-assets>
 				<a-asset-item 
 					id="couches-obj" 
@@ -254,7 +248,7 @@
 					       depth=".05" 
 					       position="0 0 0"
 					       rotation="0 30 0"
-					       opacity="0.01"> 
+					       opacity="0.01" 
 					       <!--cursor-interact="uri: altspace://account.altvr.com/api/events/643019776603455984"-->
 					</a-box>
 				</a-entity>
@@ -269,38 +263,6 @@
 				segments-height="30">
 			</a-sky>
 			
-<!--Sky Lights>
-			<a-entity 
-				id="Sky LIghts" 
-				position="-58.54 -88.95 -75.04" 
-				rotation="28.07493196141034 -8.021409131831525 -12.60507149287811">
-				<a-plane 
-					position="0 0 0" 
-					material="color:#ff0000;side:double;visible:false" 
-					geometry="primitive:plane" 
-					rotation="-90 0 0" 
-					scale="14.05 14.05 14.05">
-				</a-plane>
-				<a-cone 
-					position="0 136.66 0" 
-					rotation="180 0 0" 
-					scale="5 270.81 5" 
-					geometry="primitive:cone;radiusTop:0.2;radiusBottom:2" 
-					material="opacity:0.25">
-				</a-cone>
-				<a-animation 
-					rotation="0 0 0"
-					attribute="rotation" 
-					from='-15 0 15' 
-					to='15 0 -15' 
-					direction="alternate" 
-					dur='5000' 
-					easing="linear"
-					repeat='indefinite' 
-					easeInOut="sine">
-				</a-animation>
-			</a-entity-->
-		
 <!--Couch/Carpets Objects-->
 			<a-entity
 				position="0 0 0">
@@ -318,69 +280,6 @@
 					material="repeat: 3 3; transparent: false; opacity: 2">
 				</a-entity>
 			</a-entity>
-		
-<!--Door Block>
-			<a-entity
-				position="0 0 0">
-				<a-box id="Door Block" 
-					src="images/door.png"
-					altspace-cursor-collider="enabled:false" 
-					position="-8.17 5.64 -5.14"
-					n-mesh-collider="type:environment;convex:false" 
-					material=";transparent:false;visible:true" 
-					geometry="primitive:box;depth:.6;height:.1;width:3.9" 
-					scale="0.02 27.89 3.68">
-				</a-box>
-			
-				<a-entity position="-8.51 4.4 -8.21" 
-					rotation="90 0 0" 
-					scale="14.94 16.76 1" 
-					id="" 
-					geometry="primitive:plane" 
-					material="flatShading:false;visible:false;transparent:true;side:double">
-				</a-entity>
-			
-				<a-entity position="-9.15 0.01 -15.14" 
-					rotation="90 0 0" 
-					scale="11.91 6.19 1" 
-					geometry="primitive:plane" 
-					material="transparent:true;visible:false;side:double">
-				</a-entity>
-			
-				<a-entity position="-11.9 4.52 -15.19" 
-					rotation="0 90 0" 
-					scale="5.42 9.81 1" 
-					geometry="primitive:plane" 
-					material="transparent:true;visible:false">
-				</a-entity>
-			
-				<a-entity position="-11.56 3.01 -15.14" 
-					rotation="90 0 0" 
-					scale="8 2.8 6.39" 
-					altspace-cursor-collider="enabled:false" 
-					geometry="primitive:box" 
-					n-mesh-collider="type:environment;convex:false"
-					material="transparent:true;visible:false">
-				</a-entity>
-		
-				<a-box altspace-cursor-collider="enabled:false" 
-					position="-8.49 5.43 -3.98" 
-					n-mesh-collider="type:environment;convex:false" 
-					material="transparent:true;visible:false" 
-					geometry="primitive:box;depth:.6;height:.1;width:3.9" 
-					scale="0.19 24.15 8.36">
-				</a-box>
-			
-				<a-box altspace-cursor-collider="enabled:false" 
-					position="-11.73 5.43 -6.17" 
-					n-mesh-collider="type:environment;convex:true" 
-					material="transparent:true;visible:false" 
-					geometry="primitive:box;depth:.6;height:.1;width:3.9" 
-					scale="1.52 24.15 1.08" 
-					rotation="0 0 0" 
-					visible="true">
-				</a-box>
-			</a-entity-->
 		
 <!--Roof Physics-->
 			<a-entity 
@@ -951,480 +850,6 @@
 				</a-animation>
 			</a-entity>
     
-<!--Dance Cage 1>
-			<a-entity 
-				id="Dance Cage 1"
-				position="-4 2.5 4.5">
-				<a-box 
-					id="cage1bottom" 
-					position="11.3 0.75 24.43" 
-					scale="1.5 0.05 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true">
-				</a-box>
-    
-				<a-box 
-					id="cage1top" 
-					position="11.3 3.62 24.43" 
-					scale="1.5 0.05 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:object;convex:true">
-				</a-box>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 25.13" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 23.76" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 23.76" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.97 2.17 25.13" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 24.45" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 24.21" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 24.69" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 24.93" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 23.98" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-	
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 24.45" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 24.21" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 24.69" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 24.93" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 23.98" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-                    radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.06 2.17 23.76" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.82 2.17 23.76" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.55 2.17 23.76" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.75 2.17 23.76" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.3 2.17 23.76" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.06 2.17 25.13" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.82 2.17 25.13" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.55 2.17 25.13" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-		
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-                    position="11.75 2.17 25.13" 
-                    scale="1.5 2.87 1.5" 
-                    altspace-cursor-collider="enabled:true" 
-                    n-mesh-collider="type:environment;convex:true" 
-                    radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-                    position="11.3 2.17 25.13" 
-                    scale="1.5 2.87 1.5" 
-                    altspace-cursor-collider="enabled:true" 
-                    n-mesh-collider="type:environment;convex:true" 
-                    radius="0.01">
-				</a-cylinder>
-				</a-entity-->
-    
-<!--Dance Cage 2>
-			<a-entity 
-				id="Dance Cage 2"
-				position="-15 2.5 9">
-				<a-box 
-					id="cage2bottom" 
-					position="11.3 0.75 19.9" 
-					scale="1.5 0.05 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true">
-				</a-box>
-    
-				<a-box 
-					id="cage2top" 
-					position="11.3 3.62 19.9" 
-					scale="1.5 0.05 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:object;convex:true">
-				</a-box>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 20.6" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 19.23" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 19.23" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.97 2.17 25.13" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 19.92" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 19.68" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 20.16" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 20.4" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.62 2.17 19.45" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 19.92" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 19.68" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 20.16" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 20.4" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.95 2.17 19.45" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.06 2.17 19.23" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.82 2.17 19.23" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.55 2.17 19.23" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.75 2.17 19.23" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.3 2.17 19.23" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.06 2.17 20.6" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="10.82 2.17 20.6" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.55 2.17 20.6" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.75 2.17 20.6" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-    
-				<a-cylinder 
-					src="images/djbooth.jpg" 
-					position="11.3 2.17 20.6" 
-					scale="1.5 2.87 1.5" 
-					altspace-cursor-collider="enabled:true" 
-					n-mesh-collider="type:environment;convex:true" 
-					radius="0.01">
-				</a-cylinder>
-			</a-entity-->
-
 <!--disco ball-->
 			<a-entity
 				position="0 0 0">
@@ -1662,150 +1087,6 @@
 				</a-plane>
 			</a-entity>
 
-<!--Photos>			
-			<!a-plane
-				id="Photo 1"
-				src="images/image1.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 90 0" 
-				radius="2" 
-				side="double"
-				position="-14.9 5.91 4.228">
-			</a-plane>
-
-			<!a-plane 
-				id="Photo 2"
-				src="images/image2.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 90 0" 
-				radius="2" 
-				side="double"
-				position="-14.9 5.91 .528">
-			</a-plane>
-
-			<!a-plane 
-				id="Photo 3"
-				src="images/image3.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 90 0" 
-				radius="2" 
-				side="double"
-				position="-14.9 5.91 -3.198">
-			</a-plane>
-    
-			<!a-plane 
-				id="Photo 4"
-				src="images/image4.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 360 0" 
-				radius="2" 
-				side="double"
-				position="-12.74 5.91 -6.297">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 5"
-				src="images/image5.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 360 0" 
-				radius="2" 
-				side="double"
-				position="-10.34 5.91 -6.297">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 6"
-				src="images/image6.jpg" 
-				height="1.3" 
-				width=".95" 
-				rotation="0 180 0" 
-				radius="2" 
-				side="double"
-				position="-8.92 6.14 -6.8">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 7"
-				src="images/image7.jpg" 
-				height="1.3" 
-				width="1" 
-				rotation="0 180 0" 
-				radius="2" 
-				side="double"
-				position="-10 6.14 -6.8">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 8"
-				src="images/image8.jpg" 
-				height="1.3" 
-				width=".95" 
-				rotation="0 180 0" 
-				radius="2" 
-				side="double"
-				position="-11.07 6.14 -6.8">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 9"
-				src="images/image9.jpg" 
-				height="1.3" 
-				width=".94" 
-				rotation="0 180 0" 
-				radius="2" 
-				side="double"
-				position="-12.08 6.14 -6.8">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 10"
-				src="images/image10.jpg" 
-				height="1.3" 
-				width=".95" 
-				rotation="0 180 0" 
-				radius="2" 
-				side="double"
-				position="-13.1 6.14 -6.8">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 11"
-				src="images/image11.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 90 0" 
-				radius="2" 
-				side="double"
-				position="-13.85 7.17 -8.9">
-			</a-plane>
-	
-			<!a-plane 
-				id="Photo 12"
-				src="images/image12.jpg" 
-				height=".95" 
-				width="1.65" 
-				rotation="0 90 0" 
-				radius="2" 
-				side="double"
-				position="-13.85 7.17 -11.056">
-			</a-plane>
-		
-			<!a-plane 
-				id="Photo 13"
-				src="images/image13.jpg" 
-				height=".945" 
-				width="2.235" 
-				rotation="0 -180 0" 
-				radius="2"
-				side="double" 
-				position="-5.99 7.17 -3.65">
-			</a-plane>
-<End Photos-->	
 		</a-scene>
 
 <!--script that is needed to run the dance floor -->
