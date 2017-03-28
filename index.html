@@ -169,14 +169,6 @@
 			if(username.match(/^Guest*/) && username.length >= minLength)
 				document.getElementById('guestKick').click();
 		}
-		</script>
-		<!--Example script for setting up all blacklist / whitelist / kicking functions
-		
-		Put this script before the end of the </head> tag after all your other remote scripts-->
-		<script type="text/javascript" src="https://rawgit.com/Enderthexen/AltVRModTools/master/mod.js"></script>
-		
-		<!--Example script for setting up all blacklist / whitelist / kicking functions. Needs to be placed between <1script></1script>, preferrably towards the top of your HTML file but after your remote scripts (like the one above).-->
-		<script>
 		setup().then(function() {
 			
 			//URL of where guests are to be redirected along with the minimum number of characters in the username.
@@ -188,12 +180,12 @@
 			//List of whitelisted users along with the URL that non-whitelisted users are to be redirected to.
 			whiteList(["Tr4sh P4nda", "Tr4sh_P4nda", "Succubus", "VitaminC"], "altspace://account.altvr.com/api/spaces/new-user-info");
 			
-			//List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
+			/*List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
 			blackListTeleport(["Tr4sh_P4nda", "Tr4sh P4nda", "Succubus", "VitaminC"], object, "altspace://account.altvr.com/api/spaces/new-user-info");
-			var object = document.querySelector('#id-of-button2').object3D;
+			var object = document.querySelector('#id-of-button2').object3D;*/
 			
 			//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
-			whiteListTeleport(["Tr4sh_P4nda", "Tr4sh P4nda", "Succubus"], object2, "altspace://account.altvr.com/api/events/643019776603455984");
+			whiteListTeleport(["Tr4sh_P4nda", "Tr4sh P4nda", "Succubus", "VitaminC"], object2, "altspace://account.altvr.com/api/events/643019776603455984");
 			var object2 = document.querySelector('#SSR').object3D;
 		});
 		
