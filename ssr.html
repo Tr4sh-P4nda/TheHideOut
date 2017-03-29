@@ -127,31 +127,39 @@
 			});
 		</script> 
 	</head>
-<body>
-<!-- set up the scene -->
-<a-scene altspace=fullspace:true>
- 
-    <!-- preload all our textures -->
-    <a-assets>
-        <img id='moon' src='assets/moon.jpg'/>
-        <img id='stars' src='assets/stars35.jpg'/>
-    </a-assets>
- 
-    <!-- add the moon to the scene -->
-    <a-sphere position='0 1.5 0' material='src: #moon;'>
-        <!-- add an animation to make it rotate -->
-        <a-animation to='0 360 0' easing='linear' dur='20000' repeat='indefinite'/>
-    </a-sphere>
- 
-    <!-- add the backdrop of stars -->
-    <a-sky src='#stars' radius='2500'></a-sky>
- 
-    <!-- add a view camera (2d only) -->
-    <a-entity position='0 0 2'>
-        <a-camera></a-camera>
-    </a-entity>
+	<body>
 
-	<a href="altspace://account.altvr.com/api/events/625684565574287708" id="whiteList"></a>
+	<!-- set up the scene -->
+<a-scene altspace=fullspace:true>
+<!-- add the moon to the scene -->
+    <a-sphere position='150 10 0' 
+              radius="50" 
+              src="images/moon.jpg"
+              altspace-cursor-collider="enabled:false" 
+              n-mesh-collider="type:environment;convex:false">
+        <!-- add an animation to make it rotate -->
+        <a-animation to='0 360 0' easing='linear' dur='1000000' repeat='indefinite'/>
+    </a-sphere>
+    <a-entity position="0 0.5 0"
+	      rotation="0 0 0">
+	    <a-entity
+		      n-billboard position="0 1 0"
+		      rotation="0 0 0"
+		      n-text="text:The Hide Out; fontSize:2">
+	    </a-entity>
+	    <a-box
+		   src="images/p4nda.JPG" 
+		   width="0.75"
+		   height="0.75" 
+		   depth="0.75" 
+		   position="0 0 0"
+		   rotation="0 0 0"
+		   cursor-interact="uri: altspace://account.altvr.com/api/events/625684565574287708">
+	    </a-box>
+	</a-entity>
+    <a-sky src="images/stars35.jpg" radius="2000"></a-sky>
+
+	<a href="altspace://account.altvr.com/api/events/625684565574287708" id="whiteList"></a>	
 </a-scene>
  
 </body></html>
