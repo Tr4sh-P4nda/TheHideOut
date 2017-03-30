@@ -1000,6 +1000,7 @@
 						if(userInfo && userInfo.userId && userInfo.displayName){
 							userID = userInfo.userId;
 							username = userInfo.displayName;
+							console.log("Username:" + username);
 							isMod = userInfo.isModerator;
 						}
 						resolve();
@@ -1065,7 +1066,7 @@
 				console.log("Running whitelist teleport");
 				for(var i = 0; i < names.length; i++){
 					var name = names[i];
-					console.log("In the loop");
+					console.log("Name on list: "+name+" Username:"+username);
 					if(name == username){
 						object.addEventListener("cursordown", function(e){
 							console.log("Clicked");
