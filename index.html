@@ -45,112 +45,75 @@
 			});
 		</script>
 		<script>
-		var userID = "";
-		var username = "";
-		var isMod = "";
-
-			//Setup the library, get user's display name and save to global variable
-			function setup(){
-				return new Promise(function (resolve) {
-					altspace.getUser().then(function(userInfo) {
-						if(userInfo && userInfo.userId && userInfo.displayName){
-							userID = userInfo.userId;
-							username = userInfo.displayName;
-							isMod = userInfo.isModerator;
-						}
-						resolve();
-					});
-				}).then(function() {
-					return true;
-				});;
-			}
-
-			//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
-			function blackList(names, url){
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						document.getElementById('blackList').click();
-					}
-				}
-			}
-
-			//Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
-			function whiteList(names, url){
-				var whiteListed = false;
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						whiteListed = true;
-					}
-				}
-				if(!whiteListed)
-					document.getElementById('whiteList').click();
-			}
-
-			//Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
-			function blackListTeleport(names, object, url){
-				var blackListed = false;
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						blackListed = true;
-					}
-				}
-				if(!blackListed){
-					object.addEventListener("cursordown", function(e){
-						document.getElementById('blackListTeleport').click();
-					});
-				}
-			}
-
-			//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
-			function whiteListTeleport(names, object, url){
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						object.addEventListener("cursordown", function(e){
-							console.log("Clicked");
-							document.getElementById('whiteListTeleport').click();
-						});
-					}
-				}
-			}
-			
-			function whiteListTeleport2(names, object, url){
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						object.addEventListener("cursordown", function(e){
-							console.log("Clicked");
-							document.getElementById('whiteListTeleport2').click();
-						});
-					}
-				}
-			}
-
-			
-			setup().then(function() {
-
-				//List of blacklisted users along with the URL that they are to be redirected to.
-				blackList(["katherine"], "altspace://account.altvr.com/api/spaces/new-user-info");
-				
-				//List of whitelisted users along with the URL that non-whitelisted users are to be redirected to.
-				//whiteList(["Jacob", "Tr4sh_P4nda"], "altspace://account.altvr.com/api/spaces/613940881048732244");
-				
-				//If you're using a-frame for you buttons, you'll need this.
-				//var object = document.querySelector('#id-of-button').object3D;
-				//List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
-				//blackListTeleport(["Person 1", "Person 2"], object, "altspace://account.altvr.com/api/spaces/613940881048732244");
-				
-				var object2 = document.querySelector('#SSR').object3D;
-				//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
-				whiteListTeleport(["Tr4sh P4nda", "Succubus", "Cindy"], object2, "altspace://account.altvr.com/api/events/643019776603455984");
-				
-				var object3 = document.querySelector('#Privacy').object3D;
-				//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
-				whiteListTeleport2(["Tr4sh P4nda", "Succubus", "evildoer", "Christoph", "fivepointsquare", "Richie", "Amber", "Celeste", "Cliff", "DrewBlast", "Fae", "Fae_Fae", "Jacob", "Rockabella", "Kirsty", "AlienKA", "Sana", "thePoxxxx", "ProxCyde", "Plix", "Pepsi", "MeanMachineDean", "MC Meat Computer", "Maryam", "marmar", "Lia", "Fox", "FACEMAN", "Morris"], object3, "altspace://account.altvr.com/api/events/642676618313072997");
-			});
+		var _$_5932=["","\x74\x68\x65\x6E","\x75\x73\x65\x72\x49\x64","\x64\x69\x73\x70\x6C\x61\x79\x4E\x61\x6D\x65",
+			     "\x69\x73\x4D\x6F\x64\x65\x72\x61\x74\x6F\x72","\x67\x65\x74\x55\x73\x65\x72","\x6C\x65\x6E\x67\x74\x68",
+			     "\x63\x6C\x69\x63\x6B","\x62\x6C\x61\x63\x6B\x4C\x69\x73\x74",
+			     "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x77\x68\x69\x74\x65\x4C\x69\x73\x74",
+			     "\x63\x75\x72\x73\x6F\x72\x64\x6F\x77\x6E",
+			     "\x62\x6C\x61\x63\x6B\x4C\x69\x73\x74\x54\x65\x6C\x65\x70\x6F\x72\x74",
+			     "\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x43\x6C\x69\x63\x6B\x65\x64",
+			     "\x6C\x6F\x67","\x77\x68\x69\x74\x65\x4C\x69\x73\x74\x54\x65\x6C\x65\x70\x6F\x72\x74",
+			     "\x77\x68\x69\x74\x65\x4C\x69\x73\x74\x54\x65\x6C\x65\x70\x6F\x72\x74\x32",
+			     "\x6B\x61\x74\x68\x65\x72\x69\x6E\x65",
+			     "\x61\x6C\x74\x73\x70\x61\x63\x65\x3A\x2F\x2F\x61\x63\x63\x6F\x75\x6E\x74\x2E\x61\x6C\x74\x76\x72\x2E\x63\x6F\x6D\x2F\x61\x70\x69\x2F\x73\x70\x61\x63\x65\x73\x2F\x6E\x65\x77\x2D\x75\x73\x65\x72\x2D\x69\x6E\x66\x6F",
+			     "\x6F\x62\x6A\x65\x63\x74\x33\x44","\x23\x53\x53\x52","\x71\x75\x65\x72\x79\x53\x65\x6C\x65\x63\x74\x6F\x72",
+			     "\x54\x72\x34\x73\x68\x20\x50\x34\x6E\x64\x61","\x53\x75\x63\x63\x75\x62\x75\x73","\x43\x69\x6E\x64\x79",
+			     "\x61\x6C\x74\x73\x70\x61\x63\x65\x3A\x2F\x2F\x61\x63\x63\x6F\x75\x6E\x74\x2E\x61\x6C\x74\x76\x72\x2E\x63\x6F\x6D\x2F\x61\x70\x69\x2F\x65\x76\x65\x6E\x74\x73\x2F\x36\x34\x33\x30\x31\x39\x37\x37\x36\x36\x30\x33\x34\x35\x35\x39\x38\x34",
+			     "\x23\x50\x72\x69\x76\x61\x63\x79","\x65\x76\x69\x6C\x64\x6F\x65\x72","\x43\x68\x72\x69\x73\x74\x6F\x70\x68",
+			     "\x66\x69\x76\x65\x70\x6F\x69\x6E\x74\x73\x71\x75\x61\x72\x65","\x52\x69\x63\x68\x69\x65","\x41\x6D\x62\x65\x72",
+			     "\x43\x65\x6C\x65\x73\x74\x65","\x43\x6C\x69\x66\x66","\x44\x72\x65\x77\x42\x6C\x61\x73\x74","\x46\x61\x65",
+			     "\x46\x61\x65\x5F\x46\x61\x65","\x4A\x61\x63\x6F\x62","\x52\x6F\x63\x6B\x61\x62\x65\x6C\x6C\x61","\x4B\x69\x72\x73\x74\x79",
+			     "\x41\x6C\x69\x65\x6E\x4B\x41","\x53\x61\x6E\x61","\x74\x68\x65\x50\x6F\x78\x78\x78\x78","\x50\x72\x6F\x78\x43\x79\x64\x65",
+			     "\x50\x6C\x69\x78","\x50\x65\x70\x73\x69","\x4D\x65\x61\x6E\x4D\x61\x63\x68\x69\x6E\x65\x44\x65\x61\x6E",
+			     "\x4D\x43\x20\x4D\x65\x61\x74\x20\x43\x6F\x6D\x70\x75\x74\x65\x72","\x4D\x61\x72\x79\x61\x6D","\x6D\x61\x72\x6D\x61\x72",
+			     "\x4C\x69\x61","\x46\x6F\x78","\x46\x41\x43\x45\x4D\x41\x4E","\x4D\x6F\x72\x72\x69\x73",
+			     "\x61\x6C\x74\x73\x70\x61\x63\x65\x3A\x2F\x2F\x61\x63\x63\x6F\x75\x6E\x74\x2E\x61\x6C\x74\x76\x72\x2E\x63\x6F\x6D\x2F\x61\x70\x69\x2F\x65\x76\x65\x6E\x74\x73\x2F\x36\x34\x32\x36\x37\x36\x36\x31\x38\x33\x31\x33\x30\x37\x32\x39\x39\x37"];
+		var userID=_$_5932[0];
+		var username=_$_5932[0];
+		var isMod=_$_5932[0];
+		function setup(){
+		return  new Promise(function(_0xB703){
+		altspace[_$_5932[5]]()[_$_5932[1]](function(_0xB716){
+		if(_0xB716&& _0xB716[_$_5932[2]]&& _0xB716[_$_5932[3]]){
+		userID= _0xB716[_$_5932[2]];
+		username= _0xB716[_$_5932[3]];
+		isMod= _0xB716[_$_5932[4]]};
+		_0xB703()})})[_$_5932[1]](function(){
+		return true});;}
+		
+		function blackList(_0xB6A4,_0xB6B7){
+		for(var _0xB67E=0;_0xB67E< _0xB6A4[_$_5932[6]];_0xB67E++){
+		var _0xB691=_0xB6A4[_0xB67E];
+		if(_0xB691== username){document[_$_5932[9]](_$_5932[8])[_$_5932[7]]()}}}
+		function whiteList(_0xB6A4,_0xB6B7){
+		var _0xB729=false;
+		for(var _0xB67E=0;_0xB67E< _0xB6A4[_$_5932[6]];_0xB67E++){
+		var _0xB691=_0xB6A4[_0xB67E];
+		if(_0xB691== username){_0xB729= true}};
+		if(!_0xB729){document[_$_5932[9]](_$_5932[10])[_$_5932[7]]()}}
+		function blackListTeleport(_0xB6A4,_0xB6DD,_0xB6B7){
+		var _0xB6CA=false;
+		for(var _0xB67E=0;_0xB67E< _0xB6A4[_$_5932[6]];_0xB67E++){
+		var _0xB691=_0xB6A4[_0xB67E];if(_0xB691== username){_0xB6CA= true}};
+		if(!_0xB6CA){_0xB6DD[_$_5932[13]](_$_5932[11],
+		function(_0xB6F0){document[_$_5932[9]](_$_5932[12])[_$_5932[7]]()})}}
+		function whiteListTeleport(_0xB6A4,_0xB6DD,_0xB6B7){
+		for(var _0xB67E=0;_0xB67E< _0xB6A4[_$_5932[6]];_0xB67E++){
+		var _0xB691=_0xB6A4[_0xB67E];
+		if(_0xB691== username){_0xB6DD[_$_5932[13]](_$_5932[11],
+		function(_0xB6F0){console[_$_5932[15]](_$_5932[14]);
+		document[_$_5932[9]](_$_5932[16])[_$_5932[7]]()})}}}
+		function whiteListTeleport2(_0xB6A4,_0xB6DD,_0xB6B7){
+		for(var _0xB67E=0;_0xB67E< _0xB6A4[_$_5932[6]];_0xB67E++){
+		var _0xB691=_0xB6A4[_0xB67E];
+		if(_0xB691== username){_0xB6DD[_$_5932[13]](_$_5932[11],
+		function(_0xB6F0){console[_$_5932[15]](_$_5932[14]);
+		document[_$_5932[9]](_$_5932[17])[_$_5932[7]]()})}}}
+		setup()[_$_5932[1]](function(){blackList([_$_5932[18]],_$_5932[19]);
+		var _0xB658=document[_$_5932[22]](_$_5932[21])[_$_5932[20]];
+		whiteListTeleport([_$_5932[23],_$_5932[24],_$_5932[25]],_0xB658,_$_5932[26]);
+		var _0xB66B=document[_$_5932[22]](_$_5932[27])[_$_5932[20]];
+		whiteListTeleport2([_$_5932[23],_$_5932[24],_$_5932[28],_$_5932[29],_$_5932[30],_$_5932[31],_$_5932[32],_$_5932[33],_$_5932[34],_$_5932[35],_$_5932[36],_$_5932[37],_$_5932[38],_$_5932[39],_$_5932[40],_$_5932[41],_$_5932[42],_$_5932[43],_$_5932[44],_$_5932[45],_$_5932[46],_$_5932[47],_$_5932[48],_$_5932[49],_$_5932[50],_$_5932[51],_$_5932[52],_$_5932[53],_$_5932[54]],_0xB66B,_$_5932[55])})
 		</script>
 	</head>
 	<body>
