@@ -989,108 +989,103 @@
 
 <!--The Bouncer-->
 		<script>
-		var userID = "";
-		var username = "";
-		var isMod = "";
+			var userID = "";
+			var username = "";
+			var isMod = "";
 
-			//Setup the library, get user's display name and save to global variable
-			function setup(){
-				return new Promise(function (resolve) {
-					altspace.getUser().then(function(userInfo) {
-						if(userInfo && userInfo.userId && userInfo.displayName){
-							userID = userInfo.userId;
-							username = userInfo.displayName;
-							console.log("Username:" + username);
-							isMod = userInfo.isModerator;
+				//Setup the library, get user's display name and save to global variable
+				function setup(){
+					return new Promise(function (resolve) {
+						altspace.getUser().then(function(userInfo) {
+							if(userInfo && userInfo.userId && userInfo.displayName){
+								userID = userInfo.userId;
+								username = userInfo.displayName;
+								console.log("Username:" + username);
+								isMod = userInfo.isModerator;
+							}
+							resolve();
+						});
+					}).then(function() {
+						return true;
+					});;
+				}
+
+				//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
+				function blackList(names, url){
+					for(var i = 0; i < names.length; i++){
+						var name = names[i];
+						if(name == username){
+							document.getElementById('blackList').click();
 						}
-						resolve();
-					});
-				}).then(function() {
-					return true;
-				});;
-			}
-
-			//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
-			function blackList(names, url){
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						document.getElementById('blackList').click();
 					}
 				}
-			}
 
-			//Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
-			function whiteList(names, url){
-				var whiteListed = false;
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						whiteListed = true;
+				//Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
+				function whiteList(names, url){
+					var whiteListed = false;
+					for(var i = 0; i < names.length; i++){
+						var name = names[i];
+						if(name == username){
+							whiteListed = true;
+						}
 					}
+					if(!whiteListed)
+						document.getElementById('whiteList').click();
 				}
-				if(!whiteListed)
-					document.getElementById('whiteList').click();
-			}
 
-			//Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
-			function blackListTeleport(names, object, url){
-				var blackListed = false;
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						blackListed = true;
+				//Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+				function blackListTeleport(names, object, url){
+					var blackListed = false;
+					for(var i = 0; i < names.length; i++){
+						var name = names[i];
+						if(name == username){
+							blackListed = true;
+						}
 					}
-				}
-				if(!blackListed){
-					object.addEventListener("cursordown", function(e){
-						document.getElementById('blackListTeleport').click();
-					});
-				}
-			}
-
-			//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
-			function whiteListTeleport(names, object, url){
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					if(name == username){
-						object.addEventListener("cursordown", function(e){
-							console.log("Clicked");
-							document.getElementById('whiteListTeleport').click();
+					if(!blackListed){
+						object.addEventListener("click", function(e){
+							document.getElementById('blackListTeleport').click();
 						});
 					}
 				}
-			}
-			
-			function whiteListTeleport2(names, object, url){
-				console.log("Running whitelist teleport");
-				for(var i = 0; i < names.length; i++){
-					var name = names[i];
-					console.log("Name on list: "+name+" Username:"+username);
-					if(name == username){
-						object.addEventListener("cursordown", function(e){
-							console.log("Clicked");
-							document.getElementById('whiteListTeleport2').click();
-						});
+
+				//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+				function whiteListTeleport(names, object, url){
+					for(var i = 0; i < names.length; i++){
+						var name = names[i];
+						if(name == username){
+							object.addEventListener("click", function(e){
+								console.log("Clicked");
+								document.getElementById('whiteListTeleport').click();
+							});
+						}
 					}
 				}
-			}
-			
-			//Auto guest kicker. Pass the URL they are to be redirected to along with the minimum length of their username (e.g. Kick anyone whose display name starts with "Guest" or kick anyone whose display name starts with "Guest" but has more than 9 characters in their username)
-			function guestKicker(url, minLength){
-				document.body.innerHTML += '<a id="guestKick" href="'+url+'"></a>';
-				if(username.match(/^Guest*/) && username.length >= minLength)
-					document.getElementById('guestKick').click();
-			}
-			
-            var run = false;
-			THREE.DefaultLoadingManager.onProgress = function(item, loaded, total) {
-				var percent = loaded / total;
-				console.log(total);
-				if (percent == 1 && !run) {
-					setTimeout(function(e){
-						console.log("Running whitelist/blacklist scripts");
-						setup().then(function() {
+				
+				function whiteListTeleport2(names, object, url){
+					console.log("Running whitelist teleport");
+					for(var i = 0; i < names.length; i++){
+						var name = names[i];
+						console.log("Name on list: "+name+" Username:"+username);
+						if(name == username){
+							object.addEventListener("click", function(e){
+								console.log("Clicked");
+								document.getElementById('whiteListTeleport2').click();
+							});
+						}
+					}
+				}
+
+						setTimeout(function(e){
+							console.log("Running whitelist/blacklist scripts");
+							setup().then(function() {
+
+				//Auto guest kicker. Pass the URL they are to be redirected to along with the minimum length of their username (e.g. Kick anyone whose display name starts with "Guest" or kick anyone whose display name starts with "Guest" but has more than 9 characters in their username)
+				function guestKicker(url, minLength){
+					document.body.innerHTML += '<a id="guestKick" href="'+url+'"></a>';
+					if(username.match(/^Guest*/) && username.length >= minLength)
+						document.getElementById('guestKick').click();
+				}
 				
 				//URL of where guests are to be redirected along with the minimum number of characters in the username.
 				guestKicker("altspace://account.altvr.com/api/spaces/new-user-info", 5);
@@ -1106,7 +1101,6 @@
 				//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
 				whiteListTeleport2(["Rockabella", "Kirsty", "AlienKA","Tr4sh P4nda", "Succubus", "evildoer", "Christoph", "fivepointsquare", "Richie", "Amber", "Celeste", "Cliff", "DrewBlast", "Fae", "Fae_Fae", "Jacob", "Sana", "thePoxxxx", "ProxCyde", "Plix", "Pepsi", "MeanMachineDean", "MC Meat Computer", "Maryam", "marmar", "Lia", "Fox", "FACEMAN", "Morris"], object3, "altspace://account.altvr.com/api/events/642676618313072997");
 			});
-						run = true;
 					}, 3000);
 				}
 			};
