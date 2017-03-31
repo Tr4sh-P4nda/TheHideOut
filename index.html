@@ -943,11 +943,12 @@
 			</a-sky>
 		</a-scene>
 
-		<a href="altspace://account.altvr.com/api/events/643019776603455984" id="whiteListTeleport"></a>
-		<a href="altspace://account.altvr.com/api/events/642676618313072997" id="whiteListTeleport2"></a>
-		<a href="altspace://account.altvr.com/api/events/613940881048732244" id="blackListTeleport"></a>
-		<a href="altspace://account.altvr.com/api/spaces/613940881048732244" id="blackList"></a>
-		<a href="altspace://account.altvr.com/api/spaces/613940881048732244" id="whiteList"></a>		
+		<a href="altspace://account.altvr.com/api/events/643019776603455984" 	id="whiteListTeleport"></a>
+		<a href="altspace://account.altvr.com/api/events/642676618313072997" 	id="whiteListTeleport2"></a>
+		<a href="altspace://account.altvr.com/api/events/613940881048732244" 	id="blackListTeleport"></a>
+		<a href="altspace://account.altvr.com/api/spaces/613940881048732244" 	id="blackList"></a>
+		<a href="altspace://account.altvr.com/api/spaces/613940881048732244" 	id="whiteList"></a>
+		<a href="altspace://account.altvr.com/api/spaces/new-user-info" 		id="guestKicker"></a>
 		
 <!--script that is needed to run the dance floor -->
 		<script>
@@ -1075,15 +1076,26 @@
 					}
 				}
 			}
-
+			
+			//Auto guest kicker. Pass the URL they are to be redirected to along with the minimum length of their username (e.g. Kick anyone whose display name starts with "Guest" or kick anyone whose display name starts with "Guest" but has more than 9 characters in their username)
+			function guestKicker(url, minLength){
+				document.body.innerHTML += '<a id="guestKick" href="'+url+'"></a>';
+				if(username.match(/^Guest*/) && username.length >= minLength)
+					document.getElementById('guestKick').click();
+			}
+			
+            var run = false;
 			THREE.DefaultLoadingManager.onProgress = function(item, loaded, total) {
 				var percent = loaded / total;
 				console.log(total);
-				if (percent == 1) {
+				if (percent == 1 && !run) {
 					setTimeout(function(e){
 						console.log("Running whitelist/blacklist scripts");
 						setup().then(function() {
-
+				
+				//URL of where guests are to be redirected along with the minimum number of characters in the username.
+				guestKicker("altspace://account.altvr.com/api/spaces/new-user-info", 5);
+				
 				//List of blacklisted users along with the URL that they are to be redirected to.
 				blackList(["katherine", "Shimron Elit"], "altspace://account.altvr.com/api/events/642685902782464591");
 				
@@ -1095,7 +1107,8 @@
 				//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
 				whiteListTeleport2(["Rockabella", "Kirsty", "AlienKA","Tr4sh P4nda", "Succubus", "evildoer", "Christoph", "fivepointsquare", "Richie", "Amber", "Celeste", "Cliff", "DrewBlast", "Fae", "Fae_Fae", "Jacob", "Sana", "thePoxxxx", "ProxCyde", "Plix", "Pepsi", "MeanMachineDean", "MC Meat Computer", "Maryam", "marmar", "Lia", "Fox", "FACEMAN", "Morris"], object3, "altspace://account.altvr.com/api/events/642676618313072997");
 			});
-					}, 5000);
+						run = false;
+					}, 3000);
 				}
 			};
 		</script>
