@@ -39,9 +39,16 @@
 
 <!--The Bouncer-->
 		<script>
+			altspace.getUser().then(function(result) {
+			if(result.displayName.match(/^Guest*/) && result.displayName.length >= 5)
+			document.getElementById('kick').click();
+			});
+		</script>
+		<script>
 		var userID = "";
 		var username = "";
 		var isMod = "";
+
 			//Setup the library, get user's display name and save to global variable
 			function setup(){
 				return new Promise(function (resolve) {
@@ -57,6 +64,7 @@
 					return true;
 				});;
 			}
+
 			//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
 			function blackList(names, url){
 				for(var i = 0; i < names.length; i++){
@@ -66,6 +74,7 @@
 					}
 				}
 			}
+
 			//Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
 			function whiteList(names, url){
 				var whiteListed = false;
@@ -78,6 +87,7 @@
 				if(!whiteListed)
 					document.getElementById('whiteList').click();
 			}
+
 			//Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
 			function blackListTeleport(names, object, url){
 				var blackListed = false;
@@ -93,6 +103,7 @@
 					});
 				}
 			}
+
 			//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
 			function whiteListTeleport(names, object, url){
 				for(var i = 0; i < names.length; i++){
@@ -117,10 +128,12 @@
 					}
 				}
 			}
+
 			
 			setup().then(function() {
+
 				//List of blacklisted users along with the URL that they are to be redirected to.
-				blackList(["katherine"], "altspace://account.altvr.com/api/events/642685902782464591");
+				blackList(["katherine", "Shimron Elit"], "altspace://account.altvr.com/api/events/642685902782464591");
 				
 				//List of whitelisted users along with the URL that non-whitelisted users are to be redirected to.
 				//whiteList(["Jacob", "Tr4sh_P4nda"], "altspace://account.altvr.com/api/spaces/613940881048732244");
@@ -142,7 +155,7 @@
 	</head>
 	<body>
 		
-		
+		<a id="kick" href="altspace://account.altvr.com/api/spaces/new-user-info"></a>
 		<a-scene 
 			altspace=fullspace:true;
 			sync-system="author: Tr4sh P4nda; app: theHangOut">
@@ -167,7 +180,7 @@
 <!--To Privacy Room-->				
 				<a-entity id="Privacy"
 					position="-5.5 7.14 -3.7">
-					<!--a-entity n-billboard position="0 0 0" n-text="text:Privacy Room; fontSize:2"></a-entity-->67
+					<!--a-entity n-billboard position="0 0 0" n-text="text:Privacy Room; fontSize:2"></a-entity-->
 					<a-box 
 					       material="color:#ffffff;transparent:true;visible:false" 
 					       width=".15" 
