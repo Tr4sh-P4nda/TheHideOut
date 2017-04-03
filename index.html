@@ -408,7 +408,7 @@
 					</a-animation>
 				</a-cylinder>
 			
-				<a-cylinder id="laser1.1" 
+				<a-cylinder id="laser1.2" 
 					position="0 -0.27 0" 
 					scale="1 20 1" 
 					radius="0.01" 
@@ -436,7 +436,7 @@
 					</a-animation>
 				</a-cylinder>
 				<a-cylinder 
-					id="laser1.1" 
+					id="laser1.3" 
 					position="0 -0.27 0" 
 					scale="1 20 1" 
 					radius="0.01" 
@@ -466,7 +466,7 @@
 					</a-animation>
 				</a-cylinder>
 			
-				<a-cylinder id="laser1.1" 
+				<a-cylinder id="laser1.4" 
 					position="0 -0.27 0" 
 					scale="1 20 1" 
 					radius="0.01" 
@@ -497,7 +497,7 @@
 					</a-animation>
 				</a-cylinder>
            
-				<a-cylinder id="laser1.1" 
+				<a-cylinder id="laser1.5" 
 					position="0 -0.27 0" 
 					scale="1 20 1" 
 					radius="0.01" 
@@ -556,7 +556,7 @@
 					material="src:url(images/discoball.jpg);opacity:0.5">
 				</a-cylinder>
 				
-				<a-cylinder id="laser1.1" 
+				<a-cylinder id="laser2.1" 
 					position="0 -0.27 0" 
 					scale="1 20 1" 
 					radius="0.01" 
@@ -585,7 +585,7 @@
 					</a-animation>
 				</a-cylinder>
 				
-				<a-cylinder id="laser1.1" 
+				<a-cylinder id="laser2.2" 
 					position="0 -0.27 0" 
 					scale="1 20 1" 
                     radius="0.01" 
@@ -615,7 +615,7 @@
 				</a-cylinder>
 				
 				<a-cylinder 
-					id="laser1.1" 
+					id="laser2.3" 
 					position="0 -0.27 0" 
 					scale="1 20 1" 
 					radius="0.01" 
@@ -645,7 +645,7 @@
 				</a-cylinder>
             
 				<a-cylinder 
-					id="laser1.1" 
+					id="laser2.4" 
                     position="0 -0.27 0" 
                     scale="1 20 1" 
                     radius="0.01" 
@@ -675,7 +675,7 @@
 					</a-animation>
 				</a-cylinder>
 				<a-cylinder 
-					id="laser1.1" 
+					id="laser2.5" 
                     position="0 -0.27 0" 
                     scale="1 20 1" 
                     radius="0.01" 
@@ -993,6 +993,87 @@
 					return Math.floor(Math.random() * 255)
 				};
 				document.querySelector('#laser1.1').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
+			}
+					setInterval(changeColorRandom, 469);
+		</script>
+		<script>
+			var changeColorRandom = function () {
+				var rand = function () {
+					return Math.floor(Math.random() * 255)
+				};
+				document.querySelector('#laser1.2').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
+			}
+					setInterval(changeColorRandom, 469);
+		</script>
+		<script>
+			var changeColorRandom = function () {
+				var rand = function () {
+					return Math.floor(Math.random() * 255)
+				};
+				document.querySelector('#laser1.3').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
+			}
+					setInterval(changeColorRandom, 469);
+		</script>
+		<script>
+			var changeColorRandom = function () {
+				var rand = function () {
+					return Math.floor(Math.random() * 255)
+				};
+				document.querySelector('#laser1.4').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
+			}
+					setInterval(changeColorRandom, 469);
+		</script>
+		<script>
+			var changeColorRandom = function () {
+				var rand = function () {
+					return Math.floor(Math.random() * 255)
+				};
+				document.querySelector('#laser1.5').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
+			}
+					setInterval(changeColorRandom, 469);
+		</script>
+		<script>
+			var changeColorRandom = function () {
+				var rand = function () {
+					return Math.floor(Math.random() * 255)
+				};
+				document.querySelector('#laser2.1').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
+			}
+					setInterval(changeColorRandom, 469);
+		</script>
+		<script>
+			var changeColorRandom = function () {
+				var rand = function () {
+					return Math.floor(Math.random() * 255)
+				};
+				document.querySelector('#laser2.2').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
+			}
+					setInterval(changeColorRandom, 469);
+		</script>
+		<script>
+			var changeColorRandom = function () {
+				var rand = function () {
+					return Math.floor(Math.random() * 255)
+				};
+				document.querySelector('#laser2.3').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
+			}
+					setInterval(changeColorRandom, 469);
+		</script>
+		<script>
+			var changeColorRandom = function () {
+				var rand = function () {
+					return Math.floor(Math.random() * 255)
+				};
+				document.querySelector('#laser2.4').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
+			}
+					setInterval(changeColorRandom, 469);
+		</script>
+		<script>
+			var changeColorRandom = function () {
+				var rand = function () {
+					return Math.floor(Math.random() * 255)
+				};
+				document.querySelector('#laser2.5').setAttribute('material', 'color', 'rgb(' + rand() + ',' + rand() + ',' + rand() + ')');
 			}
 					setInterval(changeColorRandom, 469);
 		</script>
