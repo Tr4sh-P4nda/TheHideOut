@@ -138,6 +138,9 @@
 		<a-asset-item 
 			id="cave-mtl" 
 			src="assets/cave.mtl"></a-asset-item>
+		<a-asset-item 
+			id="cave-dae" 
+			src="assets/cave.dae"></a-asset-item>
 	</a-assets>
 	
 <!-- add the moon to the scene -->
@@ -150,7 +153,7 @@
         <a-animation to='0 360 0' easing='linear' dur='1200000' repeat='indefinite'/>
     </a-sphere>
     <a-entity 
-	obj-model="obj: #cave-obj; mtl: #cave-mtl" 
+	obj-model="obj: #cave-dae" 
 	rotation="0 90 0" 
 	scale="2 2 2"
 	n-mesh-collider="type:environment;convex:true"
