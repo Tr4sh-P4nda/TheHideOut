@@ -141,7 +141,7 @@
 	</a-assets>
 	
 <!-- add the moon to the scene -->
-    <a-sphere position='150 100 0' 
+    <a-sphere position='200 200 0' 
               radius="50" 
               src="images/moon.jpg"
               altspace-cursor-collider="enabled:false" 
@@ -153,10 +153,10 @@
 	obj-model="obj: #cave-obj; mtl: #cave-mtl" 
 	rotation="0 90 0" 
 	altspace-cursor-collider="enabled: false"
-	scale="0.1 0.1 0.1">
+	scale="1 1 1">
     </a-entity>
     
-    <a-plane 
+    <!--a-plane 
 	src="images/tile.jpg"
 	width="1000"
 	height="1000"
@@ -164,9 +164,11 @@
 	rotation="90 0 0"
 	position="0 0 0"
 	n-mesh-collider="type:environment">
-    </a-plane>
+    </a-plane-->
 	
-    <a-sky src="images/stars35.jpg" radius="2000"></a-sky>
+    <a-sky src="images/stars35.jpg" radius="2000">
+	    <a-animation attribute="rotation" to="0 360 0" dur="120000" easing="linear" repeat="indefinite"></a-animation>
+    </a-sky>
 
 	<a href="altspace://account.altvr.com/api/spaces/new-user-info/" id="whiteList"></a>	
 </a-scene>
