@@ -133,10 +133,10 @@
 <a-scene altspace=fullspace:true>
 	<a-assets>
 		<a-asset-item 
-			id="skull-obj" 
+			id="cave-obj" 
 			src="assets/cave.obj"></a-asset-item>
 		<a-asset-item 
-			id="skull-mtl" 
+			id="cave-mtl" 
 			src="assets/cave.mtl"></a-asset-item>
 	</a-assets>
 	
@@ -149,22 +149,11 @@
         <!-- add an animation to make it rotate -->
         <a-animation to='0 360 0' easing='linear' dur='1200000' repeat='indefinite'/>
     </a-sphere>
-    <a-entity position="0 0.5 0"
-	      rotation="0 0 0">
-	    <a-entity
-		      n-billboard position="0 1 0"
-		      rotation="0 0 0"
-		      n-text="text:The Hide Out; fontSize:2">
-	    </a-entity>
-	    <a-box
-		   src="images/p4nda.JPG" 
-		   width="0.75"
-		   height="0.75" 
-		   depth="0.75" 
-		   position="0 -0.01 0"
-		   rotation="0 0 0"
-		   cursor-interact="uri: altspace://account.altvr.com/api/events/625684565574287708">
-	    </a-box>
+    <a-entity 
+	obj-model="obj: #cave-obj; mtl: #cave-mtl" 
+	rotation="0 90 0" 
+	altspace-cursor-collider="enabled: false"
+	scale="0.1 0.1 0.1">
     </a-entity>
     
     <a-plane 
