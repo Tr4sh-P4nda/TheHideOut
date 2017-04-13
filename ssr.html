@@ -153,14 +153,13 @@
         <a-animation to='0 360 0' easing='linear' dur='1200000' repeat='indefinite'/>
     </a-sphere>
 	
-    <a-entity rotation="0 90 0" 
+    <a-collada-model src="cave-dae"
+		     rotation="0 90 0" 
 	      scale="2 2 2" 
 	      n-mesh-collider="type:environment;convex:true" 
 	      side="double" 
-	      position="0 0 0" 
-	      material="" 
-	      collada-model="dae: #cave-dae">
-    </a-entity>
+	      position="0 0 0">
+    </a-collada-model>
 	
     <!--a-entity 
 	obj-model="obj: #cave-dae" 
