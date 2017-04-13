@@ -152,13 +152,23 @@
         <!-- add an animation to make it rotate -->
         <a-animation to='0 360 0' easing='linear' dur='1200000' repeat='indefinite'/>
     </a-sphere>
-    <a-entity 
+	
+    <a-entity rotation="0 90 0" 
+	      scale="2 2 2" 
+	      n-mesh-collider="type:environment;convex:true" 
+	      side="double" 
+	      position="0 0 0" 
+	      material="" 
+	      collada-model="assets/cave.dae">
+    </a-entity>
+	
+    <!--a-entity 
 	obj-model="obj: #cave-dae" 
 	rotation="0 90 0" 
 	scale="2 2 2"
 	n-mesh-collider="type:environment;convex:true"
 	side="double">
-    </a-entity>
+    </a-entity-->
     
     <!--a-plane 
 	src="images/tile.jpg"
