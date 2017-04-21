@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width">
+		<title>The Hang Out</title>
+		<script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+		<script src="https://sdk.altvr.com/libs/altspace.js/2.0.2/altspace.min.js"></script>
+		<script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.2/dist/aframe-altspace-component.min.js"></script>
+		<script>
+			altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
+			window.head = skeleton.getJoint('Head');
+			});
+			AFRAME.registerComponent('altspace-look-at', {
+			init: function () {
+				if (!window.altspace || !altspace.inClient) { return; }
+			},
+			tick: function () {
+				if (!window.head || !this.el.object3D) { return; }
+				this.el.object3D.lookAt(window.head.position); 
+			}
+			})
+		</script>
+		<script type="text/javascript">
+		AFRAME.registerComponent('cursor-interact', {
+			schema: {
+				uri: { type: 'string' }
+			},
+			init: function() {
+				var uri = this.el.appendChild(Object.assign(document.createElement('a'), { href: this.data.uri }));
+				this.el.addEventListener('cursorup', function() { uri.click(); });
+			}
+		});
+		</script>
+	</head>
+	<body>
+		<a-scene 
+			altspace=fullspace:true>
+			<a-box position="0 2 0"
+			       height="0.1"
+			       width="2"
+			       depth="2"
+			       material="color:#ffffff;visible:true"
+			       n-mesh-collider="type:environment;convex:true"
+			       altspace-cursor-collider="enabled:true"></a-box>
+		</a-scene>
+	</body>
+</html>
+
