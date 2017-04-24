@@ -38,12 +38,20 @@
         <a-animation to='0 360 0' easing='linear' dur='1200000' repeat='indefinite'/>
     </a-sphere>
 	
-    <a-entity 
+    <!--a-entity 
 	obj-model="obj: #Mountain-obj; mtl: #Mountain-mtl" 
 	rotation="0 0 0" 
 	scale="1 1 1"
 	n-mesh-collider="type:environment;convex:true"
 	material="src: mount.jpg; transparent: false; opacity: 1">
+    </a-entity-->
+    
+    <a-entity obj-model="obj:#Mountain-obj;mtl:#Mountain-mtl" 
+	      rotation="0 0 0" 
+	      scale="1 1 1" 
+	      n-mesh-collider="type:environment;convex:true" 
+	      material="src:url(mount.jpg)" 
+	      position="0 0 0">
     </a-entity>
     
     <!--a-plane 
