@@ -24,7 +24,7 @@
 			id="Mountain-obj" 
 			src="assets/Mountain.obj"></a-asset-item>
 		<a-asset-item 
-			id="cave-mtl" 
+			id="Mountain-mtl" 
 			src="assets/Mountain.mtl"></a-asset-item>
 	</a-assets>
 	
@@ -46,11 +46,10 @@
 	material="src: mount.jpg; transparent: false; opacity: 1">
     </a-entity-->
     
-    <a-entity obj-model="obj:#Mountain-obj;mtl:#Mountain-mtl" 
+    <a-entity obj-model="obj:#Mountain-obj; mtl:#Mountain-mtl" 
 	      rotation="0 0 0" 
 	      scale="1 1 1" 
 	      n-mesh-collider="type:object;convex:true" 
-	      material="src:url(mount.jpg)" 
 	      position="0 0 0">
     </a-entity>
     
