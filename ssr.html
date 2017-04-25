@@ -20,17 +20,12 @@
 <!-- set up the scene -->
 	<a-scene altspace=fullspace:true>
 	<a-assets>
-		<a-asset-item 
-			id="Mountain-obj" 
-			src="assets/Mountain.obj"></a-asset-item>
-		<a-asset-item 
-			id="Mountain-mtl" 
-			src="assets/Mountain.mtl"></a-asset-item>
+		
 	</a-assets>
 	
 <!-- add the moon to the scene -->
-    <a-sphere position='200 200 0' 
-              radius="50" 
+    <a-sphere position='300 300 0' 
+              radius="100" 
               src="images/moon.jpg"
               altspace-cursor-collider="enabled:false" 
               n-mesh-collider="type:environment;convex:false">
@@ -38,22 +33,9 @@
         <a-animation to='0 360 0' easing='linear' dur='1200000' repeat='indefinite'/>
     </a-sphere>
 	
-    <!--a-entity 
-	obj-model="obj: #Mountain-obj; mtl: #Mountain-mtl" 
-	rotation="0 0 0" 
-	scale="1 1 1"
-	n-mesh-collider="type:environment;convex:true"
-	material="src: mount.jpg; transparent: false; opacity: 1">
-    </a-entity-->
     
-    <a-entity obj-model="obj:#Mountain-obj; mtl:#Mountain-mtl" 
-	      rotation="0 0 0" 
-	      scale="10 10 10" 
-	      n-mesh-collider="type:object;convex:true" 
-	      position="0 0 0">
-    </a-entity>
     
-    <!--a-plane 
+    <a-plane 
 	src="images/tile.jpg"
 	width="1000"
 	height="1000"
@@ -61,10 +43,10 @@
 	rotation="90 0 0"
 	position="0 0 0"
 	n-mesh-collider="type:environment">
-    </a-plane-->
+    </a-plane>
 	
     <a-sky src="images/stars35.jpg" radius="2000">
-	    <a-animation attribute="rotation" to="0 360 0" dur="12000000" easing="linear" repeat="indefinite"></a-animation>
+	    <a-animation attribute="rotation" to="0 360 0" dur="1200000" easing="linear" repeat="indefinite"></a-animation>
     </a-sky>
 </a-scene>
  
