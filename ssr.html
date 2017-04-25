@@ -159,25 +159,15 @@
 		        	dur='1200000' 
 		        	repeat='indefinite'/>
 		    </a-sphere>
-		    <a-entity 
-		    	position="0 0.5 0"
-			    rotation="0 0 0">
-			    <a-entity
-				    n-billboard position="0 1 0"
-				    rotation="0 0 0"
-				    n-text="text:The Hide Out; fontSize:2">
-			    </a-entity>
-			    <a-collada-model 
-			    	src="mount-dae"
-			    	position="0 0 -50"
-			    	rotation="0 -90 0"
-			    	scale="5 5 5"
-			    	n-mesh-collider="type:environment;convex:false"
-			    	altspace-cursor-collider="enabled:true">
-			    </a-collada-model>
-		    </a-entity>
-		    
-		    <a-plane 
+	        <a-collada-model 
+		    	src="mount-dae"
+		    	position="0 0 -50"
+		    	rotation="0 -90 0"
+		    	scale="5 5 5"
+		    	n-mesh-collider="type:environment;convex:false"
+		    	altspace-cursor-collider="enabled:true">
+		    </a-collada-model>
+	        <a-plane 
 				src="images/grid.png"
 				width="1000"
 				height="1000"
