@@ -20,7 +20,7 @@
 <!-- set up the scene -->
 	<a-scene altspace=fullspace:true>
 	<a-assets>
-		
+		<a-asset-item id="mount" src="assets/Mountain.dae"></a-asset-item>
 	</a-assets>
 	
 <!-- add the moon to the scene -->
@@ -33,7 +33,7 @@
         <a-animation to='0 360 0' easing='linear' dur='1200000' repeat='indefinite'/>
     </a-sphere>
 	
-    <a-entity collada-model="assets/Mountain.dae"></a-entity>
+    <a-entity collada-model="#mount"></a-entity>
     
     <a-plane 
 	src="images/tile.jpg"
