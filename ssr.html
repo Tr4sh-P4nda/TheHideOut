@@ -14,30 +14,157 @@
 				}
 			});
 		</script>
+
+<!--The Bouncer-->
+		<script>
+		var userID = "";
+		var username = "";
+		var isMod = "";
+
+			//Setup the library, get user's display name and save to global variable
+			function setup(){
+				return new Promise(function (resolve) {
+					altspace.getUser().then(function(userInfo) {
+						if(userInfo && userInfo.userId && userInfo.displayName){
+							userID = userInfo.userId;
+							username = userInfo.displayName;
+							isMod = userInfo.isModerator;
+						}
+						resolve();
+					});
+				}).then(function() {
+					return true;
+				});;
+			}
+
+			//Create a global black list for the space. Pass an array of names along with the URL they are to be redirected to
+			function blackList(names, url){
+				for(var i = 0; i < names.length; i++){
+					var name = names[i];
+					if(name == username){
+						document.getElementById('blackList').click();
+					}
+				}
+			}
+
+			//Create a global white list for the space. Pass an array of names along with the URL those not on the whitelist are to be redirected to
+			function whiteList(names, url){
+				var whiteListed = false;
+				for(var i = 0; i < names.length; i++){
+					var name = names[i];
+					if(name == username){
+						whiteListed = true;
+					}
+				}
+				if(!whiteListed)
+					document.getElementById('whiteList').click();
+			}
+
+			//Create teleport functionality for anyone not on a blacklist. Pass an array with a list of blacklisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+			function blackListTeleport(names, object, url){
+				var blackListed = false;
+				for(var i = 0; i < names.length; i++){
+					var name = names[i];
+					if(name == username){
+						blackListed = true;
+					}
+				}
+				if(!blackListed){
+					object.addEventListener("cursordown", function(e){
+						document.getElementById('blackListTeleport').click();
+					});
+				}
+			}
+
+			//Create teleport functionality for anyone on a whitelist. Pass an array with a list of whitelisted display names, the object the user is to click to teleport, and the URL they are to be teleported to
+			function whiteListTeleport(names, object, url){
+				for(var i = 0; i < names.length; i++){
+					var name = names[i];
+					if(name == username){
+						object.addEventListener("cursordown", function(e){
+							console.log("Clicked");
+							document.getElementById('whiteListTeleport').click();
+						});
+					}
+				}
+			}
+			
+			function whiteListTeleport2(names, object, url){
+				for(var i = 0; i < names.length; i++){
+					var name = names[i];
+					if(name == username){
+						object.addEventListener("cursordown", function(e){
+							console.log("Clicked");
+							document.getElementById('whiteListTeleport2').click();
+						});
+					}
+				}
+			}
+
+			
+			setup().then(function() {
+
+				//List of blacklisted users along with the URL that they are to be redirected to.
+				//blackList(["katherine"], "altspace://account.altvr.com/api/events/642685902782464591");
+				
+				//List of whitelisted users along with the URL that non-whitelisted users are to be redirected to.
+				whiteList([""], "altspace://account.altvr.com/api/spaces/new-user-info");
+				
+				//If you're using a-frame for you buttons, you'll need this.
+				//var object = document.querySelector('#id-of-button').object3D;
+				//List of blacklisted users who can't click the button, the button object, along with the URL the button with redirect users to.
+				//blackListTeleport(["Person 1", "Person 2"], object, "altspace://account.altvr.com/api/spaces/613940881048732244");
+				
+				//var object2 = document.querySelector('#SSR').object3D;
+				//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
+				//whiteListTeleport(["Tr4sh P4nda", "Succubus", "Cindy"], object2, "altspace://account.altvr.com/api/events/643019776603455984");
+				
+				//var object3 = document.querySelector('#Privacy').object3D;
+				//List of whitelisted users who can click the button, the button object, along with the URL the button with redirect users to.
+				//whiteListTeleport2(["Tr4sh P4nda", "Succubus","evildoer", "Richie", "Amber", "Celeste", "Cliff", "DrewBlast", "Fae", "Fae_Fae", "Jacob", 
+				//"Rockabella", "Sana", "thePoxxxx", "ProxCyde", "Plix", "Pepsi", "MeanMachineDean", "MC Meat Computer", "Maryam", "marmar", "Lia", "Fox", 
+				//"FACEMAN", "Morris"], object3, "altspace://account.altvr.com/api/events/642676618313072997");
+			});
+		</script> 
 	</head>
 	<body>
 
-<!-- set up the scene -->
-	<a-scene altspace=fullspace:true>
+	<!-- set up the scene -->
+<a-scene altspace=fullspace:true>
 	<a-assets>
-		<a-asset-item id="mount" src="assets/Mountain.dae"></a-asset-item>
+		<a-asset-item 
+			id="skull-obj" 
+			src="assets/SculptStudio.obj"></a-asset-item>
+		<a-asset-item 
+			id="skull-mtl" 
+			src="assets/SculptStudio.mtl"></a-asset-item>
 	</a-assets>
 	
 <!-- add the moon to the scene -->
-    <a-sphere position='800 800 0' 
-              radius="200" 
+    <a-sphere position='150 100 0' 
+              radius="50" 
               src="images/moon.jpg"
-              altspace-cursor-collider="enabled:true" 
+              altspace-cursor-collider="enabled:false" 
               n-mesh-collider="type:environment;convex:false">
         <!-- add an animation to make it rotate -->
         <a-animation to='0 360 0' easing='linear' dur='1200000' repeat='indefinite'/>
     </a-sphere>
-	
-    <a-entity collada-model="#mount" 
-	      position="0 0.1 -10"
-	      rotation="0 -90 0"
-	      altspace-cursor-collider="enabled:true" 
-              n-mesh-collider="type:environment;convex:false">
+    <a-entity position="0 0.5 0"
+	      rotation="0 0 0">
+	    <a-entity
+		      n-billboard position="0 1 0"
+		      rotation="0 0 0"
+		      n-text="text:The Hide Out; fontSize:2">
+	    </a-entity>
+	    <a-box
+		   src="images/p4nda.JPG" 
+		   width="0.75"
+		   height="0.75" 
+		   depth="0.75" 
+		   position="0 -0.01 0"
+		   rotation="0 0 0"
+		   cursor-interact="uri: altspace://account.altvr.com/api/spaces/new-user-info">
+	    </a-box>
     </a-entity>
     
     <a-plane 
@@ -50,9 +177,9 @@
 	n-mesh-collider="type:environment">
     </a-plane>
 	
-    <a-sky src="images/stars35.jpg" radius="2000">
-	    <a-animation attribute="rotation" to="0 360 0" dur="1200000" easing="linear" repeat="indefinite"></a-animation>
-    </a-sky>
+    <a-sky src="images/stars35.jpg" radius="2000"></a-sky>
+
+	<a href="altspace://account.altvr.com/api/spaces/new-user-info/" id="whiteList"></a>	
 </a-scene>
  
 </body></html>
