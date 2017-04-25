@@ -27,13 +27,16 @@
     <a-sphere position='800 800 0' 
               radius="200" 
               src="images/moon.jpg"
-              altspace-cursor-collider="enabled:false" 
+              altspace-cursor-collider="enabled:true" 
               n-mesh-collider="type:environment;convex:false">
         <!-- add an animation to make it rotate -->
         <a-animation to='0 360 0' easing='linear' dur='1200000' repeat='indefinite'/>
     </a-sphere>
 	
-    <a-entity collada-model="#mount" position="0 0 0">
+    <a-entity collada-model="#mount" 
+	      position="0 0 0"
+	      altspace-cursor-collider="enabled:true" 
+              n-mesh-collider="type:environment;convex:false">
     </a-entity>
     
     <a-plane 
